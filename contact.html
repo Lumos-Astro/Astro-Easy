@@ -60,14 +60,14 @@
 
         .container {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr ;
             gap: 20px;
             justify-content: center;
             max-width: 1400px; /* Increased the maximum width */
             margin: 20px auto; /* Center the grid */
         }
 
-        .column {
+    .column {
         display: flex; /* Use flexbox for the column */
         flex-direction: column; /* Align items in a column */
         justify-content: center; /* Center items vertically */
@@ -79,6 +79,7 @@
         min-height: 350px; /* Increase height */
         border-radius: 8px; /* Optional: Adds rounded corners */
 }
+
 
         h3, h4 {
             color: whitesmoke;
@@ -110,12 +111,9 @@
                 background-color: rgb(16, 129, 199);}
 
             .active {background-color:whitesmoke;}
-
     </style>
 </head>
-
 <body>
-
     <header>
         <nav>
             <ul>
@@ -125,60 +123,32 @@
                 <li><a href="contact.html">Contacts</a></li>
             </ul>
         </nav>
-
-        <h1><em>Lumos</em></h1>
-        <h2>Bringing the light to your study.</h2>
+        <h1><em>Contacts</em></h1>
+        <h2>Bringing the light to your study</h2>
     </header>
 
     <section>
-        <h3>The Astronomy and Astrophysics Master is divided into two years. There are four obligatory courses
-            in the first semester and four obligatory ones in the second semester of the first year. The second year is mostly thesis.
-            This page was made by students for students. Here you will find exercises, exams, and (hopefully) solutions from previous years.
-            If you'd like to add anything to the bank, please contact us.
-        </h3>
+        <div class="container">
+            <div class="column">
+                <h4>If you need help, there are many people you can talk to. For course-related issues like exam dates or homework extensions, your professors should be the first point of contact.</h4>
+                <h4>The Comissão de Acompanhamento de Curso consists of four people: the main professor (head of the Master), another professor (usually head of the Doctorate program), and two students. Meetings take place at the end of each semester, but you don’t need to wait for the semester's end to raise issues.</h4>
+                <h4>You can also explore internship opportunities with professors and research centers like the Centro de Investigação da Universidade do Porto (CAUP) and Instituto de Astrofísica e Ciências do Espaço (IA).</h4>
+            </div>
+            <div class="column">
+                <ul>
+                    <li><a href="https://sigarra.up.pt/fcup/pt/CUR_GERAL.CUR_COMISSAO_acomp_LIST?pv_curso_id=871">Comissão de Acompanhamento de Curso</a></li>
+                    <li><a href="https://info.fc.up.pt/fcup/static/index.php?f_id=673">PEEC</a></li>
+                    <li><a href="https://www.astro.up.pt">CAUP</a></li>
+                    <li><a href="http://www.iastro.pt/index.html">IA</a></li>
+                </ul>
+            </div>
+        </div>
     </section>
-
-    <div class="container">
-        <div class="column">
-            <h4>First Semester:</h4>
-            <ul>
-                <li><a href="https://drive.google.com/drive/folders/1AxZ81L8W_3uWyUIEALB5KGaRRKZ_ph2L?usp=sharing">Estrutura e Evolução Estelar</a></li>
-                <li><a href="https://drive.google.com/drive/folders/1Jozu48GG0YmxaBBcSUE8CwhY3t6GLxnG?usp=sharing">Sistemas Planetários</a></li>
-                <li><a href="https://drive.google.com/drive/folders/1MLB_ubejXnLd2hHtyewpp-b6MfbaUGRj?usp=sharing">Fotometria e Espetometria</a></li>
-                <li><a href="https://drive.google.com/drive/folders/1e5i_26_2BHwPQO5UAx8eLtx4QL8bMs7r?usp=sharing">Formação Estelar e Meio Circum-Estelar</a></li>
-            </ul>
-        </div>
-
-        <div class="column">
-            <h4>Second Semester:</h4>
-            <ul>
-                <li><a href="https://drive.google.com/drive/folders/16Hu5bGNoEi7TjPjhwk0lGpf1VUAEWQQE?usp=sharing">Análise de Dados em Física e Astronomia</a></li>
-                <li><a href="https://drive.google.com/drive/folders/1sXfNnqgiiagwTtnN43TZxya6_lx65ELk?usp=sharing">Astronomia Extragalática</a></li>
-                <li><a href="https://drive.google.com/drive/folders/1gAajH5iyg9-a_17u-LDqWwi8MV0Btrj6?usp=sharing">Cosmologia</a></li>
-                <li><a href="https://drive.google.com/drive/folders/1yO99o_xrI-1nvhsW0m7NWNf1UZODU0mC?usp=sharing">O Sol e a Heliosfera</a></li>
-            </ul>
-        </div>
-
-        <div class="column">
-            <h4>Opcionais:</h4>
-            <ul>
-                <li><a href="https://drive.google.com/drive/folders/1CJcf0hSPXgD2qVq0fGkG-t7eyLzE6ZLW?usp=sharing">Relatividade Geral</a></li>
-                <li><a href="https://drive.google.com/drive/folders/19B_D5TdgCBlHz8iMko6orICEScRQYCG2?usp=sharing">Mecânica Quântica Avançada</a></li>
-                <li><a href="https://drive.google.com/drive/folders/1_3OxkPELGcEXf-Fa3MY32Bq1xw2ViOOW?usp=sharing">Astrobiologia</a></li>
-                <li><a href="https://drive.google.com/drive/folders/1imPxN7pVg9qx1JfJrAslJ-Ik1aD1JG2b?usp=sharing">Telescópios e Detetores para as Ciências do Espaço</a></li>
-            </ul>
-        </div>
-    </div>
 
     <footer>
         <h4>Good Luck!</h4>
         <p>Email: lumosastroastro@gmail.com</p>
         <p><h6>By: M.A.F. de Melo e Sousa</h6></p>
     </footer>
-
 </body>
 </html>
-
-
-           
-

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astro Easy</title> 
+    <style>
+        body {
+            background-color: black;
+            color: rgb(215, 241, 253);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        header {
+            text-align: center; /* Align header content to the left */
+            color: white;
+            background-image: url("Background.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding: 5%;
+        }
+
+        /* Align navigation links to the left */
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #000000;
+        }
+
+        nav ul li {
+            float: left; /* Ensure navigation links are aligned to the left */
+        }
+
+        nav ul li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            background-color: rgb(16, 129, 199);
+        }
+
+        .active {
+            background-color: whitesmoke;
+        }
+
+        section {
+            display: block;
+            text-align: center;
+            padding: 14px 16px;
+            background-color: rgb(24, 25, 28);
+            margin: 20px auto;
+            width: 80%; /* Centered with a width limit */
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            justify-content: center;
+            max-width: 1400px; /* Increased the maximum width */
+            margin: 20px auto; /* Center the grid */
+        }
+
+        .column {
+        display: flex; /* Use flexbox for the column */
+        flex-direction: column; /* Align items in a column */
+        justify-content: center; /* Center items vertically */
+        align-items: center; /* Center items horizontally */
+        background-color: rgb(104, 112, 119);
+        padding: 20px; /* Increase padding for a more spacious look */
+        border: 1px solid;
+        min-width: 250px; /* Increase width */
+        min-height: 350px; /* Increase height */
+        border-radius: 8px; /* Optional: Adds rounded corners */
+}
+
+        h3, h4 {
+            color: whitesmoke;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            margin: 20px auto;
+            color: white;
+        }
+
+        ul {list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color: #000000;}
+
+            li {float: center;}
+
+            li a {display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;}
+
+/* Change the link color to #111 (black) on hover */
+            li a:hover {
+                background-color: rgb(16, 129, 199);}
+
+            .active {background-color:whitesmoke;}
+
+
+        </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="contact.html">Contacts</a></li>
+            </ul>
+        </nav>
+        <h1><em>News</em></h1>
+        <h2>Bringing the light to your study</h2>
+    </header>
+    <section>
+        <h3> <p> In this section we will post all the news regarding our degree and the most ludic side of it. Starting with AstroHoodies and AstroCats T-shirst. 
+            Those interested might also partake in the "Smoke-Week" movement.
+        </p></h3>
+
+        <div class="container">
+            <div class="column">
+                <h4>For the year of 2024/2025, we will make available T-shirts with one of the rejected last year designs: AstroCAT! A mixture between Schrodinger 
+                    and Astronauts, these cats hope to one day meet again. Perhaps to fight, perhaps to love. The price will be established based on how many are ordered,
+                    so we will set a goal for the orders to achive a reasonable price. More information will be coming soon as we are still working on the front.
+                </h4>
+                    <table border="1">
+                        <thead>
+                            <tr>
+                                <th>Orders</th>
+                                <th>Orders Needed</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0</td>
+                                <td><p>?</td>
+                                <td>?</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                <h5><i><u>Comming soon...</u></i></h5>
+            </div>
+    
+            <div class="column">
+                <div><img src="Tshirt 2425.jpg" alt="AstroCAT" style="float:right;width:500px;height:281px;"></div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="column">
+                <h4>Smoke Week lol</h4>
+                    <table border="1">
+                        <thead>
+                            <tr>
+                                <th>Ordered</th>
+                                <th>Sold</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>22 </td>
+                                <td><p>20 </td>
+                                <td>25€ </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                <h5><i><u>Link Unavailable</u></i></h5>
+            </div>
+    
+            <div class="column">
+                <div><img src="Smoke Week.jpg" alt="Smoke Week" style="float:right;width:500px;height:500px;"></div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="column">
+                <h4>The Astronomy and Astrophysics hoodie design of the year 2023/2024 was chosen and designed by the students. Acquired by Bachelors, Masters, PhDs and Professors,
+                    no one has ever been as stylish in the Physics department.
+                     The hoodies have been ordered and are expected 
+                    to be delivered beginnings of February.</h4>
+                    <table border="1">
+                        <thead>
+                            <tr>
+                                <th>Ordered</th>
+                                <th>Sold</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>22 </td>
+                                <td><p>20 </td>
+                                <td>25€ </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                <h5><i><u>Link Unavailable</u></i></h5>
+            </div>
+    
+            <div class="column">
+                <div><img src="Camisolas 2324.png" alt="Astro Hoodie" style="float:right;width:500px;height:500px;"></div>
+            </div>
+        </div>
+
+
+
+    
+    
+        
+
+    </section>
+    <footer>
+        <h4>Good Luck!</h4>
+        <p>Email: lumosastroastro@gmail.com</p>
+        <p><h6>By: M.A.F. de Melo e Sousa</h6></p>
+    </footer>
+
+        </body>
+    </head>
+</html>
