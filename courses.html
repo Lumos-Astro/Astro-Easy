@@ -5,49 +5,104 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Astro Easy</title> 
     <style>
-        body {
-            background-color: black;
-            color: rgb(215, 241, 253);
-            font-family: Arial, Helvetica, sans-serif;
-        }
 
-        header {
-            text-align: center; /* Align header content to the left */
-            color: white;
+
+body {
+            background-color:black;
+            color : rgb(215, 241, 253);
+            font-family: Arial, Helvetica, sans-serif;
             background-image: url("Background.jpg");
             background-repeat: no-repeat;
-            background-size: cover;
-            padding: 5%;
-        }
+            background-size: auto;
+            background-position: center;}
 
-        /* Align navigation links to the left */
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
+
+        header{text-align: center;
+                color : white;
+                background-repeat: no-repeat;
+                background-size: cover;;
+                padding: 5%}
+
+        /* Basic styling for the navigation bar */
+        .navbar {
             overflow: hidden;
             background-color: #000000;
+            font-family: Arial, sans-serif;
         }
 
-        nav ul li {
-            float: left; /* Ensure navigation links are aligned to the left */
-        }
-
-        nav ul li a {
+        /* Links inside the navbar */
+        .navbar a {
+            float: left;
             display: block;
-            color: white;
+            color: rgb(255, 255, 255);
             text-align: center;
-            padding: 14px 16px;
+            padding: 14px 20px;
             text-decoration: none;
         }
 
-        nav ul li a:hover {
+        /* Change the color of links on hover */
+        .navbar a:hover {
             background-color: rgb(16, 129, 199);
+            color: rgb(255, 255, 255);
+        }
+
+        /* The container for the dropdown */
+        .dropdown {
+            float: left;
+            overflow: hidden;
+        }
+
+        /* The dropdown button */
+        .dropdown .dropdown-button {
+            font-size: 16px;
+            border: none;
+            outline: none;
+            color: white;
+            padding: 14px 20px;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+        }
+
+        /* Dropdown content (hidden by default) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #000000;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        /* Links inside the dropdown */
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
         }
 
         .active {
             background-color: rgb(83, 156, 165);
         }
+
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {
+            background-color:rgb(16, 129, 199);
+        }
+
+        /* Show the dropdown content on hover */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Change the background color of the dropdown button on hover */
+        .dropdown:hover .dropdown-button {
+            background-color:rgb(16, 129, 199);
+        }
+
 
         section {
             display: block;
@@ -92,21 +147,21 @@
         }
 
         ul {list-style-type: none;
-                margin: 0;
-                padding: 0;
+                margin: 2%;
+                padding: 2%;
                 overflow: hidden;
-                background-color: #000000;}
-
-            li {float: center;}
-
-            li a {display: block;
-                color: white;
-                text-align: center;
-                padding: 14px 16px;
-                text-decoration: none;}
+                background-color: #000000;
+                display:block;}
+        
+        a {color: white;}
+        a:visited {
+                 color: rgb(255, 255, 255);
+                background-color: transparent;
+                text-decoration: none;
+                    }
 
 /* Change the link color to #111 (black) on hover */
-            li a:hover {
+            ul a:hover {
                 background-color: rgb(16, 129, 199);}
 
             .active {background-color:rgb(83, 156, 165);}
@@ -117,17 +172,21 @@
 <body>
 
     <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="courses.html" class=active>Courses</a></li>
-                <li><a href="news.html">News</a></li>
-                <li><a href="contact.html">Contacts</a></li>
-            </ul>
-        </nav>
+        <div class="navbar">
+            <a href="index.html">Home</a>
+            <a href="news.html">News</a>
 
-        <h1><em>Lumen</em></h1>
-        <h2>Bringing the light to your study.</h2>
+            <div class="dropdown">
+                <button class="dropdown-button">Master</button>
+                <div class="dropdown-content">
+                    <a href="courses.html" class=active>Courses</a>
+                    <a href="contact.html">Contacts</a>
+                </div>
+            </div>
+        </div>
+
+    <h1><em>OSCAR</em></h1>
+        <h2>Organização Socio-Cooperativa de AstRofísica </h2>
     </header>
 
     <section>
@@ -142,30 +201,30 @@
         <div class="column">
             <h4>First Semester:</h4>
             <ul>
-                <li><a href="https://drive.google.com/drive/folders/1AxZ81L8W_3uWyUIEALB5KGaRRKZ_ph2L?usp=sharing">Estrutura e Evolução Estelar</a></li>
-                <li><a href="https://drive.google.com/drive/folders/1Jozu48GG0YmxaBBcSUE8CwhY3t6GLxnG?usp=sharing">Sistemas Planetários</a></li>
-                <li><a href="https://drive.google.com/drive/folders/1MLB_ubejXnLd2hHtyewpp-b6MfbaUGRj?usp=sharing">Fotometria e Espetometria</a></li>
-                <li><a href="https://drive.google.com/drive/folders/1e5i_26_2BHwPQO5UAx8eLtx4QL8bMs7r?usp=sharing">Formação Estelar e Meio Circum-Estelar</a></li>
+                <h3><p><a href="https://drive.google.com/drive/folders/1AxZ81L8W_3uWyUIEALB5KGaRRKZ_ph2L?usp=sharing">Estrutura e Evolução Estelar</a></p>
+                <p><a href="https://drive.google.com/drive/folders/1Jozu48GG0YmxaBBcSUE8CwhY3t6GLxnG?usp=sharing">Sistemas Planetários</a></p>
+                <p><a href="https://drive.google.com/drive/folders/1MLB_ubejXnLd2hHtyewpp-b6MfbaUGRj?usp=sharing">Fotometria e Espetometria</a></p>
+                <p><a href="https://drive.google.com/drive/folders/1e5i_26_2BHwPQO5UAx8eLtx4QL8bMs7r?usp=sharing">Formação Estelar e Meio Circum-Estelar</a></p></h3>
             </ul>
         </div>
 
         <div class="column">
             <h4>Second Semester:</h4>
             <ul>
-                <li><a href="https://drive.google.com/drive/folders/16Hu5bGNoEi7TjPjhwk0lGpf1VUAEWQQE?usp=sharing">Análise de Dados em Física e Astronomia</a></li>
-                <li><a href="https://drive.google.com/drive/folders/1sXfNnqgiiagwTtnN43TZxya6_lx65ELk?usp=sharing">Astronomia Extragalática</a></li>
-                <li><a href="https://drive.google.com/drive/folders/1gAajH5iyg9-a_17u-LDqWwi8MV0Btrj6?usp=sharing">Cosmologia</a></li>
-                <li><a href="https://drive.google.com/drive/folders/1yO99o_xrI-1nvhsW0m7NWNf1UZODU0mC?usp=sharing">O Sol e a Heliosfera</a></li>
+                <h3><p><a href="https://drive.google.com/drive/folders/16Hu5bGNoEi7TjPjhwk0lGpf1VUAEWQQE?usp=sharing">Análise de Dados em Física e Astronomia</a></p>
+                <p><a href="https://drive.google.com/drive/folders/1sXfNnqgiiagwTtnN43TZxya6_lx65ELk?usp=sharing">Astronomia Extragalática</a></p>
+                <p><a href="https://drive.google.com/drive/folders/1gAajH5iyg9-a_17u-LDqWwi8MV0Btrj6?usp=sharing">Cosmologia</a></p>
+                <p><a href="https://drive.google.com/drive/folders/1yO99o_xrI-1nvhsW0m7NWNf1UZODU0mC?usp=sharing">O Sol e a Heliosfera</a></p></h3>
             </ul>
         </div>
 
         <div class="column">
             <h4>Opcionais:</h4>
             <ul>
-                <li><a href="https://drive.google.com/drive/folders/1CJcf0hSPXgD2qVq0fGkG-t7eyLzE6ZLW?usp=sharing">Relatividade Geral</a></li>
-                <li><a href="https://drive.google.com/drive/folders/19B_D5TdgCBlHz8iMko6orICEScRQYCG2?usp=sharing">Mecânica Quântica Avançada</a></li>
-                <li><a href="https://drive.google.com/drive/folders/1_3OxkPELGcEXf-Fa3MY32Bq1xw2ViOOW?usp=sharing">Astrobiologia</a></li>
-                <li><a href="https://drive.google.com/drive/folders/1imPxN7pVg9qx1JfJrAslJ-Ik1aD1JG2b?usp=sharing">Telescópios e Detetores para as Ciências do Espaço</a></li>
+                <h3><p><a href="https://drive.google.com/drive/folders/1CJcf0hSPXgD2qVq0fGkG-t7eyLzE6ZLW?usp=sharing">Relatividade Geral</a></p>
+                <p><a href="https://drive.google.com/drive/folders/19B_D5TdgCBlHz8iMko6orICEScRQYCG2?usp=sharing">Mecânica Quântica Avançada</a></p>
+                <p><a href="https://drive.google.com/drive/folders/1_3OxkPELGcEXf-Fa3MY32Bq1xw2ViOOW?usp=sharing">Astrobiologia</a></p>
+                <p><a href="https://drive.google.com/drive/folders/1imPxN7pVg9qx1JfJrAslJ-Ik1aD1JG2b?usp=sharing">Telescópios e Detetores para as Ciências do Espaço</a></p></h3>
             </ul>
         </div>
     </div>
