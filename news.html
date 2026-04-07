@@ -1,274 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Astro Easy</title> 
+    <title>OSCAR – News</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
-
-body {
-            background-color:black;
-            color : rgb(215, 241, 253);
-            font-family: Arial, Helvetica, sans-serif;
-            background-position: center;}
-
-
-        header{text-align: center;
-                color : white;
-                background-image: url("Background.jpg");
-                background-repeat: repeat-y;
-                background-size: auto;
-                background-position: center;
-                padding: 5%}
-
-        /* Basic styling for the navigation bar */
-        .navbar {
-            overflow: hidden;
-            background-color: #000000;
-            font-family: Arial, sans-serif;
+        body {
+            background-color: #000;
+            color: rgb(215,241,253);
+            font-family: 'Share Tech Mono', monospace;
+            background-image: url("Background.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center top;
+            background-attachment: fixed;
+            min-height: 100vh;
         }
 
-        /* Links inside the navbar */
-        .navbar a {
-            float: left;
-            display: block;
-            color: rgb(255, 255, 255);
-            text-align: center;
-            padding: 14px 20px;
-            text-decoration: none;
-        }
+        .navbar { overflow: hidden; background-color: rgba(0,0,0,0.88); border-bottom: 1px solid rgba(80,200,255,0.18); z-index: 50; }
+        .navbar a { float: left; display: block; color: rgba(180,230,255,0.72); text-align: center; padding: 15px 22px; text-decoration: none; font-family: 'Share Tech Mono', monospace; font-size: 0.78rem; letter-spacing: 2.5px; text-transform: uppercase; transition: background 0.2s, color 0.2s; }
+        .navbar a:hover { background-color: rgba(16,129,199,0.28); color: #fff; }
+        .navbar a.active { background-color: rgba(83,156,165,0.85); color: #fff; }
+        .dropdown { float: left; overflow: hidden; }
+        .dropdown .dropdown-button { font-family: 'Share Tech Mono', monospace; font-size: 0.78rem; letter-spacing: 2.5px; text-transform: uppercase; border: none; outline: none; color: rgba(180,230,255,0.72); padding: 15px 22px; background-color: transparent; cursor: pointer; transition: background 0.2s, color 0.2s; }
+        .dropdown-content { display: none; position: absolute; background-color: rgba(0,4,18,0.97); min-width: 190px; box-shadow: 0 10px 30px rgba(0,0,0,0.7); z-index: 200; border: 1px solid rgba(80,200,255,0.14); border-top: none; }
+        .dropdown-content a { float: none; color: rgba(160,210,255,0.75); padding: 12px 20px; font-size: 0.76rem; letter-spacing: 2px; display: block; text-align: left; border-bottom: 1px solid rgba(80,200,255,0.06); }
+        .dropdown-content a:last-child { border-bottom: none; }
+        .dropdown-content a:hover { background-color: rgba(16,129,199,0.28); color: #fff; }
+        .dropdown-content a.active { background-color: rgba(83,156,165,0.8); color: #fff; }
+        .dropdown:hover .dropdown-content { display: block; }
+        .dropdown:hover .dropdown-button { background-color: rgba(16,129,199,0.28); color: #fff; }
 
-        /* Change the color of links on hover */
-        .navbar a:hover {
-            background-color: rgb(16, 129, 199);
-            color: rgb(255, 255, 255);
-        }
+        header { text-align: center; padding: 64px 5% 52px; background: linear-gradient(to bottom, rgba(0,0,0,0.62), rgba(0,4,18,0.38)); }
+        header h1 { font-family: 'Orbitron', monospace; font-size: 3.2rem; font-weight: 900; letter-spacing: 12px; color: #fff; text-shadow: 0 0 28px rgba(80,200,255,0.75), 0 0 70px rgba(80,200,255,0.22); margin-bottom: 12px; }
+        header h2 { font-family: 'Share Tech Mono', monospace; font-size: 0.78rem; letter-spacing: 3.5px; color: rgb(255, 255, 255); text-transform: uppercase; }
 
-        /* The container for the dropdown */
-        .dropdown {
-            float: left;
-            overflow: hidden;
-        }
+        .page-content { max-width: 1200px; margin: 0 auto; padding: 50px 40px 90px; }
 
-        /* The dropdown button */
-        .dropdown .dropdown-button {
-            font-size: 16px;
-            border: none;
-            outline: none;
-            color: rgb(255, 255, 255);
-            padding: 14px 20px;
-            background-color: inherit;
-            font-family: inherit;
-            margin: 0;
-        }
+        .section-label { font-family: 'Orbitron', monospace; font-size: 0.72rem; font-weight: 700; color: rgb(0, 234, 255); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 8px; }
+        .section-sub { font-family: 'Share Tech Mono', monospace; color: rgb(205, 247, 255); font-size: 0.72rem; letter-spacing: 2px; margin-bottom: 28px; }
 
-        /* Dropdown content (hidden by default) */
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #000000;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
+        .news-block { background: rgba(0,6,22,0.82); border: 1px solid rgba(0, 174, 255, 0.16); border-radius: 6px; padding: 32px; margin-bottom: 28px; backdrop-filter: blur(6px); }
+        .news-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center; }
+        .news-text .headline { font-family: 'Orbitron', monospace; font-size: 1rem; color: #fff; letter-spacing: 2px; margin-bottom: 14px; text-shadow: 0 0 10px rgba(80,200,255,0.3); }
+        .news-text p { font-family: 'Share Tech Mono', monospace; font-size: 0.84rem; color: rgba(195,228,255,0.78); line-height: 1.88; margin-bottom: 18px; }
 
-        /* Links inside the dropdown */
-        .dropdown-content a {
-            float: none;
-            color: rgb(0, 0, 0);
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            text-align: left;
-        }
+        .tag { display: inline-block; font-family: 'Share Tech Mono', monospace; font-size: 0.68rem; letter-spacing: 1.5px; padding: 3px 11px; border-radius: 3px; border: 1px solid; margin-bottom: 14px; }
+        .tag-open { border-color: rgba(80,255,150,0.38); color: rgba(80,255,150,0.88); background: rgba(0,70,25,0.28); }
+        .tag-closed { border-color: rgba(255,90,90,0.38); color: rgba(255,110,110,0.78); background: rgba(55,0,0,0.28); }
 
-        .active {
-            background-color: rgb(83, 156, 165);
-        }
-
-        /* Change color of dropdown links on hover */
-        .dropdown-content a:hover {
-            background-color:rgb(16, 129, 199);
-        }
-
-        /* Show the dropdown content on hover */
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        /* Change the background color of the dropdown button on hover */
-        .dropdown:hover .dropdown-button {
-            background-color:rgb(16, 129, 199);
-        }
+        table { border-collapse: collapse; margin: 14px 0 18px; }
+        th { font-family: 'Orbitron', monospace; font-size: 0.65rem; letter-spacing: 2px; color: rgba(80,200,255,0.65); padding: 9px 18px; border-bottom: 1px solid rgba(80,200,255,0.18); text-align: center; background: rgba(0,8,28,0.5); }
+        td { font-family: 'Share Tech Mono', monospace; font-size: 0.82rem; color: rgba(195,228,255,0.78); padding: 9px 18px; border-bottom: 1px solid rgba(255,255,255,0.04); text-align: center; }
+        tr:last-child td { border-bottom: none; }
 
 
-        section {
-            display: block;
-            text-align: center;
-            padding: 14px 16px;
-            background-color: rgb(24, 25, 28);
-            margin: 20px auto;
-            width: 80%; /* Centered with a width limit */
-        }
+        .cta-link { display: inline-block; font-family: 'Share Tech Mono', monospace; font-size: 0.78rem; letter-spacing: 2px; color: rgba(80,200,255,0.85); border: 1px solid rgba(80,200,255,0.32); padding: 9px 20px; border-radius: 3px; transition: all 0.2s; margin-top: 4px; text-decoration: none; }
+        .cta-link:hover { background: rgba(80,200,255,0.1); color: #fff; border-color: rgba(80,200,255,0.65); }
+        .cta-link.disabled { color: rgba(255, 0, 0, 0.73); border-color: rgba(255, 0, 0, 0.73); pointer-events: none; cursor: default; }
 
-        .container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            justify-content: center;
-            max-width: 1400px; /* Increased the maximum width */
-            margin: 20px auto; /* Center the grid */
-        }
+        .img-box { border-radius: 6px; overflow: hidden; border: 1px solid rgba(80,200,255,0.14); background: rgba(0,4,18,0.5); display: flex; align-items: center; justify-content: center; min-height: 180px; }
+        .img-box img { width: 100%; height: 100%; object-fit: contain; display: block; }
 
-        .column {
-        display: flex; /* Use flexbox for the column */
-        flex-direction: column; /* Align items in a column */
-        justify-content: center; /* Center items vertically */
-        align-items: center; /* Center items horizontally */
-        background-color: rgb(104, 112, 119);
-        padding: 20px; /* Increase padding for a more spacious look */
-        border: 1px solid;
-        min-width: 250px; /* Increase width */
-        min-height: 350px; /* Increase height */
-        border-radius: 8px; /* Optional: Adds rounded corners */
-}
+        .divider { border: none; border-top: 1px solid rgba(80,200,255,0.09); margin: 12px 0 28px; }
 
-        h3, h4 {
-            color: whitesmoke;
-            text-align: center;
-        }
+        a { color: rgba(80,200,255,0.82); text-decoration: none; transition: color 0.2s; }
+        a:visited { color: rgba(80,200,255,0.62); }
+        a:hover { color: #fff; }
 
-        footer {
-            text-align: center;
-            margin: 20px auto;
-            color: white;
-        }
-
-        ul {list-style-type: none;
-                margin: 2%;
-                padding: 2%;
-                overflow: hidden;
-                background-color: #000000;
-                display:block;}
-        
-        a {color: white;
-            text-decoration: none}
-        a:visited {
-                 color: rgb(255, 255, 255);
-                background-color: transparent;
-                text-decoration: none;
-                    }
-
-/* Change the link color to #111 (black) on hover */
-            ul a:hover {
-                background-color: rgb(16, 129, 199);}
-
-            .active {background-color:rgb(83, 156, 165);}
-
+        footer { text-align: center; padding: 28px 20px; border-top: 1px solid rgba(80,200,255,0.08); font-family: 'Share Tech Mono', monospace; font-size: 0.72rem; color: rgb(255, 255, 255); letter-spacing: 1.5px; background: rgba(0,0,0,0.5); }
+        footer a {color:  #6afdff}
+        footer p + p { margin-top: 5px; }
     </style>
 </head>
-
 <body>
-
-    <header>
-        <div class="navbar">
-            <a href="index.html">Home</a>
-            <a href="news.html" class=active>News</a>
-
-            <div class="dropdown">
-                <button class="dropdown-button">Master</button>
-                <div class="dropdown-content">
-                    <a href="courses.html" >Courses</a>
-                    <a href="contact.html">Contacts</a>
-                </div>
+<header>
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="news.html" class="active">News</a>
+        <div class="dropdown">
+            <button class="dropdown-button">Master ▾</button>
+            <div class="dropdown-content">
+                <a href="courses.html">Courses</a>
+                <a href="contact.html">Contacts</a>
             </div>
         </div>
-
+        <a href="game.html">Games</a>
+        <a href="astro_world.html">Astro World</a>
+    </div>
     <h1><em>OSCAR</em></h1>
-        <h2>Organização Socio-Cooperativa de AstRofísica </h2>
-    </header>
-    <section>
-        <h3> <p> In this section we will post all the news regarding our degree and the most ludic side of it. Starting with AstroHoodies and OSCAR T-shirst. 
-            Those interested might also partake in the <a href="smokeweek.html">"Smoke-Week"</a> movement.
+    <h2>Organização Socio-Cooperativa de AstRofísica</h2>
+</header>
 
-            <em><h2>ASTROHOODIES ORDERS ARE ONCE AGAIN OPEN</em></h2>
-        </p></h3>
+<div class="page-content">
 
-        <div class="container">
-            <div class="column">
-                <h4>For the year of 2024/2025, we made available T-shirts with one of the rejected last year designs: Oscar! A mixture between Schrodinger 
-                    and Astronauts, these cats hope to one day meet again. Perhaps to fight, perhaps to love. The price was established at 9€ each for an order of 30 T-shirts. 
-                    We included a free sticker of Oscar! As we have reached our goal, orders are now closed. For questions, please contact: lumosastroastro@gmail.com . 
-                </h4>
-                    <table border="1">
-                        <thead>
-                            <tr>
-                                <th>Orders</th>
-                                <th>Orders Needed</th>
-                                <th>Price</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>30</td>
-                                <td>30</td>
-                                <td>9€</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                <h5><i><u>Link Unavailable</u></i></h5>
-                <!--<h5><i><u><a href="https://docs.google.com/forms/d/e/1FAIpQLSdNL1Q-HN1RVszRNBsELPCm0lkTig2LpdH1TB9JXclyhKreiw/viewform?usp=pp_url">Order one now!</a></u></i></h5>-->
+    <div class="section-label">// News &amp; Merch</div>
+    <div class="section-sub">In this section we will post all the news regarding our degree and the most ludic side of it. Let us know your ideas and don't forget:<a style="color: rgba(255, 255, 255, 0.85);" href="smokeweek.html">smoke week</a> is always around the corner&nbsp;|&nbsp; Three successful runs of our hoodies and T-shirts!</div>
+
+
+    <!-- Submission -->
+    <div class="news-block">
+        <div class="news-grid">
+            <div class="news-text">
+                <div class="headline">Do you have ideas for merch? Let us know what we can do!</div>
+                <span class="tag tag-open">Contact us!</span>
+                <p>
+                <p>
+                    Do you have an idea? Would you like to design the next line of merch for the astronomy and astrophysics degree? Let us know! Now you can submit your own 
+                    proposal! For questions, please contact: <a href="mailto:lumosastroastro@gmail.com">lumosastroastro@gmail.com</a>
+                <a class="cta-link" href="https://docs.google.com/forms/d/e/1FAIpQLSclaaK6ZRcXkMTQj1NUiylritTSpCdLr5JtlNhwnghPN1xPGw/viewform?usp=publish-editor" target="_blank">→ Send your idea!</a>
             </div>
-    
-            <div class="column">
-                <div><img src="Tshirt 2425.jpg" alt="Oscar" style="float:center; width: 100%; height:100%; object-fit: contain; justify-content: center";></div>
+            <div class="img-box">
+                <img src="OSCAR.png" alt="OSCAR">
             </div>
         </div>
-        
-
-        <div class="container">
-            <div class="column">
-                <h4>The Astronomy and Astrophysics hoodie design of the year 2023/2024 was chosen and designed by the students. Acquired by Bachelors, Masters, PhDs and Professors,
-                    no one has ever been as stylish in the Physics department. Now open for a second edition without the year in the back.</h4>
-                    <table border="1">
-                        <thead>
-                            <tr>
-                                <th>Ordered</th>
-                                <th>Sold</th>
-                                <th>Price</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>22 </td>
-                                <td><p>20 </td>
-                                <td>25€ </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    
-                <h5><i><u><a href="https://docs.google.com/forms/d/e/1FAIpQLSenFf8_qeR3cidb7dS9Z3si3n6OvVTD-vpy7eYmTUouGvdN6g/viewform?usp=pp_url">Order one now!</a></u></i></h5>
+    </div>
+    <hr class="divider">
+    <!-- T-SHIRT 2024/2025 -->
+    <div class="news-block">
+        <div class="news-grid">
+            <div class="news-text">
+                <div class="headline">OSCAR T-Shirt — 2024/2025</div>
+                <span class="tag tag-closed">Orders Closed</span>
+                <p>
+                    For the year of 2024/2025, we made available T-shirts with one of the rejected last year
+                    designs: Oscar! A mixture between Schrödinger and Astronauts, these cats hope to one day
+                    meet again. Perhaps to fight, perhaps to love. The price was established at 9€ each for
+                    an order of 30 T-shirts. We included a free sticker of Oscar! As we have reached our goal,
+                    orders are now closed. For questions, please contact: <a href="mailto:lumosastroastro@gmail.com">lumosastroastro@gmail.com</a>
+                </p>
+                <table>
+                    <thead><tr><th>Orders</th><th>Orders Needed</th><th>Price</th></tr></thead>
+                    <tbody><tr><td>30</td><td>30</td><td>9€</td></tr></tbody>
+                </table>
+                <a class="cta-link disabled" href="#">Link Unavailable</a>
             </div>
-    
-            <div class="column">
-                <div><img src="Camisolas 2324.png" alt="Astro Hoodie" alt="Oscar" style="float:center; width: 100%; height:100%; object-fit: contain; justify-content: center"></div>
+            <div class="img-box">
+                <img src="Tshirt 2425.jpg" alt="OSCAR T-shirt 2024/2025">
             </div>
         </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- HOODIE 2023/2024 -->
+    <div class="news-block">
+        <div class="news-grid">
+            <div class="news-text">
+                <div class="headline">AstroHoodie — 2023/2024</div>
+                <span class="tag tag-closed">Orders Closed</span>
+                <p>
+                    The Astronomy and Astrophysics hoodie design of the year 2023/2024 was chosen and
+                    designed by the students. Acquired by Bachelors, Masters, PhDs and Professors,
+                    no one has ever been as stylish in the Physics department. Opened for a second
+                    edition without the year in the back (2025/2026)!
+                </p>
+                <table>
+                    <thead><tr><th>Ordered</th><th>Sold</th><th>Price</th></tr></thead>
+                    <tbody><tr><td>27</td><td>20</td><td>25€</td></tr></tbody>
+                </table>
+                <a class="cta-link disabled" href="#" target="_blank">Link Unavailable</a>
+            </div>
+            <div class="img-box">
+                <img src="Camisolas 2324.png" alt="AstroHoodie 2023/2024">
+            </div>
+        </div>
+    </div>
 
 
 
-    
-    
-        
+    <hr class="divider">
 
-    </section>
-    <footer>
-        <h4>Good Luck!</h4>
-        <p>Email: lumosastroastro@gmail.com</p>
-        <p><h6>By: M.A.F. de Melo e Sousa</h6></p>
-    </footer>
+<!-- SMOKE WEEK -->
+    <!-- <div class="news-block">
+        <div class="news-grid">
+            <div class="news-text">
+                <div class="headline">Smoke Week T-Shirt</div>
+                <span class="tag tag-open">Orders Open</span>
+                <p>
+                    Halloween ends in SMOKE. Those interested might also partake in the
+                    <a href="smokeweek.html">Smoke Week</a> movement.
+                    5 to 12 November, Porto, Portugal. Free entry.
+                </p>
+                <table>
+                    <thead><tr><th>Orders</th><th>Orders Needed</th><th>Price</th></tr></thead>
+                    <tbody><tr><td>0</td><td>30</td><td>9€</td></tr></tbody>
+                </table>
+                <a class="cta-link" href="https://docs.google.com/forms/d/e/1FAIpQLSfNv142RSmY5dGaQt-wQA5hpdgKOW7xn7MbdNOCQwAZa3ElPg/viewform?usp=pp_url" target="_blank">→ Order One Now</a>
+                &nbsp;
+                <a class="cta-link" href="smokeweek.html">→ Smoke Week Page</a>
+            </div>
+            <div class="img-box">
+                <img src="Smoke Week.jpg" alt="Smoke Week T-shirt">
+            </div>
+        </div>
+    </div> -->
 
-        </body>
-    </head>
+</div>
+
+<footer>
+    <p>Good Luck! &nbsp;|&nbsp; <a href="mailto:lumosastroastro@gmail.com">lumosastroastro@gmail.com</a></p>
+    <p>By M.A.F. de Melo e Sousa</p>
+</footer>
+</body>
 </html>

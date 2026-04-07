@@ -1,210 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Astro Easy</title> 
+    <title>OSCAR – Smoke Week</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
-
-body {
-            background-color:rgb(255, 0, 0);
-            color : rgb(215, 241, 253);
-            font-family: Arial, Helvetica, sans-serif;
-            background-position: center;}
-
-
-        header{text-align: center;
-                color : rgb(255, 0, 0);
-                background-color: rgb(0, 0, 0);
-                background-repeat: repeat-y;
-                background-size: auto;
-                background-position: center;
-                padding: 5%}
-
-        /* Basic styling for the navigation bar */
-        .navbar {
-            overflow: hidden;
-            background-color: #000000;
-            font-family: Arial, sans-serif;
+        body {
+            background-color: #080000;
+            color: rgb(255,200,195);
+            font-family: 'Share Tech Mono', monospace;
+            background-image: url("Background.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center top;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+        /* Red tint overlay on the background */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: rgba(40,0,0,0.62);
+            pointer-events: none;
+            z-index: 0;
         }
 
-        /* Links inside the navbar */
-        .navbar a {
-            float: left;
-            display: block;
-            color: rgb(255, 255, 255);
-            text-align: center;
-            padding: 14px 20px;
-            text-decoration: none;
-        }
+        .navbar { overflow: hidden; background-color: rgba(0,0,0,0.92); border-bottom: 1px solid rgba(200,30,30,0.28); position: relative; z-index: 50; }
+        .navbar a { float: left; display: block; color: rgba(255,160,155,0.72); text-align: center; padding: 15px 22px; text-decoration: none; font-family: 'Share Tech Mono', monospace; font-size: 0.78rem; letter-spacing: 2.5px; text-transform: uppercase; transition: background 0.2s, color 0.2s; }
+        .navbar a:hover { background-color: rgba(180,0,0,0.35); color: #fff; }
+        .navbar a.active { background-color: rgba(160,28,28,0.85); color: #fff; }
+        .dropdown { float: left; overflow: hidden; }
+        .dropdown .dropdown-button { font-family: 'Share Tech Mono', monospace; font-size: 0.78rem; letter-spacing: 2.5px; text-transform: uppercase; border: none; outline: none; color: rgba(255,160,155,0.72); padding: 15px 22px; background-color: transparent; cursor: pointer; transition: background 0.2s, color 0.2s; }
+        .dropdown-content { display: none; position: absolute; background-color: rgba(8,0,0,0.97); min-width: 190px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); z-index: 200; border: 1px solid rgba(200,30,30,0.18); border-top: none; }
+        .dropdown-content a { float: none; color: rgba(255,160,155,0.75); padding: 12px 20px; font-size: 0.76rem; letter-spacing: 2px; display: block; text-align: left; border-bottom: 1px solid rgba(200,30,30,0.08); }
+        .dropdown-content a:last-child { border-bottom: none; }
+        .dropdown-content a:hover { background-color: rgba(180,0,0,0.35); color: #fff; }
+        .dropdown:hover .dropdown-content { display: block; }
+        .dropdown:hover .dropdown-button { background-color: rgba(180,0,0,0.35); color: #fff; }
 
-        /* Change the color of links on hover */
-        .navbar a:hover {
-            background-color: rgb(16, 129, 199);
-            color: rgb(255, 255, 255);
-        }
+        header { text-align: center; padding: 64px 5% 52px; background: linear-gradient(to bottom, rgba(0,0,0,0.72), rgba(20,0,0,0.45)); position: relative; z-index: 1; }
+        header h1 { font-family: 'Orbitron', monospace; font-size: 3.2rem; font-weight: 900; letter-spacing: 10px; color: #ff3030; text-shadow: 0 0 28px rgba(255,40,0,0.85), 0 0 70px rgba(255,0,0,0.28); margin-bottom: 12px; }
+        header h2 { font-family: 'Share Tech Mono', monospace; font-size: 0.78rem; letter-spacing: 3.5px; color: rgba(255,150,140,0.48); text-transform: uppercase; }
 
-        /* The container for the dropdown */
-        .dropdown {
-            float: left;
-            overflow: hidden;
-        }
+        .page-content { max-width: 1050px; margin: 0 auto; padding: 50px 40px 90px; position: relative; z-index: 1; }
 
-        /* The dropdown button */
-        .dropdown .dropdown-button {
-            font-size: 16px;
-            border: none;
-            outline: none;
-            color: rgb(255, 255, 255);
-            padding: 14px 20px;
-            background-color: inherit;
-            font-family: inherit;
-            margin: 0;
-        }
+        .smoke-hero { background: rgba(12,0,0,0.85); border: 1px solid rgba(200,30,30,0.3); border-radius: 6px; padding: 22px 34px; margin-bottom: 34px; text-align: center; backdrop-filter: blur(6px); }
+        .smoke-hero .big-title { font-family: 'Orbitron', monospace; font-size: 2rem; font-weight: 900; color: #ff3030; letter-spacing: 6px; text-shadow: 0 0 20px rgba(255,40,0,0.65); margin-bottom: 8px; }
+        .smoke-hero .tagline { font-family: 'Share Tech Mono', monospace; font-size: 0.82rem; color: rgba(255,150,140,0.65); letter-spacing: 3px; }
 
-        /* Dropdown content (hidden by default) */
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #000000;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
 
-        /* Links inside the dropdown */
-        .dropdown-content a {
-            float: none;
-            color: rgb(0, 0, 0);
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            text-align: left;
-        }
+        .card { background: rgba(12,0,0,0.85); border: 1px solid rgba(200,30,30,0.25); border-radius: 6px; padding: 30px; backdrop-filter: blur(6px); }
+        .section-label-red { font-family: 'Orbitron', monospace; font-size: 0.7rem; font-weight: 700; color: rgba(255,80,60,0.65); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 18px; }
 
-        .active {
-            background-color: rgb(83, 156, 165);
-        }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+        th { font-family: 'Orbitron', monospace; font-size: 0.65rem; letter-spacing: 2px; color: rgba(255,100,80,0.65); padding: 9px 16px; border-bottom: 1px solid rgba(200,30,30,0.2); text-align: center; background: rgba(25,0,0,0.5); }
+        td { font-family: 'Share Tech Mono', monospace; font-size: 0.82rem; color: rgba(255,200,195,0.8); padding: 9px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); text-align: center; }
+        tr:last-child td { border-bottom: none; }
 
-        /* Change color of dropdown links on hover */
-        .dropdown-content a:hover {
-            background-color:rgb(16, 129, 199);
-        }
+        .cta-link { display: inline-block; font-family: 'Share Tech Mono', monospace; font-size: 0.78rem; letter-spacing: 2px; color: rgba(255,80,60,0.88); border: 1px solid rgba(200,30,30,0.45); padding: 9px 20px; border-radius: 3px; transition: all 0.2s; text-decoration: none; }
+        .cta-link:hover { background: rgba(200,30,30,0.2); color: #fff; border-color: rgba(255,80,80,0.75); }
 
-        /* Show the dropdown content on hover */
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
+        .img-box { border-radius: 6px; overflow: hidden; border: 1px solid rgba(200,30,30,0.2); background: rgba(12,0,0,0.5); }
+        .img-box img { width: 100%; height: 100%; object-fit: contain; display: block; }
 
-        /* Change the background color of the dropdown button on hover */
-        .dropdown:hover .dropdown-button {
-            background-color:rgb(16, 129, 199);
-        }
+        a { color: rgba(255,100,80,0.82); text-decoration: none; transition: color 0.2s; }
+        a:visited { color: rgba(255,100,80,0.62); }
+        a:hover { color: #fff; }
 
-
-        section {
-            display: block;
-            text-align: center;
-            padding: 14px 16px;
-            background-color: rgb(24, 25, 28);
-            margin: 20px auto;
-            width: 80%; /* Centered with a width limit */
-        }
-
-        .container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            justify-content: center;
-            max-width: 1400px; /* Increased the maximum width */
-            margin: 20px auto; /* Center the grid */
-        }
-
-        .column {
-        display: flex; /* Use flexbox for the column */
-        flex-direction: column; /* Align items in a column */
-        justify-content: center; /* Center items vertically */
-        align-items: center; /* Center items horizontally */
-        background-color: rgb(104, 112, 119);
-        padding: 20px; /* Increase padding for a more spacious look */
-        border: 1px solid;
-        min-width: 250px; /* Increase width */
-        min-height: 350px; /* Increase height */
-        border-radius: 8px; /* Optional: Adds rounded corners */
-}
-
-        h3, h4 {
-            color: whitesmoke;
-            text-align: center;
-        }
-
-        footer {
-            text-align: center;
-            margin: 20px auto;
-            color: white;
-        }
-        td{text-align: center;}
-        ul {list-style-type: none;
-                margin: 2%;
-                padding: 2%;
-                overflow: hidden;
-                background-color: #000000;
-                display:block;}
-        
-        a {color: white;
-            text-decoration: none}
-        a:visited {
-                 color: rgb(255, 255, 255);
-                background-color: transparent;
-                text-decoration: none;
-                    }
-
-/* Change the link color to #111 (black) on hover */
-            ul a:hover {
-                background-color: rgb(16, 129, 199);}
-
-            .active {background-color:rgb(83, 156, 165);}
-
+        footer { text-align: center; padding: 28px 20px; border-top: 1px solid rgba(200,30,30,0.1); font-family: 'Share Tech Mono', monospace; font-size: 0.72rem; color: rgba(200,100,90,0.35); letter-spacing: 1.5px; background: rgba(0,0,0,0.6); position: relative; z-index: 1; }
     </style>
 </head>
-
 <body>
-
-    <header>
-        <b><i><u>WELCOME TO SMOKE WEEK!!</i></u></b>
-    </header>
-
-        <div class="container">
-            <div class="column">
-                    <table border="1">
-                        <thead>
-                            <tr>
-                                <th>Orders</th>
-                                <th>Orders Needed</th>
-                                <th>Price</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>0</td>
-                                <td>30</td>
-                                <td>9€</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                <h5><i><u><a href="https://docs.google.com/forms/d/e/1FAIpQLSfNv142RSmY5dGaQt-wQA5hpdgKOW7xn7MbdNOCQwAZa3ElPg/viewform?usp=pp_url">Order one now!</a></u></i></h5>
-            </div>
-    
-            <div class="column">
-                <div><img src="Smoke Week.jpg" alt="Smoke Week" style="float:center; width: 100%; height:100%; object-fit: contain; justify-content: center";></div>
+<header>
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="news.html">News</a>
+        <div class="dropdown">
+            <button class="dropdown-button">Master ▾</button>
+            <div class="dropdown-content">
+                <a href="courses.html">Courses</a>
+                <a href="contact.html">Contacts</a>
             </div>
         </div>
-        
+        <a href="game.html">Games</a>
+        <a href="astro_world.html">Astro World</a>
+    </div>
+    <h1>☠ SMOKE WEEK ☠</h1>
+    <h2>Halloween ends in smoke &nbsp;·&nbsp; 5 to 12 November &nbsp;·&nbsp; Porto, Portugal</h2>
+</header>
+
+<div class="page-content">
+
+    <div class="smoke-hero">
+        <div class="big-title">PERISH AT YOUR OWN PLEASURE</div>
+        <div class="tagline">Free Entry &nbsp;·&nbsp; Wednesday 5 through Wednesday 12</div>
+    </div>
+
+    <div class="grid-2">
+        <div class="card">
+            <div class="section-label-red">// Smoke Week T-Shirt</div>
+            <table>
+                <thead><tr><th>Orders</th><th>Orders Needed</th><th>Price</th></tr></thead>
+                <tbody><tr><td>0</td><td>30</td><td>9€</td></tr></tbody>
+            </table>
+            <a class="cta-link" href="https://docs.google.com/forms/d/e/1FAIpQLSfNv142RSmY5dGaQt-wQA5hpdgKOW7xn7MbdNOCQwAZa3ElPg/viewform?usp=pp_url" target="_blank">→ Order One Now</a>
+        </div>
+        <div class="img-box">
+            <img src="Smoke Week.jpg" alt="Smoke Week T-shirt">
+        </div>
+    </div>
 
 
+</div>
 
-        </body>
-    </head>
+<footer>
+    <p>lumosastroastro@gmail.com &nbsp;|&nbsp; By M.A.F. de Melo e Sousa</p>
+</footer>
+</body>
 </html>

@@ -1,213 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Astro Easy</title> 
+    <title>OSCAR – Contacts</title>
     <style>
-    body {
-        background-color:black;
-        color : rgb(215, 241, 253);
-        font-family: Arial, Helvetica, sans-serif;
-        background-position: center;}
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
-
-    header{text-align: center;
-            color : white;
+        body {
+            background-color: #000;
+            color: rgb(215,241,253);
+            font-family: 'Share Tech Mono', monospace;
             background-image: url("Background.jpg");
-            background-repeat: repeat-y;
-            background-size: auto;
-            background-position: center;
-            padding: 5%}
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center top;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
 
-    /* Basic styling for the navigation bar */
-    .navbar {
-        overflow: hidden;
-        background-color: #000000;
-        font-family: Arial, sans-serif;
-    }
+        .navbar { overflow: hidden; background-color: rgba(0,0,0,0.88); border-bottom: 1px solid rgba(80,200,255,0.18); z-index: 50; }
+        .navbar a { float: left; display: block; color: rgba(180,230,255,0.72); text-align: center; padding: 15px 22px; text-decoration: none; font-family: 'Share Tech Mono', monospace; font-size: 0.78rem; letter-spacing: 2.5px; text-transform: uppercase; transition: background 0.2s, color 0.2s; }
+        .navbar a:hover { background-color: rgba(16,129,199,0.28); color: #fff; }
+        .navbar a.active { background-color: rgba(83,156,165,0.85); color: #fff; }
+        .navbar a.visited { color: rgba(180,230,255,0.72); }
+        .dropdown { float: left; overflow: hidden; }
+        .dropdown .dropdown-button { font-family: 'Share Tech Mono', monospace; font-size: 0.78rem; letter-spacing: 2.5px; text-transform: uppercase; border: none; outline: none; color: rgba(180,230,255,0.72); padding: 15px 22px; background-color: transparent; cursor: pointer; transition: background 0.2s, color 0.2s; }
+        .dropdown-content { display: none; position: absolute; background-color: rgba(0,4,18,0.97); min-width: 190px; box-shadow: 0 10px 30px rgba(0,0,0,0.7); z-index: 200; border: 1px solid rgba(80,200,255,0.14); border-top: none; }
+        .dropdown-content a { float: none; color: rgba(160,210,255,0.75); padding: 12px 20px; font-size: 0.76rem; letter-spacing: 2px; display: block; text-align: left; border-bottom: 1px solid rgba(80,200,255,0.06); }
+        .dropdown-content a:last-child { border-bottom: none; }
+        .dropdown-content a:hover { background-color: rgba(16,129,199,0.28); color: #fff; }
+        .dropdown-content a.active { background-color: rgba(83,156,165,0.8); color: #fff; }
+        .dropdown:hover .dropdown-content { display: block; }
+        .dropdown:hover .dropdown-button { background-color: rgba(16,129,199,0.28); color: #fff; }
 
-    /* Links inside the navbar */
-    .navbar a {
-        float: left;
-        display: block;
-        color: rgb(255, 255, 255);
-        text-align: center;
-        padding: 14px 20px;
-        text-decoration: none;
-    }
+        header { text-align: center; padding: 64px 5% 52px; background: linear-gradient(to bottom, rgba(0,0,0,0.62), rgba(0,4,18,0.38)); }
+        header h1 { font-family: 'Orbitron', monospace; font-size: 3.2rem; font-weight: 900; letter-spacing: 12px; color: #fff; text-shadow: 0 0 28px rgba(80,200,255,0.75), 0 0 70px rgba(80,200,255,0.22); margin-bottom: 12px; }
+        header h2 { font-family: 'Share Tech Mono', monospace; font-size: 0.78rem; letter-spacing: 3.5px; color: rgb(255, 255, 255); text-transform: uppercase; }
 
-    /* Change the color of links on hover */
-    .navbar a:hover {
-        background-color: rgb(16, 129, 199);
-        color: rgb(255, 255, 255);
-    }
+        .page-content { max-width: 1050px; margin: 0 auto; padding: 50px 40px 90px; }
 
-    /* The container for the dropdown */
-    .dropdown {
-        float: left;
-        overflow: hidden;
-    }
+        .section-label { font-family: 'Orbitron', monospace; font-size: 0.72rem; font-weight: 700; color: rgb(2, 138, 150); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 20px; }
 
-    /* The dropdown button */
-    .dropdown .dropdown-button {
-        font-size: 16px;
-        border: none;
-        outline: none;
-        color: white;
-        padding: 14px 20px;
-        background-color: inherit;
-        font-family: inherit;
-        margin: 0;
-    }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 
-    /* Dropdown content (hidden by default) */
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #000000;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 1;
-    }
+        .card { background: rgba(0,6,22,0.82); border: 1px solid rgba(80,200,255,0.16); border-radius: 6px; padding: 32px; backdrop-filter: blur(6px); }
+        .card p { font-family: 'Share Tech Mono', monospace; font-size: 0.85rem; color: rgba(195,228,255,0.8); line-height: 1.88; margin-bottom: 15px; }
+        .card p:last-child { margin-bottom: 0; }
+        .card strong { color: rgba(175,220,255,0.92); }
 
-    /* Links inside the dropdown */
-    .dropdown-content a {
-        float: none;
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-        text-align: left;
-    }
+        .link-list { list-style: none; margin-top: 6px; }
+        .link-list li { padding: 10px 0; border-bottom: 1px solid rgba(80,200,255,0.08); }
+        .link-list li:last-child { border-bottom: none; }
+        .link-list a { font-family: 'Share Tech Mono', monospace; font-size: 0.84rem; color: rgba(80,200,255,0.82); display: flex; align-items: center; gap: 8px; transition: color 0.2s; text-decoration: none; }
+        .link-list a::before { content: '→'; color: rgba(80,200,255,0.33); flex-shrink: 0; }
+        .link-list a:hover { color: #fff; }
+        .link-list a:hover::before { color: rgba(80,200,255,0.8); }
 
-    .active {
-        background-color: rgb(83, 156, 165);
-    }
+        a { color: rgba(80,200,255,0.82); text-decoration: none; transition: color 0.2s; }
+        a:visited { color: rgba(80,200,255,0.62); }
+        a:hover { color: #fff; }
 
-    /* Change color of dropdown links on hover */
-    .dropdown-content a:hover {
-        background-color:rgb(16, 129, 199);
-    }
-
-    /* Show the dropdown content on hover */
-    .dropdown:hover .dropdown-content {
-        display: block;
-    }
-
-    /* Change the background color of the dropdown button on hover */
-    .dropdown:hover .dropdown-button {
-        background-color:rgb(16, 129, 199);
-    }
-
-
-    section {
-        display: block;
-        text-align: center;
-        padding: 14px 16px;
-        background-color: rgb(24, 25, 28);
-        margin: 20px auto;
-        width: 80%; /* Centered with a width limit */
-    }
-
-    .container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-        justify-content: center;
-        max-width: 1400px; /* Increased the maximum width */
-        margin: 20px auto; /* Center the grid */
-    }
-
-    .column {
-    display: flex; /* Use flexbox for the column */
-    flex-direction: column; /* Align items in a column */
-    justify-content: center; /* Center items vertically */
-    align-items: center; /* Center items horizontally */
-    background-color: rgb(104, 112, 119);
-    padding: 20px; /* Increase padding for a more spacious look */
-    border: 1px solid;
-    min-width: 250px; /* Increase width */
-    min-height: 350px; /* Increase height */
-    border-radius: 8px; /* Optional: Adds rounded corners */
-}
-
-    h3, h4 {
-        color: whitesmoke;
-        text-align: center;
-    }
-
-    footer {
-        text-align: center;
-        margin: 20px auto;
-        color: white;
-    }
-
-    ul {list-style-type: none;
-            margin: 2%;
-            padding: 2%;
-            overflow: hidden;
-            background-color: #000000;
-            display:block;}
-    
-    a {color: white;}
-    a:visited {
-             color: rgb(255, 255, 255);
-            background-color: transparent;
-            text-decoration: none;
-                }
-
-/* Change the link color to #111 (black) on hover */
-        ul a:hover {
-            background-color: rgb(16, 129, 199);}
-
-        .active {background-color:rgb(83, 156, 165);}
-
-</style>
+        footer { text-align: center; padding: 28px 20px; border-top: 1px solid rgba(80,200,255,0.08); font-family: 'Share Tech Mono', monospace; font-size: 0.72rem; color: rgb(255, 255, 255); letter-spacing: 1.5px; background: rgba(0,0,0,0.5); }
+        footer a {color:  #6afdff}
+        footer p + p { margin-top: 5px; }
+    </style>
 </head>
-
 <body>
-
 <header>
     <div class="navbar">
         <a href="index.html">Home</a>
         <a href="news.html">News</a>
-
         <div class="dropdown">
-            <button class="dropdown-button">Master</button>
+            <button class="dropdown-button">Master ▾</button>
             <div class="dropdown-content">
-                <a href="courses.html" >Courses</a>
-                <a href="contact.html"  class=active>Contacts</a>
+                <a href="courses.html">Courses</a>
+                <a href="contact.html" class="active">Contacts</a>
             </div>
         </div>
+        <a href="game.html">Games</a>
+        <a href="astro_world.html">Astro World</a>
     </div>
-
-<h1><em>OSCAR</em></h1>
-    <h2>Organização Socio-Cooperativa de AstRofísica </h2>
+    <h1><em>OSCAR</em></h1>
+    <h2>Organização Socio-Cooperativa de AstRofísica</h2>
 </header>
 
-    <section>
-        <div class="container">
-            <div class="column">
-                <h4>If you need help, there are many people you can talk to. For course-related issues like exam dates or homework extensions, your professors should be the first point of contact.</h4>
-                <h4>The Comissão de Acompanhamento de Curso consists of four people: the main professor (head of the Master), another professor (usually head of the Doctorate program), and two students. Meetings take place at the end of each semester, but you don’t need to wait for the semester's end to raise issues.</h4>
-                <h4>You can also explore internship opportunities with professors and research centers like the Centro de Investigação da Universidade do Porto (CAUP) and Instituto de Astrofísica e Ciências do Espaço (IA).</h4>
-            </div>
-            <div class="column">
-                <ul>
-                    <p><a href="https://sigarra.up.pt/fcup/pt/CUR_GERAL.CUR_COMISSAO_acomp_LIST?pv_curso_id=871">Comissão de Acompanhamento de Curso</a></p>
-                    <p><a href="https://info.fc.up.pt/fcup/static/index.php?f_id=673">PEEC</a></p>
-                    <p><a href="https://www.astro.up.pt">CAUP</a></p>
-                    <p><a href="http://www.iastro.pt/index.html">IA</a></p>
-                </ul>
-            </div>
-        </div>
-    </section>
+<div class="page-content">
 
-    <footer>
-        <h4>Good Luck!</h4>
-        <p>Email: lumosastroastro@gmail.com</p>
-        <p><h6>By: M.A.F. de Melo e Sousa</h6></p>
-    </footer>
+    <div class="section-label">// Who to Talk To</div>
+
+    <div class="grid-2">
+
+        <div class="card">
+            <p>If you need help, there are many people you can talk to. For course-related issues like exam dates or homework extensions, your <strong>professors</strong> should be the first point of contact.</p>
+            <p>The <strong>Comissão de Acompanhamento de Curso</strong> consists of four people: the main professor (head of the Master), another professor (usually head of the Doctorate program), and two students. Meetings take place at the end of each semester, but you don't need to wait for the semester's end to raise issues.</p>
+            <p>You can also explore internship opportunities with professors and research centers like the <strong>Centro de Investigação da Universidade do Porto (CAUP)</strong> and <strong>Instituto de Astrofísica e Ciências do Espaço (IA)</strong>.</p>
+        </div>
+
+        <div class="card">
+            <div class="section-label" style="font-size:0.65rem; margin-bottom:14px;">// Useful Links</div>
+            <ul class="link-list">
+                <li><a href="https://sigarra.up.pt/fcup/pt/CUR_GERAL.CUR_COMISSAO_acomp_LIST?pv_curso_id=871" target="_blank">Comissão de Acompanhamento de Curso</a></li>
+                <li><a href="https://info.fc.up.pt/fcup/static/index.php?f_id=673" target="_blank">PEEC</a></li>
+                <li><a href="https://www.astro.up.pt" target="_blank">CAUP — Centro de Astrofísica da U. Porto</a></li>
+                <li><a href="http://www.iastro.pt/index.html" target="_blank">IA — Instituto de Astrofísica e Ciências do Espaço</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+    <p>Good Luck! &nbsp;|&nbsp; <a href="mailto:lumosastroastro@gmail.com">lumosastroastro@gmail.com</a></p>
+    <p>By M.A.F. de Melo e Sousa</p>
+</footer>
 </body>
 </html>
