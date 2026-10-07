@@ -4,57 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OSCAR – Portugal in the Stars</title>
+    <link rel="stylesheet" href="assets/retro.css?v=5">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-
-        body {
-            background-color: #000;
-            color: rgb(215,241,253);
-            font-family: 'Share Tech Mono', monospace;
-            background-image: url("Background.jpg");
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center top;
-            background-attachment: fixed;
-            min-height: 100vh;
-        }
-
-        /* ── NAVBAR ── */
-        .navbar { overflow: hidden; background-color: rgba(0,0,0,0.88); border-bottom: 1px solid rgba(80,200,255,0.18); z-index: 50; }
-        .navbar a { float: left; display: block; color: rgba(180,230,255,0.72); text-align: center; padding: 15px 22px; text-decoration: none; font-family: 'Share Tech Mono', monospace; font-size: 0.78rem; letter-spacing: 2.5px; text-transform: uppercase; transition: background 0.2s, color 0.2s; }
-        .navbar a:hover { background-color: rgba(16,129,199,0.28); color: #fff; }
-        .navbar a.active { background-color: rgba(83,156,165,0.85); color: #fff; }
-        .dropdown { float: left; overflow: hidden; }
-        .dropdown .dropdown-button { font-family: 'Share Tech Mono', monospace; font-size: 0.78rem; letter-spacing: 2.5px; text-transform: uppercase; border: none; outline: none; color: rgba(180,230,255,0.72); padding: 15px 22px; background-color: transparent; cursor: pointer; transition: background 0.2s, color 0.2s; }
-        .dropdown-content { display: none; position: absolute; background-color: rgba(0,4,18,0.97); min-width: 190px; box-shadow: 0 10px 30px rgba(0,0,0,0.7); z-index: 200; border: 1px solid rgba(80,200,255,0.14); border-top: none; }
-        .dropdown-content a { float: none; color: rgba(160,210,255,0.75); padding: 12px 20px; font-size: 0.76rem; letter-spacing: 2px; display: block; text-align: left; border-bottom: 1px solid rgba(80,200,255,0.06); }
-        .dropdown-content a:last-child { border-bottom: none; }
-        .dropdown-content a:hover { background-color: rgba(16,129,199,0.28); color: #fff; }
-        .dropdown:hover .dropdown-content { display: block; }
-        .dropdown:hover .dropdown-button { background-color: rgba(16,129,199,0.28); color: #fff; }
-
-        /* ── HEADER ── */
-        header { text-align: center; padding: 64px 5% 52px; background: linear-gradient(to bottom, rgba(0,0,0,0.62), rgba(0,4,18,0.38)); }
-        header h1 { font-family: 'Orbitron', monospace; font-size: 3.2rem; font-weight: 900; letter-spacing: 12px; color: #fff; text-shadow: 0 0 28px rgba(80,200,255,0.75), 0 0 70px rgba(80,200,255,0.22); margin-bottom: 12px; }
-        header h2 { font-family: 'Share Tech Mono', monospace; font-size: 0.78rem; letter-spacing: 3.5px; color: rgb(255, 255, 255); text-transform: uppercase; }
-
-        /* ── PAGE CONTENT ── */
-        .page-content { max-width: 1400px; margin: 0 auto; padding: 50px 40px 90px; }
-        .section-label { font-family: 'Orbitron', monospace; font-size: 0.72rem; font-weight: 700; color: rgb(0,174,255); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 8px; }
-        .section-sub { font-family: 'Share Tech Mono', monospace; color: rgb(205,247,255); font-size: 0.72rem; letter-spacing: 2px; margin-bottom: 28px; }
+        .page-content { max-width: 1400px; }
 
         /* ── MAP LAYOUT ── */
-        #map-layout { display: flex; gap: 24px; align-items: flex-start; }
+        #map-layout { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; }
 
         #map-container {
             flex: 1;
             position: relative;
-            background: rgba(0,5,20,0.97);
-            border: 1px solid rgba(80,200,255,0.2);
-            border-radius: 6px;
+            background: rgba(8,6,24,0.94);
+            border: 2px solid var(--panel-line);
             overflow: hidden;
-            box-shadow: 0 0 50px rgba(0,80,200,0.15);
+            box-shadow: 0 0 50px rgba(93,227,255,0.12);
         }
 
         #map-container svg {
@@ -72,87 +35,127 @@
             transition: fill 0.2s;
         }
         #map-container svg path:hover {
-            fill: rgba(0,160,255,0.75) !important;
+            fill: rgba(255,62,165,0.65) !important;
         }
         #map-container svg path.has-people {
-            fill: rgba(30,100,200,0.9) !important;
-            stroke: rgba(80,200,255,0.7) !important;
+            fill: rgba(93,227,255,0.55) !important;
+            stroke: rgba(93,227,255,0.8) !important;
             stroke-width: 0.8 !important;
         }
         #map-container svg path.has-people:hover {
-            fill: rgba(0,180,255,0.9) !important;
+            fill: rgba(255,62,165,0.8) !important;
         }
         #map-container svg path.selected {
-            fill: rgba(80,200,255,0.45) !important;
-            stroke: #55ccff !important;
+            fill: rgba(255,206,61,0.55) !important;
+            stroke: #ffce3d !important;
             stroke-width: 1.2 !important;
         }
 
         /* ── INFO PANEL ── */
         #info-panel { width: 300px; flex-shrink: 0; display: flex; flex-direction: column; gap: 16px; }
 
-        #country-card { background: rgba(0,8,25,0.95); border: 1px solid rgba(80,200,255,0.25); border-radius: 6px; padding: 24px; min-height: 280px; }
-        #country-name { font-family: 'Orbitron', monospace; font-size: 1rem; font-weight: 700; color: #5cf; letter-spacing: 2px; margin-bottom: 6px; text-shadow: 0 0 10px rgba(80,200,255,0.4); }
-        #country-count { font-family: 'Share Tech Mono', monospace; font-size: 0.75rem; color: rgba(100,180,255,0.5); letter-spacing: 2px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid rgba(80,200,255,0.1); }
+        #country-card { padding: 24px; min-height: 280px; }
+        #country-name { font-family: var(--font-display); font-size: 0.88rem; color: var(--cyan); letter-spacing: 1px; line-height: 1.5; margin-bottom: 12px; text-shadow: 0 0 10px rgba(93,227,255,0.4); }
+        #country-count { font-family: var(--font-body); font-size: 0.8rem; color: var(--ink-faint); letter-spacing: 1.5px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px dashed rgba(93,227,255,0.15); }
 
-        #people-list { list-style: none; }
-        #people-list li { padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-family: 'Share Tech Mono', monospace; }
+        #people-list {
+            list-style: none;
+            padding: 0 8px 0 0;
+            max-height: 340px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: var(--cyan) rgba(93,227,255,0.06);
+        }
+        #people-list::-webkit-scrollbar { width: 8px; }
+        #people-list::-webkit-scrollbar-track { background: rgba(93,227,255,0.06); }
+        #people-list::-webkit-scrollbar-thumb { background: var(--cyan); }
+        #people-list::-webkit-scrollbar-thumb:hover { background: var(--magenta); }
+        #people-list li { padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-family: var(--font-body); line-height: 1.5; }
         #people-list li:last-child { border-bottom: none; }
-        .person-name { font-size: 0.88rem; color: #e8f4ff; margin-bottom: 3px; }
-        .person-role { font-size: 0.75rem; color: rgba(120,180,255,0.6); }
-        .person-inst { font-size: 0.72rem; color: rgba(100,150,220,0.45); font-style: italic; }
-        .empty-state { font-family: 'Share Tech Mono', monospace; font-size: 0.8rem; color: rgba(100,150,200,0.4); text-align: center; padding: 30px 0; line-height: 1.8; }
+        #people-list .person-bio { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+        .person-row { display: flex; gap: 12px; align-items: flex-start; }
+        .person-avatar {
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid rgba(93,227,255,0.3);
+            background: rgba(93,227,255,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .person-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .avatar-fallback { font-family: var(--font-display); font-size: 0.68rem; color: var(--cyan); }
+        .person-info { flex: 1; min-width: 0; }
+        .person-name { display: block; font-size: 0.9rem; color: #e8f4ff; margin-bottom: 5px; text-decoration: none; transition: color 0.15s; }
+        .person-name:hover { color: var(--cyan); text-decoration: underline; }
+        .person-name:visited { color: #e8f4ff; }
+        .person-role { font-size: 0.78rem; color: rgba(120,180,255,0.6); margin-bottom: 3px; }
+        .person-inst { font-size: 0.74rem; color: rgba(100,150,220,0.45); font-style: italic; }
+        .person-bio { font-size: 0.76rem; color: rgba(180,210,255,0.6); margin-top: 6px; line-height: 1.6; }
+        .empty-state { font-family: var(--font-body); font-size: 0.8rem; color: rgba(100,150,200,0.4); text-align: center; padding: 30px 0; line-height: 1.8; }
 
         /* ── STATS CARD ── */
-        #stats-card { background: rgba(0,8,25,0.95); border: 1px solid rgba(80,200,255,0.15); border-radius: 6px; padding: 18px 24px; }
-        #stats-card h4 { font-family: 'Orbitron', monospace; font-size: 0.72rem; color: rgb(0,174,255); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 14px; text-align: left; }
-        .stat-row { display: flex; justify-content: space-between; font-family: 'Share Tech Mono', monospace; font-size: 0.8rem; color: rgba(180,220,255,0.7); padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+        #stats-card h4 { font-family: var(--font-display); font-size: 0.72rem; color: var(--yellow); letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 16px; text-align: left; }
+        .stat-row { display: flex; justify-content: space-between; gap: 12px; font-family: var(--font-body); font-size: 0.82rem; color: var(--ink-dim); padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
         .stat-row:last-child { border-bottom: none; }
-        .stat-val { color: #5cf; font-weight: bold; }
+        .stat-val { color: var(--cyan); font-weight: bold; }
 
         /* ── LEGEND ── */
-        #legend { display: flex; gap: 20px; justify-content: center; margin-top: 16px; font-family: 'Share Tech Mono', monospace; font-size: 0.75rem; color: rgba(150,200,255,0.5); }
+        #legend { display: flex; gap: 20px; justify-content: center; margin-top: 16px; font-family: var(--font-body); font-size: 0.75rem; color: var(--ink-faint); }
         .legend-item { display: flex; align-items: center; gap: 6px; }
-        .legend-dot { width: 12px; height: 12px; border-radius: 2px; }
-        .legend-dot.active-dot { background: rgba(30,100,180,0.9); border: 1px solid rgba(80,200,255,0.6); }
-        .legend-dot.empty-dot { background: rgba(20,50,90,0.85); border: 1px solid rgba(80,200,255,0.2); }
+        .legend-dot { width: 12px; height: 12px; }
+        .legend-dot.active-dot { background: rgba(93,227,255,0.6); border: 1px solid rgba(93,227,255,0.8); }
+        .legend-dot.empty-dot { background: rgba(20,50,90,0.85); border: 1px solid rgba(93,227,255,0.2); }
 
         /* ── TOOLTIP ── */
-        #tooltip { position: fixed; background: rgba(0,10,30,0.95); border: 1px solid rgba(80,200,255,0.35); padding: 8px 14px; border-radius: 4px; font-family: 'Share Tech Mono', monospace; font-size: 0.8rem; color: #adf; pointer-events: none; display: none; z-index: 999; white-space: nowrap; }
+        #tooltip { position: fixed; background: rgba(4,3,14,0.96); border: 2px solid rgba(93,227,255,0.4); padding: 8px 14px; font-family: var(--font-body); font-size: 0.8rem; color: #adf; pointer-events: none; display: none; z-index: 999; white-space: nowrap; }
 
-        /* ── FOOTER ── */
-        footer { text-align: center; padding: 28px 20px; border-top: 1px solid rgba(80,200,255,0.08); font-family: 'Share Tech Mono', monospace; font-size: 0.72rem; color: rgb(255, 255, 255); letter-spacing: 1.5px; background: rgba(0,0,0,0.5); }
-        footer a {color:  #6afdff}
-        footer p + p { margin-top: 5px; }
-        a:visited { color: rgba(80,200,255,0.62); }
-        a:hover { color: #fff; }
+        /* ── RESPONSIVE ── */
+        @media (max-width: 860px) {
+            #map-layout { flex-direction: column; }
+            #map-container { flex: 1 1 100%; width: 100%; min-width: 0; }
+            #info-panel { flex: 1 1 100%; width: 100%; }
+        }
     </style>
 </head>
 <body>
-
-
+<canvas id="starfield" aria-hidden="true"></canvas>
+<div class="floaters" aria-hidden="true">
+    <span style="top:8%;  font-size:20px; animation-duration:46s; animation-delay:0s;">🪐</span>
+    <span style="top:70%; font-size:13px; animation-duration:58s; animation-delay:9s;">☄️</span>
+    <span style="top:35%; font-size:11px; animation-duration:50s; animation-delay:4s;">✦</span>
+</div>
+<div class="crt-overlay" aria-hidden="true"></div>
 
 <header>
     <div class="navbar">
-    <a href="index.html">Home</a>
-    <a href="news.html">News</a>
+    <a href="index.html" data-en="Home" data-pt="Início">Home</a>
     <div class="dropdown">
-        <button class="dropdown-button">Master ▾</button>
+        <button class="dropdown-button" data-en="Master ▾" data-pt="Mestrado ▾">Master ▾</button>
         <div class="dropdown-content">
-            <a href="courses.html">Courses</a>
-            <a href="contact.html">Contacts</a>
+            <a href="courses.html" data-en="Courses" data-pt="Cursos">Courses</a>
+            <a href="contact.html" data-en="Contacts" data-pt="Contactos">Contacts</a>
         </div>
     </div>
-    <a href="game.html">Games</a>
-    <a href="astro_world.html" class="active">Astro World</a>
+    <a href="phd.html" data-en="PhD" data-pt="Doutoramento">PhD</a>
+    <a href="game.html" data-en="Games" data-pt="Jogos">Games</a>
+    <a href="astro_world.html" class="active" data-en="Astro World" data-pt="Mundo Astro">Astro World</a>
+    <a href="merch.html" data-en="Merch" data-pt="Merch">Merch</a>
+    <div class="lang-toggle">
+        <button data-lang="en" type="button">EN</button>
+        <button data-lang="pt" type="button">PT</button>
+    </div>
 </div>
     <h1><em>OSCAR</em></h1>
     <h2>Organização Socio-Cooperativa de AstRofísica</h2>
 </header>
 
 <div class="page-content">
-    <div class="section-label">// Portugal in the Stars</div>
-    <div class="section-sub">Portuguese astrophysicists around the world — click a country to explore</div>
+    <div class="section-label" data-en="// Portugal in the Stars" data-pt="// Portugal nas Estrelas">// Portugal in the Stars</div>
+    <div class="section-sub" data-en="Portuguese astrophysicists around the world — click a country to explore" data-pt="Astrofísicos portugueses pelo mundo — clica num país para explorar">Portuguese astrophysicists around the world — click a country to explore</div>
 
     <div id="map-layout">
         <div id="map-container">
@@ -1137,93 +1140,63 @@ THE SOFTWARE.
 
         <div id="info-panel">
             <div id="country-card">
-                <div id="country-name">SELECT A COUNTRY</div>
+                <div id="country-name" data-en="SELECT A COUNTRY" data-pt="SELECIONA UM PAÍS">SELECT A COUNTRY</div>
                 <div id="country-count"></div>
                 <ul id="people-list">
-                    <li class="empty-state">Click on any country<br>on the map to see<br>who's there.</li>
+                    <li class="empty-state" data-en="Click on any country<br>on the map to see<br>who&#39;s there." data-pt="Clica em qualquer país<br>no mapa para ver<br>quem está lá.">Click on any country<br>on the map to see<br>who's there.</li>
                 </ul>
             </div>
             <div id="stats-card">
-                <h4>// Global Stats</h4>
-                <div class="stat-row"><span>Total researchers</span><span class="stat-val" id="stat-total">—</span></div>
-                <div class="stat-row"><span>Countries represented</span><span class="stat-val" id="stat-countries">—</span></div>
-                <div class="stat-row"><span>Most populated</span><span class="stat-val" id="stat-top">—</span></div>
+                <h4 data-en="// Global Stats" data-pt="// Estatísticas Globais">// Global Stats</h4>
+                <div class="stat-row"><span data-en="Total researchers" data-pt="Total de investigadores">Total researchers</span><span class="stat-val" id="stat-total">—</span></div>
+                <div class="stat-row"><span data-en="Countries represented" data-pt="Países representados">Countries represented</span><span class="stat-val" id="stat-countries">—</span></div>
+                <div class="stat-row"><span data-en="Most populated" data-pt="Mais populado">Most populated</span><span class="stat-val" id="stat-top">—</span></div>
             </div>
         </div>
     </div>
 
     <div id="legend">
-        <div class="legend-item"><div class="legend-dot active-dot"></div> Has researchers</div>
-        <div class="legend-item"><div class="legend-dot empty-dot"></div> No data</div>
+        <div class="legend-item"><div class="legend-dot active-dot"></div> <span data-en="Has researchers" data-pt="Tem investigadores">Has researchers</span></div>
+        <div class="legend-item"><div class="legend-dot empty-dot"></div> <span data-en="No data" data-pt="Sem dados">No data</span></div>
     </div>
 </div>
 
 <div id="tooltip"></div>
 
 <footer>
-    <p>Good Luck! &nbsp;|&nbsp; <a href="mailto:lumosastroastro@gmail.com">lumosastroastro@gmail.com</a></p>
-    <p>By M.A.F. de Melo e Sousa</p>
+    <p><span data-en="Good Luck!" data-pt="Boa Sorte!">Good Luck!</span>&nbsp;|&nbsp; <a href="mailto:lumosastroastro@gmail.com">lumosastroastro@gmail.com</a></p>
+    <p>By M.A.F. de Melo e Sousa et al</p>
 </footer>
 
+<script src="assets/retro.js"></script>
+<script src="assets/people-data.js"></script>
 <script>
 // ════════════════════════════════════════════════
 //  DATA — add people here
-//  Keys = uppercase 2-letter ISO country codes
+//  Keys = the exact country name as it appears on the
+//  map (case-sensitive — matches the SVG's id attribute,
+//  e.g. "Portugal", "United States", "United Kingdom")
 // ════════════════════════════════════════════════
-const researchers = {
-    "PT": { label: "Portugal",        people: [
-        { name: "Example Person", role: "PhD Student", institution: "CAUP / Universidade do Porto" },
-    ]},
-    "GB": { label: "United Kingdom",  people: [] },
-    "DE": { label: "Germany",         people: [] },
-    "FR": { label: "France",          people: [] },
-    "ES": { label: "Spain",           people: [] },
-    "US": { label: "United States",   people: [] },
-    "BR": { label: "Brazil",          people: [] },
-    "CL": { label: "Chile",           people: [] },
-    "NL": { label: "Netherlands",     people: [] },
-    "IT": { label: "Italy",           people: [] },
-    "SE": { label: "Sweden",          people: [] },
-    "AU": { label: "Australia",       people: [] },
-    "JP": { label: "Japan",           people: [] },
-    // ADD MORE:
-    // "XX": { label: "Country Name", people: [
-    //     { name: "Name Surname", role: "Role", institution: "Institution" },
-    // ]},
-};
+// Person + country data now lives in assets/people-data.js (loaded above),
+// shared with person.html for individual profile pages.
 
 // ════════════════════════════════════════════════
-//  CLASS NAME → ISO CODE mapping
-//  (for paths that use class= instead of id=)
+//  CLASS NAME → COUNTRY NAME mapping
+//  Most paths carry the country name as their id and
+//  need no entry here. A handful of small territories
+//  only carry a class (no id) — this maps those to the
+//  name used above, so they still open the right panel.
 // ════════════════════════════════════════════════
-const classToISO = {
-    "Angola": "AO", "Antigua and Barbuda": "AG", "Argentina": "AR",
-    "Australia": "AU", "Azerbaijan": "AZ", "Bahamas": "BS",
-    "Canada": "CA", "Cape Verde": "CV", "Chile": "CL", "China": "CN",
-    "Comoros": "KM", "Cyprus": "CY", "Denmark": "DK",
-    "Falkland Islands": "FK", "Fiji": "FJ", "France": "FR",
-    "French Polynesia": "PF", "Greece": "GR", "Indonesia": "ID",
-    "Italy": "IT", "Japan": "JP", "Malaysia": "MY", "Malta": "MT",
-    "Mauritius": "MU", "New Caledonia": "NC", "New Zealand": "NZ",
-    "Norway": "NO", "Oman": "OM", "Papua New Guinea": "PG",
-    "Philippines": "PH", "Russian Federation": "RU",
-    "Samoa": "WS", "Seychelles": "SC", "Solomon Islands": "SB",
-    "Tonga": "TO", "Trinidad and Tobago": "TT", "Turkey": "TR",
-    "United Kingdom": "GB", "United States": "US",
-    "Vanuatu": "VU",
-    // territories → parent country
-    "Canary Islands (Spain)": "ES",
-    "Cayman Islands": "GB",
-    "Faeroe Islands": "DK",
-    "Guadeloupe": "FR",
-    "Puerto Rico": "US",
-    "American Samoa": "US",
-    "United States Virgin Islands": "US",
-    "Northern Mariana Islands": "US",
-    "Federated States of Micronesia": "FM",
-    "Saint Kitts and Nevis": "KN",
-    "Turks and Caicos Islands": "TC",
-    "São Tomé and Principe": "ST",
+const classToCountry = {
+    "Canary Islands (Spain)": "Spain",
+    "Cayman Islands": "United Kingdom",
+    "Faeroe Islands": "Denmark",
+    "Guadeloupe": "France",
+    "Puerto Rico": "United States",
+    "American Samoa": "United States",
+    "United States Virgin Islands": "United States",
+    "Northern Mariana Islands": "United States",
+    "Turks and Caicos Islands": "United Kingdom",
 };
 
 // ════════════════════════════════════════════════
@@ -1234,16 +1207,14 @@ let selectedKey = null;
 
 function getKeyFromEl(el) {
     const id = el.getAttribute('id');
-    if (id) return id.toUpperCase();
+    if (id) return id;
     const cls = el.getAttribute('class');
-    if (cls) return classToISO[cls] || null;
+    if (cls) return classToCountry[cls] || cls;
     return null;
 }
 
 function getLabelFromEl(el, key) {
     if (researchers[key]) return researchers[key].label;
-    const cls = el.getAttribute('class');
-    if (cls) return cls;
     return key;
 }
 
@@ -1281,25 +1252,70 @@ document.querySelectorAll('#map-container svg path').forEach(el => {
     });
 });
 
+// Current site language ('en' or 'pt'), as set by the EN/PT toggle
+function currentLang() {
+    return document.documentElement.getAttribute('lang') === 'pt' ? 'pt' : 'en';
+}
+// Fields in people-data.js can be plain text or { en: "...", pt: "..." }
+function tr(value) {
+    if (value && typeof value === 'object') return value[currentLang()] || value.en || value.pt || '';
+    return value || '';
+}
+// Swap a broken photo for the person's initials
+function avatarFallback(img) {
+    const span = document.createElement('span');
+    span.className = 'avatar-fallback';
+    span.textContent = img.dataset.initials;
+    img.replaceWith(span);
+}
+
+let selectedLabel = null;
+
 function showCountry(key, label) {
     const data = researchers[key];
+    const pt = currentLang() === 'pt';
+    selectedLabel = label;
     document.getElementById('country-name').textContent = label;
 
     if (!data || data.people.length === 0) {
-        document.getElementById('country-count').textContent = 'NO RESEARCHERS LISTED YET';
-        document.getElementById('people-list').innerHTML =
-            '<li class="empty-state">No one here yet —<br>or data not added.<br><br>Contact us to add someone!</li>';
+        document.getElementById('country-count').textContent = pt ? 'AINDA SEM INVESTIGADORES' : 'NO RESEARCHERS LISTED YET';
+        document.getElementById('people-list').innerHTML = pt
+            ? '<li class="empty-state">Ainda ninguém aqui —<br>ou dados por adicionar.<br><br>Contacta-nos para adicionar alguém!</li>'
+            : '<li class="empty-state">No one here yet —<br>or data not added.<br><br>Contact us to add someone!</li>';
     } else {
-        document.getElementById('country-count').textContent =
-            `${data.people.length} RESEARCHER${data.people.length !== 1 ? 'S' : ''} FOUND`;
-        document.getElementById('people-list').innerHTML = data.people.map(p => `
+        const n = data.people.length;
+        document.getElementById('country-count').textContent = pt
+            ? `${n} INVESTIGADOR${n !== 1 ? 'ES' : ''} ENCONTRADO${n !== 1 ? 'S' : ''}`
+            : `${n} RESEARCHER${n !== 1 ? 'S' : ''} FOUND`;
+        document.getElementById('people-list').innerHTML = data.people.map(p => {
+            return `
             <li>
-                <div class="person-name">${p.name}</div>
-                <div class="person-role">${p.role}</div>
-                <div class="person-inst">${p.institution}</div>
-            </li>
-        `).join('');
+                <div class="person-row">
+                    <div class="person-avatar">
+                        ${p.photo
+                            ? `<img src="${p.photo}" alt="${p.name}" data-initials="${initials(p.name)}" onerror="avatarFallback(this)">`
+                            : `<span class="avatar-fallback">${initials(p.name)}</span>`}
+                    </div>
+                    <div class="person-info">
+                        <a class="person-name" href="person.html?slug=${encodeURIComponent(p.slug)}&lang=${currentLang()}">${p.name}</a>
+                        <div class="person-role">${tr(p.role)}</div>
+                        <div class="person-inst">${tr(p.institution)}</div>
+                    </div>
+                </div>
+            </li>`;
+        }).join('');
     }
+}
+
+// Re-draw the open country's list when EN/PT is clicked
+document.querySelectorAll('.lang-toggle button').forEach(btn => {
+    btn.addEventListener('click', () => {
+        if (selectedKey) showCountry(selectedKey, selectedLabel);
+    });
+});
+
+function initials(name) {
+    return name.split(/\s+/).filter(Boolean).map(w => w[0]).join('').slice(0, 2).toUpperCase();
 }
 
 (function updateStats() {

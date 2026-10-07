@@ -4,122 +4,99 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OSCAR – Smoke Week</title>
+    <link rel="stylesheet" href="assets/retro.css?v=5">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-
+        /* Smoke Week keeps its own blood-red arcade palette on top of the shared theme */
         body {
-            background-color: #080000;
-            color: rgb(255,200,195);
-            font-family: 'Share Tech Mono', monospace;
-            background-image: url("Background.jpg");
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center top;
-            background-attachment: fixed;
-            min-height: 100vh;
+            background-image:
+                radial-gradient(ellipse 90% 60% at 50% 0%, rgba(255, 20, 20, 0.16), transparent 60%),
+                linear-gradient(rgba(10, 0, 0, 0.75), rgba(10, 0, 0, 0.88)),
+                url("Background.jpg");
         }
-        /* Red tint overlay on the background */
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background: rgba(40,0,0,0.62);
-            pointer-events: none;
-            z-index: 0;
+        .navbar { border-bottom-color: rgba(220, 40, 40, 0.35); }
+        .navbar a.active { background-color: rgba(200, 20, 20, 0.28); box-shadow: inset 0 -3px 0 #ff3030; }
+        header h1 {
+            color: #ff3030;
+            text-shadow: 0 0 10px rgba(255,40,0,0.9), 3px 0 rgba(255,120,0,0.5), -3px 0 rgba(160,0,0,0.6);
         }
-
-        .navbar { overflow: hidden; background-color: rgba(0,0,0,0.92); border-bottom: 1px solid rgba(200,30,30,0.28); position: relative; z-index: 50; }
-        .navbar a { float: left; display: block; color: rgba(255,160,155,0.72); text-align: center; padding: 15px 22px; text-decoration: none; font-family: 'Share Tech Mono', monospace; font-size: 0.78rem; letter-spacing: 2.5px; text-transform: uppercase; transition: background 0.2s, color 0.2s; }
-        .navbar a:hover { background-color: rgba(180,0,0,0.35); color: #fff; }
-        .navbar a.active { background-color: rgba(160,28,28,0.85); color: #fff; }
-        .dropdown { float: left; overflow: hidden; }
-        .dropdown .dropdown-button { font-family: 'Share Tech Mono', monospace; font-size: 0.78rem; letter-spacing: 2.5px; text-transform: uppercase; border: none; outline: none; color: rgba(255,160,155,0.72); padding: 15px 22px; background-color: transparent; cursor: pointer; transition: background 0.2s, color 0.2s; }
-        .dropdown-content { display: none; position: absolute; background-color: rgba(8,0,0,0.97); min-width: 190px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); z-index: 200; border: 1px solid rgba(200,30,30,0.18); border-top: none; }
-        .dropdown-content a { float: none; color: rgba(255,160,155,0.75); padding: 12px 20px; font-size: 0.76rem; letter-spacing: 2px; display: block; text-align: left; border-bottom: 1px solid rgba(200,30,30,0.08); }
-        .dropdown-content a:last-child { border-bottom: none; }
-        .dropdown-content a:hover { background-color: rgba(180,0,0,0.35); color: #fff; }
-        .dropdown:hover .dropdown-content { display: block; }
-        .dropdown:hover .dropdown-button { background-color: rgba(180,0,0,0.35); color: #fff; }
-
-        header { text-align: center; padding: 64px 5% 52px; background: linear-gradient(to bottom, rgba(0,0,0,0.72), rgba(20,0,0,0.45)); position: relative; z-index: 1; }
-        header h1 { font-family: 'Orbitron', monospace; font-size: 3.2rem; font-weight: 900; letter-spacing: 10px; color: #ff3030; text-shadow: 0 0 28px rgba(255,40,0,0.85), 0 0 70px rgba(255,0,0,0.28); margin-bottom: 12px; }
-        header h2 { font-family: 'Share Tech Mono', monospace; font-size: 0.78rem; letter-spacing: 3.5px; color: rgba(255,150,140,0.48); text-transform: uppercase; }
-
-        .page-content { max-width: 1050px; margin: 0 auto; padding: 50px 40px 90px; position: relative; z-index: 1; }
-
-        .smoke-hero { background: rgba(12,0,0,0.85); border: 1px solid rgba(200,30,30,0.3); border-radius: 6px; padding: 22px 34px; margin-bottom: 34px; text-align: center; backdrop-filter: blur(6px); }
-        .smoke-hero .big-title { font-family: 'Orbitron', monospace; font-size: 2rem; font-weight: 900; color: #ff3030; letter-spacing: 6px; text-shadow: 0 0 20px rgba(255,40,0,0.65); margin-bottom: 8px; }
-        .smoke-hero .tagline { font-family: 'Share Tech Mono', monospace; font-size: 0.82rem; color: rgba(255,150,140,0.65); letter-spacing: 3px; }
-
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
-
-        .card { background: rgba(12,0,0,0.85); border: 1px solid rgba(200,30,30,0.25); border-radius: 6px; padding: 30px; backdrop-filter: blur(6px); }
-        .section-label-red { font-family: 'Orbitron', monospace; font-size: 0.7rem; font-weight: 700; color: rgba(255,80,60,0.65); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 18px; }
-
-        table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
-        th { font-family: 'Orbitron', monospace; font-size: 0.65rem; letter-spacing: 2px; color: rgba(255,100,80,0.65); padding: 9px 16px; border-bottom: 1px solid rgba(200,30,30,0.2); text-align: center; background: rgba(25,0,0,0.5); }
-        td { font-family: 'Share Tech Mono', monospace; font-size: 0.82rem; color: rgba(255,200,195,0.8); padding: 9px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); text-align: center; }
-        tr:last-child td { border-bottom: none; }
-
-        .cta-link { display: inline-block; font-family: 'Share Tech Mono', monospace; font-size: 0.78rem; letter-spacing: 2px; color: rgba(255,80,60,0.88); border: 1px solid rgba(200,30,30,0.45); padding: 9px 20px; border-radius: 3px; transition: all 0.2s; text-decoration: none; }
-        .cta-link:hover { background: rgba(200,30,30,0.2); color: #fff; border-color: rgba(255,80,80,0.75); }
-
-        .img-box { border-radius: 6px; overflow: hidden; border: 1px solid rgba(200,30,30,0.2); background: rgba(12,0,0,0.5); }
-        .img-box img { width: 100%; height: 100%; object-fit: contain; display: block; }
-
-        a { color: rgba(255,100,80,0.82); text-decoration: none; transition: color 0.2s; }
-        a:visited { color: rgba(255,100,80,0.62); }
-        a:hover { color: #fff; }
-
-        footer { text-align: center; padding: 28px 20px; border-top: 1px solid rgba(200,30,30,0.1); font-family: 'Share Tech Mono', monospace; font-size: 0.72rem; color: rgba(200,100,90,0.35); letter-spacing: 1.5px; background: rgba(0,0,0,0.6); position: relative; z-index: 1; }
+        header h2 { color: rgba(255, 160, 150, 0.6); }
+        .card, .smoke-hero { border-color: rgba(220, 40, 40, 0.32); box-shadow: 0 0 0 1px rgba(0,0,0,0.4), 0 0 28px rgba(220, 40, 40, 0.1); }
+        .section-label-red, .card-label { color: #ff5555; }
+        .smoke-hero { text-align: center; padding: 24px 34px; margin-bottom: 34px; }
+        .smoke-hero .big-title { font-family: var(--font-display); font-size: 1.1rem; color: #ff3030; letter-spacing: 3px; text-shadow: 0 0 16px rgba(255,40,0,0.7); margin-bottom: 12px; }
+        .smoke-hero .tagline { font-family: var(--font-body); font-size: 0.8rem; color: rgba(255,150,140,0.7); letter-spacing: 2px; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; align-items: start; }
+        .cta-link { background: #ff3030; box-shadow: 0 4px 0 rgba(110,0,0,0.9), 0 4px 16px rgba(255,40,40,0.3); }
+        .cta-link:hover { background: #fff; color: #a00; }
+        table th { color: #ff8080; border-bottom-color: rgba(220,40,40,0.25); background: rgba(25,0,0,0.5); }
+        .floaters span { filter: drop-shadow(0 0 6px rgba(255,60,40,0.5)); }
+        footer { border-top-color: rgba(220,40,40,0.18); }
+        footer p:first-child::before, footer p:first-child::after { color: #ff5555; }
+        @media (max-width: 800px) { .grid-2 { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
+<canvas id="starfield" aria-hidden="true"></canvas>
+<div class="floaters" aria-hidden="true">
+    <span style="top:10%; font-size:18px; animation-duration:44s; animation-delay:0s;">💀</span>
+    <span style="top:65%; font-size:14px; animation-duration:54s; animation-delay:7s;">🔥</span>
+    <span style="top:40%; font-size:11px; animation-duration:48s; animation-delay:3s;">✦</span>
+    <span style="top:80%; font-size:10px; animation-duration:50s; animation-delay:20s;">✦</span>
+</div>
+<div class="crt-overlay" aria-hidden="true"></div>
+
 <header>
     <div class="navbar">
-        <a href="index.html">Home</a>
-        <a href="news.html">News</a>
+        <a href="index.html" data-en="Home" data-pt="Início">Home</a>
         <div class="dropdown">
-            <button class="dropdown-button">Master ▾</button>
+            <button class="dropdown-button" data-en="Master ▾" data-pt="Mestrado ▾">Master ▾</button>
             <div class="dropdown-content">
-                <a href="courses.html">Courses</a>
-                <a href="contact.html">Contacts</a>
+                <a href="courses.html" data-en="Courses" data-pt="Cursos">Courses</a>
+                <a href="contact.html" data-en="Contacts" data-pt="Contactos">Contacts</a>
             </div>
         </div>
-        <a href="game.html">Games</a>
-        <a href="astro_world.html">Astro World</a>
+        <a href="phd.html" data-en="PhD" data-pt="Doutoramento">PhD</a>
+        <a href="game.html" data-en="Games" data-pt="Jogos">Games</a>
+        <a href="astro_world.html" data-en="Astro World" data-pt="Mundo Astro">Astro World</a>
+        <a href="merch.html" data-en="Merch" data-pt="Merch">Merch</a>
+        <div class="lang-toggle">
+            <button data-lang="en" type="button">EN</button>
+            <button data-lang="pt" type="button">PT</button>
+        </div>
     </div>
     <h1>☠ SMOKE WEEK ☠</h1>
-    <h2>Halloween ends in smoke &nbsp;·&nbsp; 5 to 12 November &nbsp;·&nbsp; Porto, Portugal</h2>
+    <h2 data-en="Halloween ends in smoke &nbsp;&middot;&nbsp; 5 to 12 November &nbsp;&middot;&nbsp; Porto, Portugal" data-pt="O Halloween acaba em fumo &nbsp;&middot;&nbsp; 5 a 12 de novembro &nbsp;&middot;&nbsp; Porto, Portugal">Halloween ends in smoke &nbsp;·&nbsp; 5 to 12 November &nbsp;·&nbsp; Porto, Portugal</h2>
 </header>
 
 <div class="page-content">
 
-    <div class="smoke-hero">
-        <div class="big-title">PERISH AT YOUR OWN PLEASURE</div>
-        <div class="tagline">Free Entry &nbsp;·&nbsp; Wednesday 5 through Wednesday 12</div>
+    <div class="smoke-hero reveal">
+        <div class="big-title" data-en="PERISH AT YOUR OWN PLEASURE" data-pt="PEREÇA AO SEU PRÓPRIO PRAZER">PERISH AT YOUR OWN PLEASURE</div>
+        <div class="tagline" data-en="Free Entry &nbsp;&middot;&nbsp; Wednesday 5 through Wednesday 12" data-pt="Entrada Gratuita &nbsp;&middot;&nbsp; Quarta-feira 5 a Quarta-feira 12">Free Entry &nbsp;·&nbsp; Wednesday 5 through Wednesday 12</div>
     </div>
 
     <div class="grid-2">
-        <div class="card">
-            <div class="section-label-red">// Smoke Week T-Shirt</div>
+        <div class="card reveal">
+            <div class="card-label" data-en="// Smoke Week T-Shirt" data-pt="// T-shirt da Smoke Week">// Smoke Week T-Shirt</div>
+            <div class="table-wrap">
             <table>
-                <thead><tr><th>Orders</th><th>Orders Needed</th><th>Price</th></tr></thead>
+                <thead><tr><th data-en="Orders" data-pt="Encomendas">Orders</th><th data-en="Orders Needed" data-pt="Necessárias">Orders Needed</th><th data-en="Price" data-pt="Preço">Price</th></tr></thead>
                 <tbody><tr><td>0</td><td>30</td><td>9€</td></tr></tbody>
             </table>
-            <a class="cta-link" href="https://docs.google.com/forms/d/e/1FAIpQLSfNv142RSmY5dGaQt-wQA5hpdgKOW7xn7MbdNOCQwAZa3ElPg/viewform?usp=pp_url" target="_blank">→ Order One Now</a>
+            </div>
+            <a class="cta-link" href="https://docs.google.com/forms/d/e/1FAIpQLSfNv142RSmY5dGaQt-wQA5hpdgKOW7xn7MbdNOCQwAZa3ElPg/viewform?usp=pp_url" target="_blank"><span data-en="→ Order One Now" data-pt="→ Encomenda Já">→ Order One Now</span></a>
         </div>
-        <div class="img-box">
-            <img src="Smoke Week.jpg" alt="Smoke Week T-shirt">
+        <div class="img-box reveal">
+            <img src="Smoke_Week.jpg" alt="Smoke Week T-shirt">
         </div>
     </div>
-
 
 </div>
 
 <footer>
-    <p>lumosastroastro@gmail.com &nbsp;|&nbsp; By M.A.F. de Melo e Sousa</p>
+    <p>lumosastroastro@gmail.com &nbsp;|&nbsp; By M.A.F. de Melo e Sousa et al</p>
 </footer>
+
+<script src="assets/retro.js"></script>
 </body>
 </html>

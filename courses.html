@@ -4,81 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OSCAR – Courses</title>
+    <link rel="stylesheet" href="assets/retro.css?v=5">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-
-        body {
-            background-color: #000;
-            color: rgb(215,241,253);
-            font-family: 'Share Tech Mono', monospace;
-            background-image: url("Background.jpg");
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center top;
-            background-attachment: fixed;
-            min-height: 100vh;
-        }
-
-        .navbar { overflow: hidden; background-color: rgba(0,0,0,0.88); border-bottom: 1px solid rgba(80,200,255,0.18); z-index: 50; }
-        .navbar a { float: left; display: block; color: rgba(180,230,255,0.72); text-align: center; padding: 15px 22px; text-decoration: none; font-family: 'Share Tech Mono', monospace; font-size: 0.78rem; letter-spacing: 2.5px; text-transform: uppercase; transition: background 0.2s, color 0.2s; }
-        .navbar a:hover { background-color: rgba(16,129,199,0.28); color: #fff; }
-        .navbar a.active { background-color: rgba(83,156,165,0.85); color: #fff; }
-        .dropdown { float: left; overflow: hidden; }
-        .dropdown .dropdown-button { font-family: 'Share Tech Mono', monospace; font-size: 0.78rem; letter-spacing: 2.5px; text-transform: uppercase; border: none; outline: none; color: rgba(180,230,255,0.72); padding: 15px 22px; background-color: transparent; cursor: pointer; transition: background 0.2s, color 0.2s; }
-        .dropdown-content { display: none; position: absolute; background-color: rgba(0,4,18,0.97); min-width: 190px; box-shadow: 0 10px 30px rgba(0,0,0,0.7); z-index: 200; border: 1px solid rgba(80,200,255,0.14); border-top: none; }
-        .dropdown-content a { float: none; color: rgba(160,210,255,0.75); padding: 12px 20px; font-size: 0.76rem; letter-spacing: 2px; display: block; text-align: left; border-bottom: 1px solid rgba(80,200,255,0.06); }
-        .dropdown-content a:last-child { border-bottom: none; }
-        .dropdown-content a:hover { background-color: rgba(16,129,199,0.28); color: #fff; }
-        .dropdown-content a.active { background-color: rgba(83,156,165,0.8); color: #fff; }
-        .dropdown:hover .dropdown-content { display: block; }
-        .dropdown:hover .dropdown-button { background-color: rgba(16,129,199,0.28); color: #fff; }
-
-        header { text-align: center; padding: 64px 5% 52px; background: linear-gradient(to bottom, rgba(0,0,0,0.62), rgba(0,4,18,0.38)); }
-        header h1 { font-family: 'Orbitron', monospace; font-size: 3.2rem; font-weight: 900; letter-spacing: 12px; color: #fff; text-shadow: 0 0 28px rgba(80,200,255,0.75), 0 0 70px rgba(80,200,255,0.22); margin-bottom: 12px; }
-        header h2 { font-family: 'Share Tech Mono', monospace; font-size: 0.78rem; letter-spacing: 3.5px; color: rgb(255, 255, 255); text-transform: uppercase; }
-
-        .page-content { max-width: 1200px; margin: 0 auto; padding: 50px 40px 90px; }
-
-        .intro-card { background: rgba(0,6,22,0.82); border: 1px solid rgba(80,200,255,0.16); border-radius: 6px; padding: 28px 34px; margin-bottom: 38px; backdrop-filter: blur(6px); font-family: 'Share Tech Mono', monospace; font-size: 0.86rem; color: rgba(195,228,255,0.78); line-height: 1.9; }
-
-        .section-label { font-family: 'Orbitron', monospace; font-size: 0.72rem; font-weight: 700; color: rgb(2, 138, 150); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 20px; }
-
+        .intro-card { padding: 26px 32px; margin-bottom: 36px; font-size: 0.86rem; color: var(--ink-dim); line-height: 1.9; }
         .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 22px; }
-        .course-card { background: rgba(0,6,22,0.82); border: 1px solid rgba(80,200,255,0.16); border-radius: 6px; padding: 26px; backdrop-filter: blur(6px); }
-        .card-label { font-family: 'Orbitron', monospace; font-size: 0.65rem; letter-spacing: 3px; color: rgb(0, 234, 255); text-transform: uppercase; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid rgba(80,200,255,0.1); }
-
-        .course-list { list-style: none; }
-        .course-list li { padding: 9px 0; border-bottom: 1px solid rgba(80,200,255,0.07); }
-        .course-list li:last-child { border-bottom: none; }
-        .course-list a { font-family: 'Share Tech Mono', monospace; font-size: 0.82rem; color: rgba(175,218,255,0.75); display: flex; align-items: flex-start; gap: 8px; transition: color 0.2s; line-height: 1.45; text-decoration: none; }
-        .course-list a::before { content: '→'; color: rgba(80,200,255,0.33); font-size: 0.76rem; margin-top: 1px; flex-shrink: 0; }
-        .course-list a:hover { color: #fff; }
-        .course-list a:hover::before { color: rgba(80,200,255,0.8); }
-
-        a { color: rgba(80,200,255,0.82); text-decoration: none; transition: color 0.2s; }
-        a:visited { color: rgba(80,200,255,0.62); }
-        a:hover { color: #fff; }
-
-        footer { text-align: center; padding: 28px 20px; border-top: 1px solid rgba(80,200,255,0.08); font-family: 'Share Tech Mono', monospace; font-size: 0.72rem; color: rgb(255, 255, 255); letter-spacing: 1.5px; background: rgba(0,0,0,0.5); }
-        footer a {color:  #6afdff}
-        footer p + p { margin-top: 5px; }
+        .course-card { padding: 26px; }
+        @media (max-width: 900px) { .grid-3 { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
+<canvas id="starfield" aria-hidden="true"></canvas>
+<div class="floaters" aria-hidden="true">
+    <span style="top:8%;  font-size:20px; animation-duration:46s; animation-delay:0s;">🪐</span>
+    <span style="top:70%; font-size:13px; animation-duration:58s; animation-delay:9s;">☄️</span>
+    <span style="top:35%; font-size:11px; animation-duration:50s; animation-delay:4s;">✦</span>
+    <span style="top:55%; font-size:18px; animation-duration:66s; animation-delay:18s;">👾</span>
+    <span style="top:88%; font-size:10px; animation-duration:52s; animation-delay:24s;">✦</span>
+</div>
+<div class="crt-overlay" aria-hidden="true"></div>
+
 <header>
     <div class="navbar">
-        <a href="index.html">Home</a>
-        <a href="news.html">News</a>
+        <a href="index.html" data-en="Home" data-pt="Início">Home</a>
         <div class="dropdown">
-            <button class="dropdown-button">Master ▾</button>
+            <button class="dropdown-button" data-en="Master ▾" data-pt="Mestrado ▾">Master ▾</button>
             <div class="dropdown-content">
-                <a href="courses.html" class="active">Courses</a>
-                <a href="contact.html">Contacts</a>
+                <a href="courses.html" class="active" data-en="Courses" data-pt="Cursos">Courses</a>
+                <a href="contact.html" data-en="Contacts" data-pt="Contactos">Contacts</a>
             </div>
         </div>
-        <a href="game.html">Games</a>
-        <a href="astro_world.html">Astro World</a>
+        <a href="phd.html" data-en="PhD" data-pt="Doutoramento">PhD</a>
+        <a href="game.html" data-en="Games" data-pt="Jogos">Games</a>
+        <a href="astro_world.html" data-en="Astro World" data-pt="Mundo Astro">Astro World</a>
+        <a href="merch.html" data-en="Merch" data-pt="Merch">Merch</a>
+        <div class="lang-toggle">
+            <button data-lang="en" type="button">EN</button>
+            <button data-lang="pt" type="button">PT</button>
+        </div>
     </div>
     <h1><em>OSCAR</em></h1>
     <h2>Organização Socio-Cooperativa de AstRofísica</h2>
@@ -86,7 +48,7 @@
 
 <div class="page-content">
 
-    <div class="intro-card">
+    <div class="intro-card reveal" data-en="The Astronomy and Astrophysics Master is divided into two years. There are four obligatory courses in the first semester and four obligatory ones in the second semester of the first year. The second year is mostly thesis. This page was made by students for students. Here you will find exercises, exams, and (hopefully) solutions from previous years. If you&#39;d like to add anything to the bank, please contact us." data-pt="O Mestrado em Astronomia e Astrofísica está dividido em dois anos. Há quatro cadeiras obrigatórias no primeiro semestre e quatro no segundo semestre do primeiro ano. O segundo ano é maioritariamente dedicado à tese. Esta página foi feita por estudantes para estudantes. Aqui vais encontrar exercícios, exames e (esperamos) soluções de anos anteriores. Se quiseres acrescentar algo a este banco, contacta-nos.">
         The Astronomy and Astrophysics Master is divided into two years. There are four obligatory courses
         in the first semester and four obligatory ones in the second semester of the first year.
         The second year is mostly thesis. This page was made by students for students.
@@ -94,36 +56,37 @@
         If you'd like to add anything to the bank, please contact us.
     </div>
 
-    <div class="section-label">// Course Materials</div>
+    <div class="section-label reveal" data-en="// Course Materials" data-pt="// Materiais das Cadeiras">// Course Materials</div>
 
     <div class="grid-3">
 
-        <div class="course-card">
-            <div class="card-label">Year 1 · Semester 1</div>
+        <div class="course-card reveal">
+            <div class="card-label" data-en="Year 1 · Semester 1" data-pt="Ano 1 · Semestre 1">Year 1 · Semester 1</div>
             <ul class="course-list">
-                <li><a href="https://drive.google.com/drive/folders/1AxZ81L8W_3uWyUIEALB5KGaRRKZ_ph2L?usp=sharing" target="_blank">Estrutura e Evolução Estelar</a></li>
+                <li><a href="https://drive.google.com/drive/folders/1sXfNnqgiiagwTtnN43TZxya6_lx65ELk?usp=sharing" target="_blank">Astronomia Extragalática</a></li>
                 <li><a href="https://drive.google.com/drive/folders/1Jozu48GG0YmxaBBcSUE8CwhY3t6GLxnG?usp=sharing" target="_blank">Sistemas Planetários</a></li>
                 <li><a href="https://drive.google.com/drive/folders/1MLB_ubejXnLd2hHtyewpp-b6MfbaUGRj?usp=sharing" target="_blank">Fotometria e Espetometria</a></li>
                 <li><a href="https://drive.google.com/drive/folders/1e5i_26_2BHwPQO5UAx8eLtx4QL8bMs7r?usp=sharing" target="_blank">Formação Estelar e Meio Circum-Estelar</a></li>
             </ul>
         </div>
 
-        <div class="course-card">
-            <div class="card-label">Year 1 · Semester 2</div>
+        <div class="course-card reveal">
+            <div class="card-label" data-en="Year 1 · Semester 2" data-pt="Ano 1 · Semestre 2">Year 1 · Semester 2</div>
             <ul class="course-list">
                 <li><a href="https://drive.google.com/drive/folders/16Hu5bGNoEi7TjPjhwk0lGpf1VUAEWQQE?usp=sharing" target="_blank">Análise de Dados em Física e Astronomia</a></li>
-                <li><a href="https://drive.google.com/drive/folders/1sXfNnqgiiagwTtnN43TZxya6_lx65ELk?usp=sharing" target="_blank">Astronomia Extragalática</a></li>
+                <li><a href="https://drive.google.com/drive/folders/1AxZ81L8W_3uWyUIEALB5KGaRRKZ_ph2L?usp=sharing" target="_blank">Estrutura e Evolução Estelar</a></li>
                 <li><a href="https://drive.google.com/drive/folders/1gAajH5iyg9-a_17u-LDqWwi8MV0Btrj6?usp=sharing" target="_blank">Cosmologia</a></li>
                 <li><a href="https://drive.google.com/drive/folders/1yO99o_xrI-1nvhsW0m7NWNf1UZODU0mC?usp=sharing" target="_blank">O Sol e a Heliosfera</a></li>
             </ul>
         </div>
 
-        <div class="course-card">
-            <div class="card-label">Electives</div>
+        <div class="course-card reveal">
+            <div class="card-label" data-en="Electives" data-pt="Opcionais">Electives</div>
             <ul class="course-list">
                 <li><a href="https://drive.google.com/drive/folders/1CJcf0hSPXgD2qVq0fGkG-t7eyLzE6ZLW?usp=sharing" target="_blank">Relatividade Geral</a></li>
                 <li><a href="https://drive.google.com/drive/folders/19B_D5TdgCBlHz8iMko6orICEScRQYCG2?usp=sharing" target="_blank">Mecânica Quântica Avançada</a></li>
                 <li><a href="https://drive.google.com/drive/folders/1_3OxkPELGcEXf-Fa3MY32Bq1xw2ViOOW?usp=sharing" target="_blank">Astrobiologia</a></li>
+                <li><a href="https://drive.google.com/drive/folders/1m6bg5OdjEXn3haYULJGYCZEktLt7isUX?usp=sharing" target="_blank">Machine Learning</a></li>
                 <li><a href="https://drive.google.com/drive/folders/1imPxN7pVg9qx1JfJrAslJ-Ik1aD1JG2b?usp=sharing" target="_blank">Telescópios e Detetores para as Ciências do Espaço</a></li>
             </ul>
         </div>
@@ -133,8 +96,10 @@
 </div>
 
 <footer>
-    <p>Good Luck! &nbsp;|&nbsp; <a href="mailto:lumosastroastro@gmail.com">lumosastroastro@gmail.com</a></p>
-    <p>By M.A.F. de Melo e Sousa</p>
+    <p><span data-en="Good Luck!" data-pt="Boa Sorte!">Good Luck!</span>&nbsp;|&nbsp; <a href="mailto:lumosastroastro@gmail.com">lumosastroastro@gmail.com</a></p>
+    <p>By M.A.F. de Melo e Sousa et al</p>
 </footer>
+
+<script src="assets/retro.js"></script>
 </body>
 </html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSCAR – Profile</title>
+    <link rel="stylesheet" href="assets/retro.css?v=5">
+    <style>
+        #profile-section { max-width: 860px; margin: 0 auto; }
+        #back-link { font-family: var(--font-display); font-size: 0.68rem; letter-spacing: 0.8px; color: var(--ink-faint); margin-bottom: 26px; display: inline-block; }
+        #back-link:hover { color: #fff; }
+
+        /* ── Hero: photo left, name + title right ── */
+        .profile-hero { display: grid; grid-template-columns: 220px 1fr; gap: 34px; align-items: center; padding: 34px; }
+        .profile-main { min-width: 0; }
+        .profile-photo {
+            width: 220px; aspect-ratio: 1 / 1;
+            border: 3px solid rgba(93,227,255,0.35);
+            background: rgba(93,227,255,0.08);
+            box-shadow: 0 0 30px rgba(93,227,255,0.15);
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden;
+            clip-path: polygon(0 12px, 12px 12px, 12px 0, calc(100% - 12px) 0, calc(100% - 12px) 12px, 100% 12px, 100% calc(100% - 12px), calc(100% - 12px) calc(100% - 12px), calc(100% - 12px) 100%, 12px 100%, 12px calc(100% - 12px), 0 calc(100% - 12px));
+        }
+        .profile-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .profile-photo .avatar-fallback { font-family: var(--font-display); font-size: 2.4rem; color: var(--cyan); }
+
+        .profile-name { font-family: var(--font-display); font-size: 1.25rem; color: #fff; letter-spacing: 0.6px; line-height: 1.5; margin-bottom: 14px; text-shadow: 0 0 14px rgba(93,227,255,0.4); }
+        .profile-title { font-family: var(--font-body); font-size: 0.95rem; color: var(--magenta); letter-spacing: 0.5px; margin-bottom: 16px; }
+        .profile-country { display: inline-block; font-family: var(--font-display); font-size: 0.6rem; letter-spacing: 1px; color: var(--yellow); border: 1px solid rgba(255,206,61,0.35); padding: 6px 14px; }
+
+        /* ── Info blocks: where they work + Master's (beside the photo) ── */
+        .profile-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 26px; margin-top: 24px; padding-top: 20px; border-top: 1px dashed rgba(93,227,255,0.15); }
+        .profile-facts.single { grid-template-columns: 1fr; }
+        .fact-card { padding-left: 14px; border-left: 2px solid rgba(255,62,165,0.45); }
+        .fact-card .card-label { margin-bottom: 8px; padding-bottom: 0; border-bottom: none; }
+        .fact-value { font-family: var(--font-body); font-size: 0.86rem; color: #fff; line-height: 1.7; }
+
+        /* ── About text (full width, left-aligned) ── */
+        .profile-bio { margin-top: 24px; padding: 30px 34px; }
+        .profile-bio p { font-size: 0.9rem; line-height: 1.95; color: var(--ink-dim); }
+
+        #not-found { display: none; text-align: center; padding: 60px 20px; }
+        #not-found h2 { font-family: var(--font-display); font-size: 0.9rem; color: var(--magenta); margin-bottom: 16px; }
+        #not-found p { font-family: var(--font-body); color: var(--ink-dim); font-size: 0.86rem; }
+
+        @media (max-width: 720px) {
+            .profile-hero { grid-template-columns: 1fr; justify-items: center; text-align: center; padding: 28px 22px; }
+            .profile-photo { width: 180px; }
+            .profile-facts { grid-template-columns: 1fr; text-align: left; }
+        }
+    </style>
+</head>
+<body>
+<canvas id="starfield" aria-hidden="true"></canvas>
+<div class="floaters" aria-hidden="true">
+    <span style="top:8%;  font-size:20px; animation-duration:46s; animation-delay:0s;">🪐</span>
+    <span style="top:70%; font-size:13px; animation-duration:58s; animation-delay:9s;">✦</span>
+</div>
+<div class="crt-overlay" aria-hidden="true"></div>
+
+<header>
+    <div class="navbar">
+        <a href="index.html" data-en="Home" data-pt="Início">Home</a>
+        <div class="dropdown">
+            <button class="dropdown-button" data-en="Master ▾" data-pt="Mestrado ▾">Master ▾</button>
+            <div class="dropdown-content">
+                <a href="courses.html" data-en="Courses" data-pt="Cursos">Courses</a>
+                <a href="contact.html" data-en="Contacts" data-pt="Contactos">Contacts</a>
+            </div>
+        </div>
+        <a href="phd.html" data-en="PhD" data-pt="Doutoramento">PhD</a>
+        <a href="game.html" data-en="Games" data-pt="Jogos">Games</a>
+        <a href="astro_world.html" class="active" data-en="Astro World" data-pt="Mundo Astro">Astro World</a>
+        <a href="merch.html" data-en="Merch" data-pt="Merch">Merch</a>
+        <div class="lang-toggle">
+            <button data-lang="en" type="button">EN</button>
+            <button data-lang="pt" type="button">PT</button>
+        </div>
+    </div>
+    <h1><em>OSCAR</em></h1>
+    <h2>Organização Socio-Cooperativa de AstRofísica</h2>
+</header>
+
+<div class="page-content">
+    <div id="profile-section">
+        <a id="back-link" href="astro_world.html" data-en="← BACK TO ASTRO WORLD" data-pt="← VOLTAR AO MUNDO ASTRO">← BACK TO ASTRO WORLD</a>
+
+        <div id="profile-card" style="display:none;">
+            <div class="profile-hero card">
+                <div class="profile-photo" id="profile-photo"></div>
+                <div class="profile-main">
+                    <div class="profile-name" id="profile-name"></div>
+                    <div class="profile-title" id="profile-title"></div>
+                    <span class="profile-country" id="profile-country"></span>
+
+                    <div class="profile-facts" id="profile-facts">
+                        <div class="fact-card" id="work-wrap">
+                            <div class="card-label" data-en="// Currently working at" data-pt="// Atualmente a trabalhar em">// Currently working at</div>
+                            <div class="fact-value" id="profile-work"></div>
+                        </div>
+                        <div class="fact-card" id="masters-wrap">
+                            <div class="card-label" data-en="// Master's" data-pt="// Mestrado">// Master's</div>
+                            <div class="fact-value" id="profile-masters"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-bio card" id="bio-wrap">
+                <div class="card-label" data-en="// About" data-pt="// Sobre">// About</div>
+                <p id="profile-bio"></p>
+            </div>
+        </div>
+
+        <div id="not-found">
+            <h2 data-en="Profile not found" data-pt="Perfil não encontrado">Profile not found</h2>
+            <p data-en="This person isn't in our records yet — or the link is off. Head back to the map and pick someone from there." data-pt="Esta pessoa ainda não está nos nossos registos — ou o link está errado. Volta ao mapa e escolhe alguém de lá.">This person isn't in our records yet — or the link is off. Head back to the map and pick someone from there.</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p><span data-en="Good Luck!" data-pt="Boa Sorte!">Good Luck!</span>&nbsp;|&nbsp; <a href="mailto:lumosastroastro@gmail.com">lumosastroastro@gmail.com</a></p>
+    <p>By M.A.F. de Melo e Sousa et al</p>
+</footer>
+
+<script src="assets/retro.js"></script>
+<script src="assets/people-data.js"></script>
+<script>
+    function initials(name) {
+        return name.split(/\s+/).filter(Boolean).map(w => w[0]).join('').slice(0, 2).toUpperCase();
+    }
+
+    // Fills an element with a field that is either plain text or { en, pt }.
+    // Bilingual fields get data-en/data-pt so the EN/PT toggle switches them.
+    function fillText(el, value) {
+        if (value && typeof value === 'object') {
+            const esc = t => (t || '').replace(/&/g, '&amp;').replace(/</g, '&lt;');
+            el.setAttribute('data-en', esc(value.en || value.pt));
+            el.setAttribute('data-pt', esc(value.pt || value.en));
+            const lang = document.documentElement.getAttribute('lang') === 'pt' ? 'pt' : 'en';
+            el.textContent = value[lang] || value.en || value.pt || '';
+        } else {
+            el.textContent = value || '';
+        }
+    }
+    function hasText(value) {
+        if (!value) return false;
+        if (typeof value === 'object') return !!(value.en || value.pt);
+        return String(value).trim() !== '';
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const slug = params.get('slug');
+    const result = slug ? findPersonBySlug(slug) : null;
+
+    if (result) {
+        const { person, country } = result;
+        document.getElementById('profile-card').style.display = 'block';
+        document.title = 'OSCAR – ' + person.name;
+
+        // Photo (falls back to initials if missing or the file can't be found)
+        const photoEl = document.getElementById('profile-photo');
+        const showInitials = () => { photoEl.innerHTML = `<span class="avatar-fallback">${initials(person.name)}</span>`; };
+        if (person.photo) {
+            const img = document.createElement('img');
+            img.src = person.photo;
+            img.alt = person.name;
+            img.onerror = showInitials;
+            photoEl.appendChild(img);
+        } else {
+            showInitials();
+        }
+
+        document.getElementById('profile-name').textContent = person.name;
+        fillText(document.getElementById('profile-title'), person.role);
+        document.getElementById('profile-country').textContent = country;
+
+        // Where they work / Master's — hide a block if it's empty
+        const showWork = hasText(person.institution);
+        const showMasters = hasText(person.masters);
+        if (showWork) fillText(document.getElementById('profile-work'), person.institution);
+        else document.getElementById('work-wrap').style.display = 'none';
+        if (showMasters) fillText(document.getElementById('profile-masters'), person.masters);
+        else document.getElementById('masters-wrap').style.display = 'none';
+        if (!showWork && !showMasters) document.getElementById('profile-facts').style.display = 'none';
+        else if (!showWork || !showMasters) document.getElementById('profile-facts').classList.add('single');
+
+        // About
+        if (hasText(person.bio)) fillText(document.getElementById('profile-bio'), person.bio);
+        else document.getElementById('bio-wrap').style.display = 'none';
+    } else {
+        document.getElementById('not-found').style.display = 'block';
+    }
+</script>
+</body>
+</html>

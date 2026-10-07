@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSCAR – PhD</title>
+    <link rel="stylesheet" href="assets/retro.css?v=5">
+    <style>
+        .intro-card { padding: 26px 32px; margin-bottom: 30px; font-size: 0.86rem; color: var(--ink-dim); line-height: 1.9; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .card { padding: 30px; }
+        .milestone-list { list-style: none; padding: 0; }
+        .milestone-list li {
+            padding: 12px 0 12px 30px;
+            border-bottom: 1px solid rgba(93,227,255,0.08);
+            position: relative;
+            font-family: var(--font-body);
+            font-size: 0.84rem;
+            color: var(--ink-dim);
+            line-height: 1.6;
+        }
+        .milestone-list li:last-child { border-bottom: none; }
+        .milestone-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--magenta);
+        }
+        @media (max-width: 800px) { .grid-2 { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+<canvas id="starfield" aria-hidden="true"></canvas>
+<div class="floaters" aria-hidden="true">
+    <span style="top:8%;  font-size:20px; animation-duration:46s; animation-delay:0s;">🪐</span>
+    <span style="top:70%; font-size:13px; animation-duration:58s; animation-delay:9s;">☄️</span>
+    <span style="top:35%; font-size:11px; animation-duration:50s; animation-delay:4s;">✦</span>
+    <span style="top:55%; font-size:18px; animation-duration:66s; animation-delay:18s;">👾</span>
+    <span style="top:88%; font-size:10px; animation-duration:52s; animation-delay:24s;">✦</span>
+</div>
+<div class="crt-overlay" aria-hidden="true"></div>
+
+<header>
+    <div class="navbar">
+        <a href="index.html" data-en="Home" data-pt="Início">Home</a>
+        <div class="dropdown">
+            <button class="dropdown-button" data-en="Master ▾" data-pt="Mestrado ▾">Master ▾</button>
+            <div class="dropdown-content">
+                <a href="courses.html" data-en="Courses" data-pt="Cursos">Courses</a>
+                <a href="contact.html" data-en="Contacts" data-pt="Contactos">Contacts</a>
+            </div>
+        </div>
+        <a href="phd.html" class="active" data-en="PhD" data-pt="Doutoramento">PhD</a>
+        <a href="game.html" data-en="Games" data-pt="Jogos">Games</a>
+        <a href="astro_world.html" data-en="Astro World" data-pt="Mundo Astro">Astro World</a>
+        <a href="merch.html" data-en="Merch" data-pt="Merch">Merch</a>
+        <div class="lang-toggle">
+            <button data-lang="en" type="button">EN</button>
+            <button data-lang="pt" type="button">PT</button>
+        </div>
+    </div>
+    <h1><em>OSCAR</em></h1>
+    <h2>Organização Socio-Cooperativa de AstRofísica</h2>
+</header>
+
+<div class="page-content">
+
+    <div class="intro-card reveal" data-en="Thinking about (or already doing) a PhD in Astronomy &amp; Astrophysics? This page is for you. It&#39;s brand new and still being put together — if there&#39;s something you wish you&#39;d known when you started, or a resource you keep pointing new PhD students to, let us know and it&#39;ll go here." data-pt="A pensar em (ou já a fazer) um Doutoramento em Astronomia e Astrofísica? Esta página é para ti. Está a começar agora e ainda em construção — se há algo que gostarias de ter sabido quando começaste, ou um recurso que costumas indicar a novos doutorandos, diz-nos e vai parar aqui.">
+        Thinking about (or already doing) a PhD in Astronomy &amp; Astrophysics? This page is for you.
+        It's brand new and still being put together — if there's something you wish you'd known when
+        you started, or a resource you keep pointing new PhD students to, let us know and it'll go here.
+    </div>
+
+    <div class="wip-note reveal" data-en="This page is a placeholder for now. Below is a starting structure — milestones, useful contacts, and a resource bank — but the real content (deadlines, specific forms, past students&#39; advice) is still being gathered. Have something to add? Reach out at <a href=&quot;mailto:lumosastroastro@gmail.com&quot;>lumosastroastro@gmail.com</a>." data-pt="Esta página é, por agora, um placeholder. Abaixo está uma estrutura inicial — marcos, contactos úteis e um banco de recursos — mas o conteúdo real (prazos, formulários específicos, conselhos de antigos alunos) ainda está a ser reunido. Tens algo a acrescentar? Contacta <a href=&quot;mailto:lumosastroastro@gmail.com&quot;>lumosastroastro@gmail.com</a>.">
+        This page is a placeholder for now. Below is a starting structure — milestones, useful contacts,
+        and a resource bank — but the real content (deadlines, specific forms, past students' advice)
+        is still being gathered. Have something to add? Reach out at
+        <a href="mailto:lumosastroastro@gmail.com">lumosastroastro@gmail.com</a>.
+    </div>
+
+    <div class="section-label reveal" data-en="// Community &amp; Events" data-pt="// Comunidade e Eventos">// Community &amp; Events</div>
+    <div class="section-sub reveal" data-en="[Placeholder] A few words about PhD community life will go here — socials, seminars, informal meetups. For now, here&#39;s what&#39;s on." data-pt="[Placeholder] Aqui vão ficar umas palavras sobre a vida em comunidade do doutoramento — socials, seminários, encontros informais. Por agora, aqui está o que há.">[Placeholder] A few words about PhD community life will go here — socials, seminars, informal meetups. For now, here's what's on.</div>
+
+    <div class="hub-grid">
+        <a class="hub-tile reveal" href="https://lumos-astro.github.io/CHEERS/">
+            <div class="hub-tile-icon">🥂</div>
+            <div class="hub-tile-title" data-en="Cheers" data-pt="Cheers">Cheers</div>
+            <p data-en="A social get-together for PhD students and researchers, held at CAUP." data-pt="Um convívio social para doutorandos e investigadores, realizado no CAUP.">A social get-together for PhD students and researchers, held at CAUP.</p>
+            <span class="status" data-en="▶ Learn More" data-pt="▶ Saber Mais">▶ Learn More</span>
+        </a>
+        <div class="hub-tile locked reveal">
+            <div class="hub-tile-icon">🔭</div>
+            <div class="hub-tile-title" data-en="TBA" data-pt="Por Anunciar">TBA</div>
+            <p data-en="Another event slot, waiting to be filled in." data-pt="Outro espaço para um evento, ainda por preencher.">Another event slot, waiting to be filled in.</p>
+            <span class="status" data-en="Coming Soon" data-pt="Brevemente">Coming Soon</span>
+        </div>
+        <div class="hub-tile locked reveal">
+            <div class="hub-tile-icon">🛰️</div>
+            <div class="hub-tile-title" data-en="TBA" data-pt="Por Anunciar">TBA</div>
+            <p data-en="Got an idea for a PhD community event? Let us know." data-pt="Tens uma ideia para um evento da comunidade de doutoramento? Diz-nos.">Got an idea for a PhD community event? Let us know.</p>
+            <span class="status" data-en="Coming Soon" data-pt="Brevemente">Coming Soon</span>
+        </div>
+    </div>
+
+    <div class="section-label reveal" style="margin-top: 54px;" data-en="// Programme at a Glance" data-pt="// Programa em Resumo">// Programme at a Glance</div>
+    <div class="grid-2">
+
+        <div class="card reveal">
+            <div class="card-label" data-en="Typical Milestones" data-pt="Marcos Habituais">Typical Milestones</div>
+            <ul class="milestone-list">
+                <li data-en="Enrollment &amp; supervisor assignment" data-pt="Inscrição e atribuição de orientador">Enrollment &amp; supervisor assignment</li>
+                <li data-en="Individual study plan / thesis proposal" data-pt="Plano de estudos individual / proposta de tese">Individual study plan / thesis proposal</li>
+                <li data-en="Annual progress report to the doctoral committee" data-pt="Relatório anual de progresso à comissão de doutoramento">Annual progress report to the doctoral committee</li>
+                <li data-en="Publications &amp; conference presentations" data-pt="Publicações e apresentações em conferências">Publications &amp; conference presentations</li>
+                <li data-en="Thesis writing &amp; internal review" data-pt="Escrita da tese e revisão interna">Thesis writing &amp; internal review</li>
+                <li data-en="Public defense" data-pt="Defesa pública">Public defense</li>
+            </ul>
+        </div>
+
+        <div class="card reveal">
+            <div class="card-label" data-en="// Useful Links" data-pt="// Ligações Úteis">// Useful Links</div>
+            <ul class="link-list">
+                <li><a href="https://www.astro.up.pt" target="_blank">CAUP — Centro de Astrofísica da U. Porto</a></li>
+                <li><a href="http://www.iastro.pt/index.html" target="_blank">IA — Instituto de Astrofísica e Ciências do Espaço</a></li>
+                <li><a href="https://sigarra.up.pt/fcup/pt/CUR_GERAL.CUR_COMISSAO_acomp_LIST?pv_curso_id=881" target="_blank">Comissão de Acompanhamento de Curso</a></li>
+                <li><a href="mailto:lumosastroastro@gmail.com" data-en="Suggest a link for this page" data-pt="Sugere uma ligação para esta página">Suggest a link for this page</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+    <p><span data-en="Good Luck!" data-pt="Boa Sorte!">Good Luck!</span>&nbsp;|&nbsp; <a href="mailto:lumosastroastro@gmail.com">lumosastroastro@gmail.com</a></p>
+    <p>By M.A.F. de Melo e Sousa et al</p>
+</footer>
+
+<script src="assets/retro.js"></script>
+</body>
+</html>

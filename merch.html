@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSCAR – Merch</title>
+    <link rel="stylesheet" href="assets/retro.css?v=5">
+    <style>
+        /* ── FEATURED / CONTACT-US STORY ── */
+        .featured-news {
+            padding: 34px;
+            margin-bottom: 20px;
+            border-color: rgba(255, 206, 61, 0.4);
+            box-shadow: 0 0 0 1px rgba(0,0,0,0.4), 0 0 34px rgba(255, 206, 61, 0.12);
+        }
+        .featured-badge {
+            display: inline-block;
+            font-family: var(--font-display);
+            font-size: 0.6rem;
+            letter-spacing: 1.5px;
+            color: var(--void);
+            background: var(--yellow);
+            padding: 6px 14px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        .featured-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 34px; align-items: center; }
+        .featured-text .headline {
+            font-family: var(--font-display);
+            font-size: 1.02rem;
+            color: #fff;
+            letter-spacing: 0.6px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            text-shadow: 0 0 12px rgba(255, 206, 61, 0.35);
+        }
+        .featured-text p { font-size: 0.92rem; line-height: 1.9; margin-bottom: 22px; color: var(--ink-dim); }
+        .featured-text .img-box { min-height: 220px; }
+        @media (max-width: 800px) { .featured-grid { grid-template-columns: 1fr; } }
+
+        .ticker-hint { font-family: var(--font-body); font-size: 0.74rem; color: var(--ink-faint); letter-spacing: 0.5px; margin-bottom: 22px; }
+
+        /* coming-soon card */
+        .coming-soon { align-items: center; justify-content: center; text-align: center; color: var(--ink-faint); border-style: dashed; }
+        .coming-soon .headline { color: var(--ink-faint) !important; }
+        .coming-soon-icon { font-size: 2rem; margin-bottom: 12px; opacity: 0.6; }
+
+        /* the quiet little easter egg link, tucked in among the fine print — deliberately not bold, not colored differently from a normal mention */
+        .fine-print { font-family: var(--font-body); font-size: 0.78rem; color: var(--ink-faint); line-height: 1.9; margin-top: 40px; max-width: 720px; }
+        .fine-print a { color: inherit; font-weight: inherit; }
+        .fine-print a:hover { color: #fff; }
+    </style>
+</head>
+<body>
+<canvas id="starfield" aria-hidden="true"></canvas>
+<div class="floaters" aria-hidden="true">
+    <span style="top:8%;  font-size:20px; animation-duration:46s; animation-delay:0s;">🪐</span>
+    <span style="top:70%; font-size:13px; animation-duration:58s; animation-delay:9s;">☄️</span>
+    <span style="top:35%; font-size:11px; animation-duration:50s; animation-delay:4s;">✦</span>
+    <span style="top:55%; font-size:18px; animation-duration:66s; animation-delay:18s;">👾</span>
+    <span style="top:88%; font-size:10px; animation-duration:52s; animation-delay:24s;">✦</span>
+</div>
+<div class="crt-overlay" aria-hidden="true"></div>
+
+<header>
+    <div class="navbar">
+        <a href="index.html" data-en="Home" data-pt="Início">Home</a>
+        <div class="dropdown">
+            <button class="dropdown-button" data-en="Master ▾" data-pt="Mestrado ▾">Master ▾</button>
+            <div class="dropdown-content">
+                <a href="courses.html" data-en="Courses" data-pt="Cursos">Courses</a>
+                <a href="contact.html" data-en="Contacts" data-pt="Contactos">Contacts</a>
+            </div>
+        </div>
+        <a href="phd.html" data-en="PhD" data-pt="Doutoramento">PhD</a>
+        <a href="game.html" data-en="Games" data-pt="Jogos">Games</a>
+        <a href="astro_world.html" data-en="Astro World" data-pt="Mundo Astro">Astro World</a>
+        <a href="merch.html" class="active" data-en="Merch" data-pt="Merch">Merch</a>
+        <div class="lang-toggle">
+            <button data-lang="en" type="button">EN</button>
+            <button data-lang="pt" type="button">PT</button>
+        </div>
+    </div>
+    <h1><em>OSCAR</em></h1>
+    <h2>Organização Socio-Cooperativa de AstRofísica</h2>
+</header>
+
+<div class="page-content">
+
+    <div class="section-label reveal" data-en="// Merch" data-pt="// Merch">// Merch</div>
+    <div class="section-sub reveal" data-en="Everything we've made so far, and everything still coming. Ideas from students become the next drop — yours could be next." data-pt="Tudo o que já fizemos até agora, e tudo o que ainda está para vir. As ideias dos estudantes tornam-se o próximo lançamento — a próxima pode ser a tua.">Everything we've made so far, and everything still coming. Ideas from students become the next drop — yours could be next.</div>
+
+    <!-- FEATURED / CONTACT US -->
+    <div class="featured-news reveal">
+        <div class="featured-badge" data-en="★ Got an idea?" data-pt="★ Tens uma ideia?">★ Got an idea?</div>
+        <div class="featured-grid">
+            <div class="featured-text">
+                <div class="headline" data-en="Do you have ideas for merch? Let us know what we can do!" data-pt="Tens ideias para merch? Diz-nos o que podemos fazer!">Do you have ideas for merch? Let us know what we can do!</div>
+                <span class="tag tag-open" data-en="Contact us!" data-pt="Contacta-nos!">Contact us!</span>
+                <p data-en="Would you like to design the next line of merch for the astronomy and astrophysics degree? Let us know! Now you can submit your own proposal! For questions, please contact: <a href=&quot;mailto:lumosastroastro@gmail.com&quot;>lumosastroastro@gmail.com</a>" data-pt="Queres desenhar a próxima linha de merch para o curso de Astronomia e Astrofísica? Diz-nos! Já podes submeter a tua própria proposta! Para questões, contacta: <a href=&quot;mailto:lumosastroastro@gmail.com&quot;>lumosastroastro@gmail.com</a>">
+                    Would you like to design the next line of merch for the astronomy and astrophysics degree? Let us know! Now you can submit your own
+                    proposal! For questions, please contact: <a href="mailto:lumosastroastro@gmail.com">lumosastroastro@gmail.com</a>
+                </p>
+                <a class="cta-link" href="https://docs.google.com/forms/d/e/1FAIpQLSclaaK6ZRcXkMTQj1NUiylritTSpCdLr5JtlNhwnghPN1xPGw/viewform?usp=publish-editor" target="_blank"><span data-en="→ Send your idea!" data-pt="→ Envia a tua ideia!">→ Send your idea!</span></a>
+            </div>
+            <div class="img-box">
+                <img src="OSCAR.png" alt="OSCAR">
+            </div>
+        </div>
+    </div>
+
+    <!-- PAST + UPCOMING PROJECTS — rolling belt -->
+    <div class="section-label reveal" style="margin-top: 54px;" data-en="// Projects &amp; Drops" data-pt="// Projetos e Lançamentos">// Projects &amp; Drops</div>
+    <div class="ticker-hint reveal" data-en="Everything we've sold so far, circulating below — hover or tab into a card to pause it." data-pt="Tudo o que já vendemos, a circular abaixo — passa o rato ou navega até um cartão para o pausar.">Everything we've sold so far, circulating below — hover or tab into a card to pause it.</div>
+
+    <div class="ticker-wrap reveal">
+        <div class="ticker-track">
+
+            <!-- T-SHIRT 2024/2025 -->
+            <div class="ticker-card">
+                <div class="img-box"><img src="pics\merch\Tshirt_2425.jpg" alt="OSCAR T-shirt 2024/2025"></div>
+                <div class="headline" data-en="OSCAR T-Shirt — 2024/2025" data-pt="T-shirt OSCAR — 2024/2025">OSCAR T-Shirt — 2024/2025</div>
+                <span class="tag tag-closed" data-en="Orders Closed" data-pt="Encomendas Fechadas">Orders Closed</span>
+                <p data-en="Schrödinger meets Astronaut. 30 T-shirts at 9€ each, free Oscar sticker included. Goal reached — orders now closed." data-pt="Schrödinger encontra Astronauta. 30 T-shirts a 9€ cada, com autocolante do Oscar incluído. Objetivo atingido — encomendas fechadas.">Schrödinger meets Astronaut. 30 T-shirts at 9€ each, free Oscar sticker included. Goal reached — orders now closed.</p>
+                <div class="table-wrap"><table>
+                    <thead><tr><th data-en="Orders" data-pt="Encomendas">Orders</th><th data-en="Needed" data-pt="Necessárias">Needed</th><th data-en="Price" data-pt="Preço">Price</th></tr></thead>
+                    <tbody><tr><td>30</td><td>30</td><td>9€</td></tr></tbody>
+                </table></div>
+                <a class="cta-link disabled" href="#"><span data-en="Link Unavailable" data-pt="Link Indisponível">Link Unavailable</span></a>
+            </div>
+
+            <!-- HOODIE 2023/2024 -->
+            <div class="ticker-card">
+                <div class="img-box"><img src="pics\merch\Camisolas_2324.png" alt="AstroHoodie 2023/2024"></div>
+                <div class="headline" data-en="AstroHoodie — 2023/2024" data-pt="AstroHoodie — 2023/2024">AstroHoodie — 2023/2024</div>
+                <span class="tag tag-closed" data-en="Orders Closed" data-pt="Encomendas Fechadas">Orders Closed</span>
+                <p data-en="Chosen and designed by students. Reopened for a second edition without the year printed on the back." data-pt="Escolhida e desenhada por estudantes. Reaberta para uma segunda edição sem o ano impresso nas costas.">Chosen and designed by students. Reopened for a second edition without the year printed on the back.</p>
+                <div class="table-wrap"><table>
+                    <thead><tr><th data-en="Ordered" data-pt="Pedidas">Ordered</th><th data-en="Sold" data-pt="Vendidas">Sold</th><th data-en="Price" data-pt="Preço">Price</th></tr></thead>
+                    <tbody><tr><td>27</td><td>20</td><td>25€</td></tr></tbody>
+                </table></div>
+                <a class="cta-link disabled" href="#" target="_blank"><span data-en="Link Unavailable" data-pt="Link Indisponível">Link Unavailable</span></a>
+            </div>
+
+            <!-- COMING SOON -->
+            <div class="ticker-card coming-soon">
+                <div class="coming-soon-icon">✦ ⋯ ✦</div>
+                <div class="headline" data-en="Something's brewing" data-pt="Algo se está a preparar">Something's brewing</div>
+                <p data-en="The next drop hasn't been decided yet — it could be yours. Send in an idea above and it might end up here." data-pt="O próximo lançamento ainda não foi decidido — pode ser o teu. Envia uma ideia acima e pode acabar aqui.">The next drop hasn't been decided yet — it could be yours. Send in an idea above and it might end up here.</p>
+            </div>
+
+            <!-- duplicate set for a seamless loop -->
+            <div class="ticker-card" aria-hidden="true">
+                <div class="img-box"><img src="pics\merch\Tshirt_2425.jpg" alt="OSCAR T-shirt 2024/2025"></div>
+                <div class="headline" data-en="OSCAR T-Shirt — 2024/2025" data-pt="T-shirt OSCAR — 2024/2025">OSCAR T-Shirt — 2024/2025</div>
+                <span class="tag tag-closed" data-en="Orders Closed" data-pt="Encomendas Fechadas">Orders Closed</span>
+                <p data-en="Schrödinger meets Astronaut. 30 T-shirts at 9€ each, free Oscar sticker included. Goal reached — orders now closed." data-pt="Schrödinger encontra Astronauta. 30 T-shirts a 9€ cada, com autocolante do Oscar incluído. Objetivo atingido — encomendas fechadas.">Schrödinger meets Astronaut. 30 T-shirts at 9€ each, free Oscar sticker included. Goal reached — orders now closed.</p>
+                <div class="table-wrap"><table>
+                    <thead><tr><th data-en="Orders" data-pt="Encomendas">Orders</th><th data-en="Needed" data-pt="Necessárias">Needed</th><th data-en="Price" data-pt="Preço">Price</th></tr></thead>
+                    <tbody><tr><td>30</td><td>30</td><td>9€</td></tr></tbody>
+                </table></div>
+                <a class="cta-link disabled" href="#" tabindex="-1"><span data-en="Link Unavailable" data-pt="Link Indisponível">Link Unavailable</span></a>
+            </div>
+            <div class="ticker-card" aria-hidden="true">
+                <div class="img-box"><img src="pics\merch\Camisolas_2324.png" alt="AstroHoodie 2023/2024"></div>
+                <div class="headline" data-en="AstroHoodie — 2023/2024" data-pt="AstroHoodie — 2023/2024">AstroHoodie — 2023/2024</div>
+                <span class="tag tag-closed" data-en="Orders Closed" data-pt="Encomendas Fechadas">Orders Closed</span>
+                <p data-en="Chosen and designed by students. Reopened for a second edition without the year printed on the back." data-pt="Escolhida e desenhada por estudantes. Reaberta para uma segunda edição sem o ano impresso nas costas.">Chosen and designed by students. Reopened for a second edition without the year printed on the back.</p>
+                <div class="table-wrap"><table>
+                    <thead><tr><th data-en="Ordered" data-pt="Pedidas">Ordered</th><th data-en="Sold" data-pt="Vendidas">Sold</th><th data-en="Price" data-pt="Preço">Price</th></tr></thead>
+                    <tbody><tr><td>27</td><td>20</td><td>25€</td></tr></tbody>
+                </table></div>
+                <a class="cta-link disabled" href="#" tabindex="-1"><span data-en="Link Unavailable" data-pt="Link Indisponível">Link Unavailable</span></a>
+            </div>
+            <div class="ticker-card coming-soon" aria-hidden="true">
+                <div class="coming-soon-icon">✦ ⋯ ✦</div>
+                <div class="headline" data-en="Something's brewing" data-pt="Algo se está a preparar">Something's brewing</div>
+                <p data-en="The next drop hasn't been decided yet — it could be yours. Send in an idea above and it might end up here." data-pt="O próximo lançamento ainda não foi decidido — pode ser o teu. Envia uma ideia acima e pode acabar aqui.">The next drop hasn't been decided yet — it could be yours. Send in an idea above and it might end up here.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="fine-print reveal" data-en="Prices, availability and past runs are updated whenever something new is decided. Every design so far started as someone&#39;s offhand idea, so if you&#39;ve been sitting on one, send it over. Some things around here only turn up if you go looking for <a href=&quot;smokeweek.html&quot;>them</a>." data-pt="Preços, disponibilidade e edições anteriores são atualizados sempre que algo novo é decidido. Todos os designs até agora começaram como uma ideia qualquer de alguém, por isso, se tens uma guardada, envia-a. Algumas coisas por aqui só aparecem se andares à procura <a href=&quot;smokeweek.html&quot;>delas</a>.">
+        Prices, availability and past runs are updated whenever something new is decided. Every design so far started as someone's offhand idea, so if you've been sitting on one, send it over. Some things around here only turn up if you go looking for <a href="smokeweek.html">them</a>.
+    </div>
+
+</div>
+
+<footer>
+    <p><span data-en="Good Luck!" data-pt="Boa Sorte!">Good Luck!</span>&nbsp;|&nbsp; <a href="mailto:lumosastroastro@gmail.com">lumosastroastro@gmail.com</a></p>
+    <p>By M.A.F. de Melo e Sousa et al</p>
+</footer>
+
+<script src="assets/retro.js"></script>
+</body>
+</html>

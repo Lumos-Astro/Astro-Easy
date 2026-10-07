@@ -4,83 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OSCAR – Contacts</title>
+    <link rel="stylesheet" href="assets/retro.css?v=5">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-
-        body {
-            background-color: #000;
-            color: rgb(215,241,253);
-            font-family: 'Share Tech Mono', monospace;
-            background-image: url("Background.jpg");
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center top;
-            background-attachment: fixed;
-            min-height: 100vh;
-        }
-
-        .navbar { overflow: hidden; background-color: rgba(0,0,0,0.88); border-bottom: 1px solid rgba(80,200,255,0.18); z-index: 50; }
-        .navbar a { float: left; display: block; color: rgba(180,230,255,0.72); text-align: center; padding: 15px 22px; text-decoration: none; font-family: 'Share Tech Mono', monospace; font-size: 0.78rem; letter-spacing: 2.5px; text-transform: uppercase; transition: background 0.2s, color 0.2s; }
-        .navbar a:hover { background-color: rgba(16,129,199,0.28); color: #fff; }
-        .navbar a.active { background-color: rgba(83,156,165,0.85); color: #fff; }
-        .navbar a.visited { color: rgba(180,230,255,0.72); }
-        .dropdown { float: left; overflow: hidden; }
-        .dropdown .dropdown-button { font-family: 'Share Tech Mono', monospace; font-size: 0.78rem; letter-spacing: 2.5px; text-transform: uppercase; border: none; outline: none; color: rgba(180,230,255,0.72); padding: 15px 22px; background-color: transparent; cursor: pointer; transition: background 0.2s, color 0.2s; }
-        .dropdown-content { display: none; position: absolute; background-color: rgba(0,4,18,0.97); min-width: 190px; box-shadow: 0 10px 30px rgba(0,0,0,0.7); z-index: 200; border: 1px solid rgba(80,200,255,0.14); border-top: none; }
-        .dropdown-content a { float: none; color: rgba(160,210,255,0.75); padding: 12px 20px; font-size: 0.76rem; letter-spacing: 2px; display: block; text-align: left; border-bottom: 1px solid rgba(80,200,255,0.06); }
-        .dropdown-content a:last-child { border-bottom: none; }
-        .dropdown-content a:hover { background-color: rgba(16,129,199,0.28); color: #fff; }
-        .dropdown-content a.active { background-color: rgba(83,156,165,0.8); color: #fff; }
-        .dropdown:hover .dropdown-content { display: block; }
-        .dropdown:hover .dropdown-button { background-color: rgba(16,129,199,0.28); color: #fff; }
-
-        header { text-align: center; padding: 64px 5% 52px; background: linear-gradient(to bottom, rgba(0,0,0,0.62), rgba(0,4,18,0.38)); }
-        header h1 { font-family: 'Orbitron', monospace; font-size: 3.2rem; font-weight: 900; letter-spacing: 12px; color: #fff; text-shadow: 0 0 28px rgba(80,200,255,0.75), 0 0 70px rgba(80,200,255,0.22); margin-bottom: 12px; }
-        header h2 { font-family: 'Share Tech Mono', monospace; font-size: 0.78rem; letter-spacing: 3.5px; color: rgb(255, 255, 255); text-transform: uppercase; }
-
-        .page-content { max-width: 1050px; margin: 0 auto; padding: 50px 40px 90px; }
-
-        .section-label { font-family: 'Orbitron', monospace; font-size: 0.72rem; font-weight: 700; color: rgb(2, 138, 150); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 20px; }
-
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-
-        .card { background: rgba(0,6,22,0.82); border: 1px solid rgba(80,200,255,0.16); border-radius: 6px; padding: 32px; backdrop-filter: blur(6px); }
-        .card p { font-family: 'Share Tech Mono', monospace; font-size: 0.85rem; color: rgba(195,228,255,0.8); line-height: 1.88; margin-bottom: 15px; }
-        .card p:last-child { margin-bottom: 0; }
-        .card strong { color: rgba(175,220,255,0.92); }
-
-        .link-list { list-style: none; margin-top: 6px; }
-        .link-list li { padding: 10px 0; border-bottom: 1px solid rgba(80,200,255,0.08); }
-        .link-list li:last-child { border-bottom: none; }
-        .link-list a { font-family: 'Share Tech Mono', monospace; font-size: 0.84rem; color: rgba(80,200,255,0.82); display: flex; align-items: center; gap: 8px; transition: color 0.2s; text-decoration: none; }
-        .link-list a::before { content: '→'; color: rgba(80,200,255,0.33); flex-shrink: 0; }
-        .link-list a:hover { color: #fff; }
-        .link-list a:hover::before { color: rgba(80,200,255,0.8); }
-
-        a { color: rgba(80,200,255,0.82); text-decoration: none; transition: color 0.2s; }
-        a:visited { color: rgba(80,200,255,0.62); }
-        a:hover { color: #fff; }
-
-        footer { text-align: center; padding: 28px 20px; border-top: 1px solid rgba(80,200,255,0.08); font-family: 'Share Tech Mono', monospace; font-size: 0.72rem; color: rgb(255, 255, 255); letter-spacing: 1.5px; background: rgba(0,0,0,0.5); }
-        footer a {color:  #6afdff}
-        footer p + p { margin-top: 5px; }
+        .card { padding: 32px; }
+        @media (max-width: 800px) { .grid-2 { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
+<canvas id="starfield" aria-hidden="true"></canvas>
+<div class="floaters" aria-hidden="true">
+    <span style="top:8%;  font-size:20px; animation-duration:46s; animation-delay:0s;">🪐</span>
+    <span style="top:70%; font-size:13px; animation-duration:58s; animation-delay:9s;">☄️</span>
+    <span style="top:35%; font-size:11px; animation-duration:50s; animation-delay:4s;">✦</span>
+    <span style="top:55%; font-size:18px; animation-duration:66s; animation-delay:18s;">👾</span>
+    <span style="top:88%; font-size:10px; animation-duration:52s; animation-delay:24s;">✦</span>
+</div>
+<div class="crt-overlay" aria-hidden="true"></div>
+
 <header>
     <div class="navbar">
-        <a href="index.html">Home</a>
-        <a href="news.html">News</a>
+        <a href="index.html" data-en="Home" data-pt="Início">Home</a>
         <div class="dropdown">
-            <button class="dropdown-button">Master ▾</button>
+            <button class="dropdown-button" data-en="Master ▾" data-pt="Mestrado ▾">Master ▾</button>
             <div class="dropdown-content">
-                <a href="courses.html">Courses</a>
-                <a href="contact.html" class="active">Contacts</a>
+                <a href="courses.html" data-en="Courses" data-pt="Cursos">Courses</a>
+                <a href="contact.html" class="active" data-en="Contacts" data-pt="Contactos">Contacts</a>
             </div>
         </div>
-        <a href="game.html">Games</a>
-        <a href="astro_world.html">Astro World</a>
+        <a href="phd.html" data-en="PhD" data-pt="Doutoramento">PhD</a>
+        <a href="game.html" data-en="Games" data-pt="Jogos">Games</a>
+        <a href="astro_world.html" data-en="Astro World" data-pt="Mundo Astro">Astro World</a>
+        <a href="merch.html" data-en="Merch" data-pt="Merch">Merch</a>
+        <div class="lang-toggle">
+            <button data-lang="en" type="button">EN</button>
+            <button data-lang="pt" type="button">PT</button>
+        </div>
     </div>
     <h1><em>OSCAR</em></h1>
     <h2>Organização Socio-Cooperativa de AstRofísica</h2>
@@ -88,18 +47,18 @@
 
 <div class="page-content">
 
-    <div class="section-label">// Who to Talk To</div>
+    <div class="section-label reveal" data-en="// Who to Talk To" data-pt="// Com Quem Falar">// Who to Talk To</div>
 
     <div class="grid-2">
 
-        <div class="card">
-            <p>If you need help, there are many people you can talk to. For course-related issues like exam dates or homework extensions, your <strong>professors</strong> should be the first point of contact.</p>
-            <p>The <strong>Comissão de Acompanhamento de Curso</strong> consists of four people: the main professor (head of the Master), another professor (usually head of the Doctorate program), and two students. Meetings take place at the end of each semester, but you don't need to wait for the semester's end to raise issues.</p>
-            <p>You can also explore internship opportunities with professors and research centers like the <strong>Centro de Investigação da Universidade do Porto (CAUP)</strong> and <strong>Instituto de Astrofísica e Ciências do Espaço (IA)</strong>.</p>
+        <div class="card reveal">
+            <p data-en="If you need help, there are many people you can talk to. For course-related issues like exam dates or homework extensions, your <strong>professors</strong> should be the first point of contact." data-pt="Se precisares de ajuda, há muitas pessoas com quem podes falar. Para questões relacionadas com a cadeira, como datas de exame ou prorrogações de trabalhos, os teus <strong>professores</strong> devem ser o primeiro contacto.">If you need help, there are many people you can talk to. For course-related issues like exam dates or homework extensions, your <strong>professors</strong> should be the first point of contact.</p>
+            <p data-en="The <strong>Comissão de Acompanhamento de Curso</strong> consists of four people: the main professor (head of the Master), another professor (usually head of the Doctorate program), and two students. Meetings take place at the end of each semester, but you don&#39;t need to wait for the semester&#39;s end to raise issues." data-pt="A <strong>Comissão de Acompanhamento de Curso</strong> é composta por quatro pessoas: o professor responsável (diretor do Mestrado), outro professor (normalmente diretor do Doutoramento) e dois estudantes. As reuniões acontecem no final de cada semestre, mas não precisas de esperar pelo fim do semestre para levantar questões.">The <strong>Comissão de Acompanhamento de Curso</strong> consists of four people: the main professor (head of the Master), another professor (usually head of the Doctorate program), and two students. Meetings take place at the end of each semester, but you don't need to wait for the semester's end to raise issues.</p>
+            <p data-en="You can also explore internship opportunities with professors and research centers like the <strong>Centro de Investigação da Universidade do Porto (CAUP)</strong>, which is part of <strong>Instituto de Astrofísica e Ciências do Espaço (IA)</strong>." data-pt="Também podes explorar oportunidades de estágio com professores e centros de investigação como o <strong>Centro de Investigação da Universidade do Porto (CAUP)</strong>, que é parte do <strong>Instituto de Astrofísica e Ciências do Espaço (IA)</strong>.">You can also explore internship opportunities with professors and research centers like the <strong>Centro de Investigação da Universidade do Porto (CAUP)</strong>, which is part of <strong>Instituto de Astrofísica e Ciências do Espaço (IA)</strong>.</p>
         </div>
 
-        <div class="card">
-            <div class="section-label" style="font-size:0.65rem; margin-bottom:14px;">// Useful Links</div>
+        <div class="card reveal">
+            <div class="card-label" data-en="// Useful Links" data-pt="// Ligações Úteis">// Useful Links</div>
             <ul class="link-list">
                 <li><a href="https://sigarra.up.pt/fcup/pt/CUR_GERAL.CUR_COMISSAO_acomp_LIST?pv_curso_id=871" target="_blank">Comissão de Acompanhamento de Curso</a></li>
                 <li><a href="https://info.fc.up.pt/fcup/static/index.php?f_id=673" target="_blank">PEEC</a></li>
@@ -113,8 +72,10 @@
 </div>
 
 <footer>
-    <p>Good Luck! &nbsp;|&nbsp; <a href="mailto:lumosastroastro@gmail.com">lumosastroastro@gmail.com</a></p>
-    <p>By M.A.F. de Melo e Sousa</p>
+    <p><span data-en="Good Luck!" data-pt="Boa Sorte!">Good Luck!</span>&nbsp;|&nbsp; <a href="mailto:lumosastroastro@gmail.com">lumosastroastro@gmail.com</a></p>
+    <p>By M.A.F. de Melo e Sousa et al</p>
 </footer>
+
+<script src="assets/retro.js"></script>
 </body>
 </html>
