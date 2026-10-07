@@ -49,6 +49,31 @@
         .fine-print { font-family: var(--font-body); font-size: 0.78rem; color: var(--ink-faint); line-height: 1.9; margin-top: 40px; max-width: 720px; }
         .fine-print a { color: inherit; font-weight: inherit; }
         .fine-print a:hover { color: #fff; }
+
+        /* ── Click-to-enlarge images ── */
+        .img-box img { cursor: zoom-in; transition: transform 0.2s; }
+        .img-box img:hover { transform: scale(1.03); }
+        .img-box img:focus-visible { outline: 2px solid var(--cyan); outline-offset: -4px; }
+
+        #lightbox {
+            border: 2px solid var(--panel-line);
+            background: rgba(4, 3, 14, 0.96);
+            padding: 0;
+            max-width: 92vw;
+            max-height: 92vh;
+            box-shadow: 0 0 60px rgba(93,227,255,0.2);
+            overflow: visible;
+        }
+        #lightbox::backdrop { background: rgba(0, 0, 0, 0.85); }
+        #lightbox img { display: block; max-width: 92vw; max-height: 86vh; object-fit: contain; cursor: zoom-out; }
+        #lightbox-caption { font-family: var(--font-body); font-size: 0.8rem; color: var(--ink-dim); text-align: center; padding: 10px 14px; }
+        #lightbox-close {
+            position: absolute; top: -16px; right: -16px;
+            width: 36px; height: 36px; padding: 0;
+            font-family: var(--font-display); font-size: 0.8rem;
+            background: var(--magenta); color: #fff; border: none; cursor: pointer;
+        }
+        #lightbox-close:hover, #lightbox-close:focus-visible { background: #fff; color: var(--magenta); }
     </style>
 </head>
 <body>
@@ -118,7 +143,7 @@
 
             <!-- T-SHIRT 2024/2025 -->
             <div class="ticker-card">
-                <div class="img-box"><img src="pics\merch\Tshirt_2425.jpg" alt="OSCAR T-shirt 2024/2025"></div>
+                <div class="img-box"><img src="pics/merch/Tshirt_2425.jpg" alt="OSCAR T-shirt 2024/2025"></div>
                 <div class="headline" data-en="OSCAR T-Shirt — 2024/2025" data-pt="T-shirt OSCAR — 2024/2025">OSCAR T-Shirt — 2024/2025</div>
                 <span class="tag tag-closed" data-en="Orders Closed" data-pt="Encomendas Fechadas">Orders Closed</span>
                 <p data-en="Schrödinger meets Astronaut. 30 T-shirts at 9€ each, free Oscar sticker included. Goal reached — orders now closed." data-pt="Schrödinger encontra Astronauta. 30 T-shirts a 9€ cada, com autocolante do Oscar incluído. Objetivo atingido — encomendas fechadas.">Schrödinger meets Astronaut. 30 T-shirts at 9€ each, free Oscar sticker included. Goal reached — orders now closed.</p>
@@ -131,7 +156,7 @@
 
             <!-- HOODIE 2023/2024 -->
             <div class="ticker-card">
-                <div class="img-box"><img src="pics\merch\Camisolas_2324.png" alt="AstroHoodie 2023/2024"></div>
+                <div class="img-box"><img src="pics/merch/Camisolas_2324.png" alt="AstroHoodie 2023/2024"></div>
                 <div class="headline" data-en="AstroHoodie — 2023/2024" data-pt="AstroHoodie — 2023/2024">AstroHoodie — 2023/2024</div>
                 <span class="tag tag-closed" data-en="Orders Closed" data-pt="Encomendas Fechadas">Orders Closed</span>
                 <p data-en="Chosen and designed by students. Reopened for a second edition without the year printed on the back." data-pt="Escolhida e desenhada por estudantes. Reaberta para uma segunda edição sem o ano impresso nas costas.">Chosen and designed by students. Reopened for a second edition without the year printed on the back.</p>
@@ -151,7 +176,7 @@
 
             <!-- duplicate set for a seamless loop -->
             <div class="ticker-card" aria-hidden="true">
-                <div class="img-box"><img src="pics\merch\Tshirt_2425.jpg" alt="OSCAR T-shirt 2024/2025"></div>
+                <div class="img-box"><img src="pics/merch/Tshirt_2425.jpg" alt="OSCAR T-shirt 2024/2025"></div>
                 <div class="headline" data-en="OSCAR T-Shirt — 2024/2025" data-pt="T-shirt OSCAR — 2024/2025">OSCAR T-Shirt — 2024/2025</div>
                 <span class="tag tag-closed" data-en="Orders Closed" data-pt="Encomendas Fechadas">Orders Closed</span>
                 <p data-en="Schrödinger meets Astronaut. 30 T-shirts at 9€ each, free Oscar sticker included. Goal reached — orders now closed." data-pt="Schrödinger encontra Astronauta. 30 T-shirts a 9€ cada, com autocolante do Oscar incluído. Objetivo atingido — encomendas fechadas.">Schrödinger meets Astronaut. 30 T-shirts at 9€ each, free Oscar sticker included. Goal reached — orders now closed.</p>
@@ -162,7 +187,7 @@
                 <a class="cta-link disabled" href="#" tabindex="-1"><span data-en="Link Unavailable" data-pt="Link Indisponível">Link Unavailable</span></a>
             </div>
             <div class="ticker-card" aria-hidden="true">
-                <div class="img-box"><img src="pics\merch\Camisolas_2324.png" alt="AstroHoodie 2023/2024"></div>
+                <div class="img-box"><img src="pics/merch/Camisolas_2324.png" alt="AstroHoodie 2023/2024"></div>
                 <div class="headline" data-en="AstroHoodie — 2023/2024" data-pt="AstroHoodie — 2023/2024">AstroHoodie — 2023/2024</div>
                 <span class="tag tag-closed" data-en="Orders Closed" data-pt="Encomendas Fechadas">Orders Closed</span>
                 <p data-en="Chosen and designed by students. Reopened for a second edition without the year printed on the back." data-pt="Escolhida e desenhada por estudantes. Reaberta para uma segunda edição sem o ano impresso nas costas.">Chosen and designed by students. Reopened for a second edition without the year printed on the back.</p>
@@ -192,6 +217,45 @@
     <p>By M.A.F. de Melo e Sousa et al</p>
 </footer>
 
+<!-- Enlarged-image viewer -->
+<dialog id="lightbox" aria-label="Enlarged image">
+    <button id="lightbox-close" type="button" aria-label="Close">✕</button>
+    <img id="lightbox-img" src="" alt="">
+    <div id="lightbox-caption"></div>
+</dialog>
+
 <script src="assets/retro.js"></script>
+<script>
+    // Click (or press Enter on) any merch image to see it bigger.
+    // Close with ✕, Esc, or by clicking anywhere outside / on the image.
+    (function () {
+        const box = document.getElementById('lightbox');
+        const big = document.getElementById('lightbox-img');
+        const caption = document.getElementById('lightbox-caption');
+
+        function open(img) {
+            big.src = img.currentSrc || img.src;
+            big.alt = img.alt;
+            caption.textContent = img.alt;
+            box.showModal();
+        }
+
+        document.querySelectorAll('.img-box img').forEach(img => {
+            // Duplicate ticker cards (aria-hidden) stay clickable but out of the Tab order
+            if (!img.closest('[aria-hidden="true"]')) {
+                img.setAttribute('tabindex', '0');
+                img.setAttribute('role', 'button');
+            }
+            img.addEventListener('click', () => open(img));
+            img.addEventListener('keydown', e => {
+                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(img); }
+            });
+        });
+
+        document.getElementById('lightbox-close').addEventListener('click', () => box.close());
+        big.addEventListener('click', () => box.close());
+        box.addEventListener('click', e => { if (e.target === box) box.close(); });
+    })();
+</script>
 </body>
 </html>
