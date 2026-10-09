@@ -27,6 +27,50 @@
             color: var(--magenta);
         }
         @media (max-width: 800px) { .grid-2 { grid-template-columns: 1fr; } }
+
+        /* ════════ UCs AND DEADLINES ════════ */
+        /* Row 1: three PhD components */
+        .phd-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; align-items: stretch; }
+        .phd-card { display: flex; flex-direction: column; padding: 26px; }
+        .phd-card-icon { font-size: 1.6rem; margin-bottom: 12px; }
+        .phd-card h3 { font-family: var(--font-display); font-size: 0.78rem; letter-spacing: 1px; color: var(--yellow); text-transform: uppercase; line-height: 1.6; margin-bottom: 12px; }
+        .card .phd-summary { font-size: 0.84rem; color: #fff; line-height: 1.75; margin-bottom: 14px; }
+        .phd-facts { list-style: none; padding: 0; margin: 0 0 18px; flex: 1; }
+        .phd-facts li { position: relative; padding: 5px 0 5px 18px; font-family: var(--font-body); font-size: 0.78rem; color: var(--ink-dim); line-height: 1.65; }
+        .phd-facts li::before { content: '▸'; position: absolute; left: 0; color: var(--magenta); }
+        .phd-deadline { font-family: var(--font-body); font-size: 0.76rem; color: var(--ink-dim); line-height: 1.6; padding: 10px 12px; border: 1px dashed rgba(255,206,61,0.35); background: rgba(255,206,61,0.05); }
+        .phd-deadline strong { color: var(--yellow); }
+
+        /* Row 2: key-dates timeline */
+        .phd-timeline-card { margin-top: 22px; padding: 26px 28px 30px; }
+        .phd-timeline { list-style: none; padding: 0; margin: 8px 0 0; display: grid; grid-template-columns: repeat(6, 1fr); position: relative; }
+        .phd-timeline::before { content: ''; position: absolute; left: 0; right: 0; top: 34px; height: 2px; background: linear-gradient(90deg, var(--cyan), var(--magenta)); opacity: 0.45; }
+        .phd-timeline li { position: relative; padding: 0 10px; text-align: center; }
+        .phd-timeline li::after { content: ''; position: absolute; top: 29px; left: 50%; width: 12px; height: 12px; margin-left: -6px; background: var(--magenta); box-shadow: 0 0 12px var(--magenta); }
+        .tl-date { display: block; font-family: var(--font-display); font-size: 0.72rem; color: var(--cyan); letter-spacing: 0.5px; height: 24px; white-space: nowrap; }
+        .tl-what { display: block; margin-top: 28px; font-family: var(--font-body); font-size: 0.76rem; color: var(--ink-dim); line-height: 1.6; }
+
+        /* Row 3: curricular units */
+        .uc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+        .uc-card { padding: 26px; }
+        .uc-title { font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 0.8px; color: var(--yellow); text-transform: uppercase; line-height: 1.7; padding-bottom: 12px; margin-bottom: 6px; border-bottom: 1px dashed rgba(93,227,255,0.15); }
+        .uc-half { padding: 12px 0 12px 14px; border-left: 2px solid rgba(255,62,165,0.45); margin-top: 10px; }
+        .uc-name { font-family: var(--font-body); font-size: 0.88rem; color: #fff; line-height: 1.5; margin-bottom: 4px; }
+        .uc-meta { display: flex; flex-wrap: wrap; gap: 4px 14px; font-family: var(--font-body); font-size: 0.78rem; }
+        .uc-meta .who { color: var(--cyan); }
+        .uc-meta .when { color: var(--ink-faint); }
+
+        @media (max-width: 960px) {
+            .phd-grid-3 { grid-template-columns: 1fr; }
+            .uc-grid { grid-template-columns: 1fr; }
+            /* timeline turns vertical */
+            .phd-timeline { grid-template-columns: 1fr; gap: 16px; padding-left: 26px; }
+            .phd-timeline::before { left: 5px; right: auto; top: 6px; bottom: 6px; width: 2px; height: auto; background: linear-gradient(180deg, var(--cyan), var(--magenta)); }
+            .phd-timeline li { text-align: left; padding: 0; }
+            .phd-timeline li::after { top: 4px; left: -26px; margin-left: 0; }
+            .tl-date { height: auto; }
+            .tl-what { margin-top: 4px; }
+        }
     </style>
 </head>
 <body>
@@ -128,6 +172,118 @@
         </div>
 
     </div>
+
+   <div class="section-label reveal" style="margin-top: 54px;" data-en="// UCs and Deadlines" data-pt="// UCs e Prazos">// UCs and Deadlines</div>
+
+    <!-- Row 1: the three PhD components -->
+    <div class="phd-grid-3">
+
+        <div class="card phd-card reveal">
+            <div class="phd-card-icon">📜</div>
+            <h3 data-en="Thesis Project" data-pt="Projeto de Tese">Thesis Project</h3>
+            <p class="phd-summary" data-en="A research plan for your whole thesis: the state of the art, your methods, your goals and how you plan to reach them." data-pt="Um plano de investigação para toda a tua tese: o estado da arte, os métodos, os objetivos e como pretendes alcançá-los.">A research plan for your whole thesis: the state of the art, your methods, your goals and how you plan to reach them.</p>
+            <ul class="phd-facts">
+                <li data-en="Written proposal + presentation with discussion at the end of the academic year" data-pt="Proposta escrita + apresentação com discussão no final do ano letivo">Written proposal + presentation with discussion at the end of the academic year</li>
+                <li data-en="Max. 20 pages, using the mandatory LaTeX template (you can adapt it)" data-pt="Máx. 20 páginas, com o template LaTeX obrigatório (podes adaptá-lo)">Max. 20 pages, using the mandatory LaTeX template (you can adapt it)</li>
+                <li data-en="Must include a timeline — later annual reports compare against it" data-pt="Deve incluir uma cronologia — os relatórios anuais seguintes comparam-se com ela">Must include a timeline — later annual reports compare against it</li>
+                <li data-en="Submitted with declarations from your supervisor(s) and research unit" data-pt="Submetido com declarações do(s) orientador(es) e da unidade de investigação">Submitted with declarations from your supervisor(s) and research unit</li>
+                <li data-en="The title can still be changed later if needed" data-pt="O título pode ainda ser alterado mais tarde, se necessário">The title can still be changed later if needed</li>
+            </ul>
+            <div class="phd-deadline" data-en="Topic &amp; adviser by <strong>15 Nov</strong> &middot; <strong>15 Dec</strong> if no pre-defined supervisor" data-pt="Tema e orientador até <strong>15 nov</strong> &middot; <strong>15 dez</strong> se não tiveres orientador pré-definido">Topic &amp; adviser by <strong>15 Nov</strong> · <strong>15 Dec</strong> if no pre-defined supervisor</div>
+        </div>
+
+        <div class="card phd-card reveal">
+            <div class="phd-card-icon">🔬</div>
+            <h3 data-en="Seminar" data-pt="Seminário">Seminar</h3>
+            <p class="phd-summary" data-en="A closed, short research task with a pre-defined objective — about 2–3 months of full-time work. Good preparation for your thesis project." data-pt="Uma tarefa de investigação curta e fechada, com um objetivo pré-definido — cerca de 2–3 meses de trabalho a tempo inteiro. Boa preparação para o projeto de tese.">A closed, short research task with a pre-defined objective — about 2–3 months of full-time work. Good preparation for your thesis project.</p>
+            <ul class="phd-facts">
+                <li data-en="Report + presentation with discussion" data-pt="Relatório + apresentação com discussão">Report + presentation with discussion</li>
+                <li data-en="Use the “Thesis Project” LaTeX template, adapting the sections (max. 20 pages)" data-pt="Usa o template LaTeX do “Projeto de Tese”, adaptando as secções (máx. 20 páginas)">Use the “Thesis Project” LaTeX template, adapting the sections (max. 20 pages)</li>
+                <li data-en="Templates will be provided" data-pt="Os templates serão fornecidos">Templates will be provided</li>
+            </ul>
+            <div class="phd-deadline" data-en="Work &amp; adviser by <strong>15 Nov</strong>" data-pt="Trabalho e orientador até <strong>15 nov</strong>">Work &amp; adviser by <strong>15 Nov</strong></div>
+        </div>
+
+        <div class="card phd-card reveal">
+            <div class="phd-card-icon">🎒</div>
+            <h3 data-en="Formação Complementar" data-pt="Formação Complementar">Formação Complementar</h3>
+            <p class="phd-summary" data-en="A unit that corresponds to a workshop or class you attend, such as a school, course or training event." data-pt="Uma unidade que corresponde a um workshop ou aula que frequentes, como uma escola, curso ou formação.">A unit that corresponds to a workshop or class you attend, such as a school, course or training event.</p>
+            <ul class="phd-facts">
+                <li data-en="Discuss and agree with your supervisor what counts" data-pt="Discute e acorda com o teu orientador o que conta">Discuss and agree with your supervisor what counts</li>
+            </ul>
+            <div class="phd-deadline" data-en="Flexible — plan it with your supervisor" data-pt="Flexível — planeia com o teu orientador">Flexible — plan it with your supervisor</div>
+        </div>
+
+    </div>
+
+    <!-- Row 2: key dates timeline -->
+    <div class="card reveal phd-timeline-card">
+        <div class="card-label" data-en="Key Dates · 2026/27" data-pt="Datas Importantes · 2026/27">Key Dates · 2026/27</div>
+        <ol class="phd-timeline">
+            <li><span class="tl-date" data-en="15 Nov" data-pt="15 nov">15 Nov</span><span class="tl-what" data-en="Thesis project &amp; seminar: topic and adviser" data-pt="Projeto de tese e seminário: tema e orientador">Thesis project &amp; seminar: topic and adviser</span></li>
+            <li><span class="tl-date" data-en="15 Dec" data-pt="15 dez">15 Dec</span><span class="tl-what" data-en="Thesis topic, if you started without a supervisor" data-pt="Tema da tese, se começaste sem orientador">Thesis topic, if you started without a supervisor</span></li>
+            <li><span class="tl-date" data-en="31 Mar" data-pt="31 mar">31 Mar</span><span class="tl-what" data-en="Seminar report due" data-pt="Entrega do relatório do seminário">Seminar report due</span></li>
+            <li><span class="tl-date" data-en="8 Apr" data-pt="8 abr">8 Apr</span><span class="tl-what" data-en="Seminar presentations" data-pt="Apresentações do seminário">Seminar presentations</span></li>
+            <li><span class="tl-date" data-en="31 May" data-pt="31 mai">31 May</span><span class="tl-what" data-en="Thesis projects (1st year) &amp; annual reports (2nd year+) due" data-pt="Entrega dos projetos de tese (1.º ano) e relatórios anuais (2.º ano+)">Thesis projects (1st year) &amp; annual reports (2nd year+) due</span></li>
+            <li><span class="tl-date" data-en="7–8 Jun" data-pt="7–8 jun">7–8 Jun</span><span class="tl-what" data-en="Thesis project &amp; annual report presentations" data-pt="Apresentações dos projetos de tese e relatórios anuais">Thesis project &amp; annual report presentations</span></li>
+        </ol>
+    </div>
+
+    <!-- Row 3: curricular units, full width -->
+    <div class="section-label reveal" style="margin-top: 54px;" data-en="// Curricular Units" data-pt="// Unidades Curriculares">// Curricular Units</div>
+    <div class="uc-grid">
+
+        <div class="card uc-card reveal">
+            <div class="uc-title" data-en="Advanced Topics in Stars and Planets" data-pt="Tópicos Avançados em Estrelas e Planetas">Advanced Topics in Stars and Planets</div>
+            <div class="uc-half">
+                <div class="uc-name" data-en="Stellar Activity" data-pt="Atividade Estelar">Stellar Activity</div>
+                <div class="uc-meta"><span class="who">Ângela Santos</span><span class="when" data-en="Jan/Feb" data-pt="jan/fev">Jan/Feb</span></div>
+            </div>
+            <div class="uc-half">
+                <div class="uc-name" data-en="New Frontiers in Exoplanet Research" data-pt="Novas Fronteiras na Investigação de Exoplanetas">New Frontiers in Exoplanet Research</div>
+                <div class="uc-meta"><span class="who">Susana Barros</span><span class="when" data-en="Jan/Feb" data-pt="jan/fev">Jan/Feb</span></div>
+            </div>
+        </div>
+
+        <div class="card uc-card reveal">
+            <div class="uc-title" data-en="Advanced Topics in Galaxies and Cosmology" data-pt="Tópicos Avançados em Galáxias e Cosmologia">Advanced Topics in Galaxies and Cosmology</div>
+            <div class="uc-half">
+                <div class="uc-name" data-en="Modern Cosmology" data-pt="Cosmologia Moderna">Modern Cosmology</div>
+                <div class="uc-meta"><span class="who">José Fonseca</span><span class="when" data-en="19 Oct – 20 Nov" data-pt="19 out – 20 nov">19 Oct – 20 Nov</span></div>
+            </div>
+            <div class="uc-half">
+                <div class="uc-name" data-en="Galaxies and Extragalactic Astronomy" data-pt="Galáxias e Astronomia Extragaláctica">Galaxies and Extragalactic Astronomy</div>
+                <div class="uc-meta"><span class="who">Iris Breda</span><span class="when" data-en="4 – 27 Jan" data-pt="4 – 27 jan">4 – 27 Jan</span></div>
+            </div>
+        </div>
+
+        <div class="card uc-card reveal">
+            <div class="uc-title" data-en="Advanced Topics in Observation and Instrumentation" data-pt="Tópicos Avançados em Observação e Instrumentação">Advanced Topics in Observation and Instrumentation</div>
+            <div class="uc-half">
+                <div class="uc-name" data-en="High Precision Spectroscopy" data-pt="Espectroscopia de Alta Precisão">High Precision Spectroscopy</div>
+                <div class="uc-meta"><span class="who">André Silva</span><span class="when" data-en="Nov · Thursdays 14:00–18:00" data-pt="nov · quintas-feiras 14:00–18:00">Nov · Thursdays 14:00–18:00</span></div>
+            </div>
+            <div class="uc-half">
+                <div class="uc-name" data-en="Astronomical Instrumentation" data-pt="Instrumentação Astronómica">Astronomical Instrumentation</div>
+                <div class="uc-meta"><span class="who">Bachar Wehbe</span><span class="when" data-en="Nov · Mondays 14:00–18:00" data-pt="nov · segundas-feiras 14:00–18:00">Nov · Mondays 14:00–18:00</span></div>
+            </div>
+        </div>
+
+        <div class="card uc-card reveal">
+            <div class="uc-title" data-en="Advanced Topics in Methods and Modelling in Astrophysics" data-pt="Tópicos Avançados em Métodos e Modelação em Astrofísica">Advanced Topics in Methods and Modelling in Astrophysics</div>
+            <div class="uc-half">
+                <div class="uc-name" data-en="Time Series Analysis" data-pt="Análise de Séries Temporais">Time Series Analysis</div>
+                <div class="uc-meta"><span class="who">Tiago Campante</span><span class="when" data-en="23 Nov – 18 Dec" data-pt="23 nov – 18 dez">23 Nov – 18 Dec</span></div>
+            </div>
+            <div class="uc-half">
+                <div class="uc-name" data-en="Machine Learning in Astronomy" data-pt="Machine Learning em Astronomia">Machine Learning in Astronomy</div>
+                <div class="uc-meta"><span class="who">Vardan Adibekyan</span><span class="when" data-en="4 – 29 Jan" data-pt="4 – 29 jan">4 – 29 Jan</span></div>
+            </div>
+        </div>
+
+    </div>
+
+
 
 </div>
 
