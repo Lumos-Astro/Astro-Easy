@@ -49,6 +49,37 @@ const researchers = {
                 pt: "Sou estudante de doutoramento no Porto, sob a orientação da Dra. Margarida Cunha, da Dra. Ângela Santos e da Dra. Victoria Laura Antoci. Ciência ID: 0B18-AAAE-47AE"
             }
         },
+
+        {
+            slug: "afonso-mota",
+            name: "Afonso Mota",
+            role: { en: "PhD Researcher", pt: "Investigador de Doutoramento" },
+            institution: "Instituto de Astrofísica e Ciências do Espaço (IA); CIIMAR; Museu de História Natural de Paris (MNHN)",
+            masters: {
+                en: "University of Lisboa — Faculty of Sciences",
+                pt: "Universidade de Lisboa — Faculdade de Ciências"},
+            photo: "pics/people/afonso_mota.JPG",
+            bio: {
+                en: "My research bridges microbiology and astrophysics to assess microbial habitability in the Solar System (e.g. Mars and icy moons) and beyond (exoplanets). In particular, my work focuses on modelling (exo)planetary environments and then performing laboratory experiments to assess the survival and growth capabilities of microorganisms in such conditions. Supervisors: Marta Cortesão, Nuno C. Santos, Catarina Magalhães, Adrienne Kish",
+                pt: "A minha investigação faz a ponte entre a microbiologia e a astrofísica para avaliar a habitabilidade microbiana no Sistema Solar (por exemplo, Marte e luas geladas) e para além dele (exoplanetas). Em particular, o meu trabalho centra-se na modelação de ambientes (exo)planetários e, em seguida, na realização de experiências laboratoriais para avaliar a capacidade de sobrevivência e de crescimento de microrganismos nessas condições. Supervisores: Marta Cortesão, Nuno C. Santos, Catarina Magalhães, Adrienne Kish"
+            }
+        },
+
+                {
+            slug: "jen-peralta",
+            name: "Jennifer P. Lucero",
+            role: { en: "PhD Researcher", pt: "Investigador de Doutoramento" },
+            institution: "Instituto de Astrofísica e Ciências do Espaço (IA)",
+            masters: {
+                en: "Pontificia Universidad Catolica de Chile ",
+                pt: "Pontificia Universidad Catolica de Chile "},
+            photo: "pics/people/jenn.jpg",
+            bio: {
+                en: "My research investigates how stellar activity impacts the characterization of exoplanet atmospheres, with a particular focus on high-resolution spectroscopic observations. For my research I use data from the Paranal Solar ESPRESSO Telescope (PoET). ",
+                pt: "A minha investigação estuda o impacto da atividade estelar na caracterização de atmosferas de exoplanetas, com especial enfoque em observações espectroscópicas de alta resolução. No âmbito da minha investigação, utilizo dados do Paranal Solar ESPRESSO Telescope (PoET)."
+            }
+        },
+
     ]},
     //"Austria": { label: "Austria", people: [
     //    { slug: "joao-ferreira", name: "Dr. João Ferreira", role: "Head Researcher", institution: "University of Vienna — Department of Astrophysics", masters: "", photo: "", bio: "" },
