@@ -75,10 +75,27 @@ const researchers = {
                 pt: "Pontificia Universidad Catolica de Chile "},
             photo: "pics/people/jenn.jpg",
             bio: {
-                en: "My research investigates how stellar activity impacts the characterization of exoplanet atmospheres, with a particular focus on high-resolution spectroscopic observations. For my research I use data from the Paranal Solar ESPRESSO Telescope (PoET). ",
-                pt: "A minha investigação estuda o impacto da atividade estelar na caracterização de atmosferas de exoplanetas, com especial enfoque em observações espectroscópicas de alta resolução. No âmbito da minha investigação, utilizo dados do Paranal Solar ESPRESSO Telescope (PoET)."
+                en: "My research investigates how stellar activity impacts the characterization of exoplanet atmospheres, with a particular focus on high-resolution spectroscopic observations. For my research I use data from the Paranal Solar ESPRESSO Telescope (PoET). Supervisors: Dr. Nuno C. Santos, Dr. Olivier Demangeon",
+                pt: "A minha investigação estuda o impacto da atividade estelar na caracterização de atmosferas de exoplanetas, com especial enfoque em observações espectroscópicas de alta resolução. No âmbito da minha investigação, utilizo dados do Paranal Solar ESPRESSO Telescope (PoET). Supervisores: Dr. Nuno C. Santos, Dr. Olivier Demangeon"
             }
         },
+
+                        {
+            slug: "Diogo-Baptista",
+            name: "Diogo Baptista",
+            role: { en: "PhD Researcher", pt: "Investigador de Doutoramento" },
+            institution: "Instituto de Astrofísica e Ciências do Espaço (IA), The Institute of Physics for Advanced Materials, Nanotechnology and Photonics (IFIMUP)",
+            masters: {
+                en: "University of Porto — Faculty of Sciences",
+                pt: "Universidade do Porto — Faculdade de Ciências"},
+            photo: "pics/people/diogo_baptista.jpeg",
+            bio: {
+                en: "I work on computational chemistry, acessing planetary atmospheres and optical properties of atmospheric compounds. Supervisors: Clara Sousa-Silva, Estelina Lora da Silva",
+                pt: "Eu trabalho em química computacional, explorando atmosferas planetárias e propriedades ópticas de compostos atmosféricos. Supervisores: Clara Sousa-Silva, Estelina Lora da Silva "
+            }
+        },
+
+
 
     ]},
     //"Austria": { label: "Austria", people: [
