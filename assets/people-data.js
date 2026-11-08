@@ -95,6 +95,21 @@ const researchers = {
             }
         },
 
+        {
+            slug: "Alexandre-Branco",
+            name: "Alexandre Branco",
+            role: { en: "PhD Researcher", pt: "Investigador de Doutoramento" },
+            institution: " Instituto de Astrofísica e Ciências do Espaço (CAUP); Faculdade de Ciências da Universidade do Porto",
+            masters: {
+                en: "University of Lisboa— Faculty of Sciences",
+                pt: "Universidade de Lisboa — Faculdade de Ciências"},
+            photo: "pics/people/alexandre_branco.jpeg",
+            bio: {
+                en: "As of now, I am looking to understand what processes determine the different chemical compositions we observe in exoplanet atmospheres. These processes include photochemistry, atmospheric circulation, interactions with the planetary interior, and potential biospheres! Supervisors: Clara Sousa-Silva; Olivier Demangeon; Pedro Machado",
+                pt: "Atualmente procuro perceber que processos determinam as diferentes composições químicas que observamos nas  atmosferas de exoplanetas. Estes processos incluem,  fotoquímica, circulação atmosférica, interações com o interior planetário e potenciais biosferas! Supervisores: Clara Sousa-Silva; Olivier Demangeon; Pedro Machado "
+            }
+        },
+
 
 
     ]},
