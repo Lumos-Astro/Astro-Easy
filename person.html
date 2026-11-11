@@ -34,6 +34,7 @@
         .profile-facts.single { grid-template-columns: 1fr; }
         .fact-card { padding-left: 14px; border-left: 2px solid rgba(255,62,165,0.45); }
         .fact-card .card-label { margin-bottom: 8px; padding-bottom: 0; border-bottom: none; }
+        #phd-block { margin-bottom: 14px; }
         .fact-value { font-family: var(--font-body); font-size: 0.86rem; color: #fff; line-height: 1.7; }
 
         /* ── About text (full width, left-aligned) ── */
@@ -100,8 +101,14 @@
                             <div class="fact-value" id="profile-work"></div>
                         </div>
                         <div class="fact-card" id="masters-wrap">
+                            <div id="phd-block" style="display:none;">
+                                <div class="card-label" data-en="// PhD" data-pt="// Doutoramento">// PhD</div>
+                                <div class="fact-value" id="profile-phd"></div>
+                            </div>
+                            <div id="masters-block">
                             <div class="card-label" data-en="// Master's" data-pt="// Mestrado">// Master's</div>
                             <div class="fact-value" id="profile-masters"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -180,12 +187,19 @@
         // Where they work / Master's — hide a block if it's empty
         const showWork = hasText(person.institution);
         const showMasters = hasText(person.masters);
+        const showPhd = hasText(person.phd);
+        const showEdu = showMasters || showPhd;
         if (showWork) fillText(document.getElementById('profile-work'), person.institution);
         else document.getElementById('work-wrap').style.display = 'none';
+        if (showPhd) {
+            fillText(document.getElementById('profile-phd'), person.phd);
+            document.getElementById('phd-block').style.display = 'block';
+        }
         if (showMasters) fillText(document.getElementById('profile-masters'), person.masters);
-        else document.getElementById('masters-wrap').style.display = 'none';
-        if (!showWork && !showMasters) document.getElementById('profile-facts').style.display = 'none';
-        else if (!showWork || !showMasters) document.getElementById('profile-facts').classList.add('single');
+        else document.getElementById('masters-block').style.display = 'none';
+        if (!showEdu) document.getElementById('masters-wrap').style.display = 'none';
+        if (!showWork && !showEdu) document.getElementById('profile-facts').style.display = 'none';
+        else if (!showWork || !showEdu) document.getElementById('profile-facts').classList.add('single');
 
         // About
         if (hasText(person.bio)) fillText(document.getElementById('profile-bio'), person.bio);

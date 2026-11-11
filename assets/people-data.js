@@ -110,6 +110,24 @@ const researchers = {
             }
         },
 
+                {
+            slug: "Kahled-AlMoula",
+            name: "Kahled Al-Moula",
+            role: { en: "Post-Doctoral Researcher", pt: "Investigador de Pós-Doutoramento" },
+            institution: " Instituto de Astrofísica e Ciências do Espaço (CAUP); Faculdade de Ciências da Universidade do Porto",
+            masters: {
+                en: "Uppsala University",
+                pt: "Uppsala University"},
+            phd: {
+                en: "University of Geneva",
+                pt: "University of Geneva"},
+            photo: "pics/people/kahled_al_moula.jpeg",
+            bio: {
+                en: "My work is focused on the characterization and mitigation of stellar activity in radial velocity time series to enable the mass measurement Earth-like planets. I primarily use observations from solar telescopes connected to high-resolution spectrograph to isolate the effects of solar-type variability.",
+                pt: "O meu trabalho centra-se na caracterização e mitigação da atividade estelar em séries temporais de velocidade radial para permitir a medição da massa de planetas semelhantes à Terra. Utilizo principalmente observações de telescópios solares ligados a espectrógrafos de alta resolução para isolar os efeitos da variabilidade do tipo solar."
+            }
+        },
+
 
 
     ]},
