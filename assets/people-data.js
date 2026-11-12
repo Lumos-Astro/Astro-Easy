@@ -98,7 +98,7 @@ const researchers = {
         },
 
 
-                {
+        {
             slug: "jen-peralta",
             name: "Jennifer P. Lucero",
             role: { en: "PhD Researcher", pt: "Investigador de Doutoramento" },
@@ -113,10 +113,9 @@ const researchers = {
             }
         },
 
-
-                {
+        {
             slug: "Kahled-AlMoula",
-            name: "Kahled Al-Moula",
+            name: "Kahled Al Moula",
             role: { en: "Post-Doctoral Researcher", pt: "Investigador de Pós-Doutoramento" },
             institution: " Instituto de Astrofísica e Ciências do Espaço (CAUP); Faculdade de Ciências da Universidade do Porto",
             masters: {
@@ -132,9 +131,27 @@ const researchers = {
             }
         },
 
+    ]},   // <-- FIX 1: closes the Portugal object and adds the missing comma
+
+    "Sweden": { label: "Sweden", people: [
+
+        {
+            slug: "ally-murphy",
+            name: "Alexandra (Ally) Murphy",
+            role: { en: "PhD Researcher", pt: "Investigador de Doutoramento" },
+            institution: "Stockholm University, Department of Astronomy",
+            masters: {
+                en: "Lund University",
+                pt: "Universidade de Lund"},
+            photo: "pics/people/ally_murphy.JPEG",
+            bio: {
+                en: "The focus of my PhD is to research transiting long-period exoplanets using data from ESA’s CHEOPS space telescope. Transit observations enable precise measurements of planetary radii, which, when combined with existing mass measurements, allow us to determine planetary densities and constrain their internal compositions. These properties give us a better understanding of the formation and evolution of cooler planets on wider orbits. Supervisors: Alexis Brandeker; email - alexandra.murphy@astro.su.se",
+                pt: "O fócus do meu doutoramento é investigar exoplanetas de longo período de trânsito usando dados de telescópios espaciais da ESA, como o CHEOPS. Observações de trânsito permitem medições precisas dos raios planetários, que, quando combinadas com medições de massa existentes, nos permitem determinar densidades planetárias e restringir as suas composições internas. Estas propriedades dão-nos uma melhor compreensão da formação e evolução de planetas mais frios em órbitas mais largas. Supervisores: Alexis Brandeker; email - alexandra.murphy@astro.su.se"
+            }
+        },
+    ]},   // <-- FIX 2: closes the Sweden object and adds the missing comma
 
 
-    ]},
     //"Austria": { label: "Austria", people: [
     //    { slug: "joao-ferreira", name: "Dr. João Ferreira", role: "Head Researcher", institution: "University of Vienna — Department of Astrophysics", masters: "", photo: "", bio: "" },
     //]},
@@ -147,7 +164,8 @@ const researchers = {
     "Chile": { label: "Chile", people: [] },
     "Netherlands": { label: "Netherlands", people: [] },
     "Italy": { label: "Italy", people: [] },
-    "Sweden": { label: "Sweden", people: [] },
+    // FIX 3: removed the duplicate empty "Sweden" entry that was here.
+    // It would have overwritten the real Sweden entry above (Ally Murphy).
     "Australia": { label: "Australia", people: [] },
     "Japan": { label: "Japan", people: [] },
     // ADD MORE:
