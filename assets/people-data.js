@@ -143,7 +143,7 @@ const researchers = {
             masters: {
                 en: "Lund University",
                 pt: "Universidade de Lund"},
-            photo: "pics/people/ally_murphy.JPEG",
+            photo: "pics/people/ally_murphy.jpeg",
             bio: {
                 en: "The focus of my PhD is to research transiting long-period exoplanets using data from ESA’s CHEOPS space telescope. Transit observations enable precise measurements of planetary radii, which, when combined with existing mass measurements, allow us to determine planetary densities and constrain their internal compositions. These properties give us a better understanding of the formation and evolution of cooler planets on wider orbits. Supervisors: Alexis Brandeker; email - alexandra.murphy@astro.su.se",
                 pt: "O fócus do meu doutoramento é investigar exoplanetas de longo período de trânsito usando dados de telescópios espaciais da ESA, como o CHEOPS. Observações de trânsito permitem medições precisas dos raios planetários, que, quando combinadas com medições de massa existentes, nos permitem determinar densidades planetárias e restringir as suas composições internas. Estas propriedades dão-nos uma melhor compreensão da formação e evolução de planetas mais frios em órbitas mais largas. Supervisores: Alexis Brandeker; email - alexandra.murphy@astro.su.se"
