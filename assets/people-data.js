@@ -29,14 +29,14 @@ const researchers = {
             institution: "Instituto de Astrofísica e Ciências do Espaço (IA); CIIMAR; Museu de História Natural de Paris (MNHN)",
             masters: {
                 en: "University of Lisboa — Faculty of Sciences",
-                pt: "Universidade de Lisboa — Faculdade de Ciências"},
+                pt: "Universidade de Lisboa — Faculdade de Ciências"
+            },
             photo: "pics/people/afonso_mota.JPG",
             bio: {
                 en: "My research bridges microbiology and astrophysics to assess microbial habitability in the Solar System (e.g. Mars and icy moons) and beyond (exoplanets). In particular, my work focuses on modelling (exo)planetary environments and then performing laboratory experiments to assess the survival and growth capabilities of microorganisms in such conditions. Supervisors: Marta Cortesão, Nuno C. Santos, Catarina Magalhães, Adrienne Kish",
                 pt: "A minha investigação faz a ponte entre a microbiologia e a astrofísica para avaliar a habitabilidade microbiana no Sistema Solar (por exemplo, Marte e luas geladas) e para além dele (exoplanetas). Em particular, o meu trabalho centra-se na modelação de ambientes (exo)planetários e, em seguida, na realização de experiências laboratoriais para avaliar a capacidade de sobrevivência e de crescimento de microrganismos nessas condições. Supervisores: Marta Cortesão, Nuno C. Santos, Catarina Magalhães, Adrienne Kish"
             }
         },
-
 
         {
             slug: "alba-barka",
@@ -46,27 +46,30 @@ const researchers = {
             masters: {
                 en: "University of Bologna, with a thesis done in collaboration with the University of Padova",
                 pt: "Universidade de Bolonha, com tese realizada em colaboração com a Universidade de Pádua"
-                    },
+            },
             photo: "pics/people/alba_barka.jpeg",
             bio: {
                 en: "I am a PhD student in Porto, supervised by Prof. Dr. Nuno Santos and Dr. Ângela Santos. My research focuses on mitigating stellar activity to improve the detection of Earth-like planets, using the Sun as a proxy. During my Master's at the University of Bologna, I worked with the University of Padova on transit timing variations (TTVs) as a method for detecting exoplanets.",
                 pt: "Sou estudante de doutoramento no Porto, sob a orientação do Prof. Dr. Nuno Santos e da Dra. Ângela Santos. A minha investigação centra-se na mitigação da atividade estelar para melhorar a deteção de planetas semelhantes à Terra, usando o Sol como proxy. Durante o mestrado na Universidade de Bolonha, trabalhei em colaboração com a Universidade de Pádua no estudo de variações no tempo de trânsito (TTVs) como método de deteção de exoplanetas."
-            }},
+            }
+        },
 
         {
             slug: "Alexandre-Branco",
             name: "Alexandre Branco",
             role: { en: "PhD Researcher", pt: "Investigador de Doutoramento" },
-            institution: " Instituto de Astrofísica e Ciências do Espaço (CAUP); Faculdade de Ciências da Universidade do Porto",
+            institution: "Instituto de Astrofísica e Ciências do Espaço (CAUP); Faculdade de Ciências da Universidade do Porto",
             masters: {
-                en: "University of Lisboa— Faculty of Sciences",
-                pt: "Universidade de Lisboa — Faculdade de Ciências"},
+                en: "University of Lisboa — Faculty of Sciences",
+                pt: "Universidade de Lisboa — Faculdade de Ciências"
+            },
             photo: "pics/people/alexandre_branco.jpeg",
             bio: {
                 en: "As of now, I am looking to understand what processes determine the different chemical compositions we observe in exoplanet atmospheres. These processes include photochemistry, atmospheric circulation, interactions with the planetary interior, and potential biospheres! Supervisors: Clara Sousa-Silva; Olivier Demangeon; Pedro Machado",
-                pt: "Atualmente procuro perceber que processos determinam as diferentes composições químicas que observamos nas  atmosferas de exoplanetas. Estes processos incluem,  fotoquímica, circulação atmosférica, interações com o interior planetário e potenciais biosferas! Supervisores: Clara Sousa-Silva; Olivier Demangeon; Pedro Machado "
+                pt: "Atualmente procuro perceber que processos determinam as diferentes composições químicas que observamos nas atmosferas de exoplanetas. Estes processos incluem, fotoquímica, circulação atmosférica, interações com o interior planetário e potenciais biosferas! Supervisores: Clara Sousa-Silva; Olivier Demangeon; Pedro Machado"
             }
         },
+
         {
             slug: "Diogo-Baptista",
             name: "Diogo Baptista",
@@ -74,11 +77,12 @@ const researchers = {
             institution: "Instituto de Astrofísica e Ciências do Espaço (IA), The Institute of Physics for Advanced Materials, Nanotechnology and Photonics (IFIMUP)",
             masters: {
                 en: "University of Porto — Faculty of Sciences",
-                pt: "Universidade do Porto — Faculdade de Ciências"},
+                pt: "Universidade do Porto — Faculdade de Ciências"
+            },
             photo: "pics/people/diogo_baptista.jpeg",
             bio: {
                 en: "I work on computational chemistry, acessing planetary atmospheres and optical properties of atmospheric compounds. Supervisors: Clara Sousa-Silva, Estelina Lora da Silva",
-                pt: "Eu trabalho em química computacional, explorando atmosferas planetárias e propriedades ópticas de compostos atmosféricos. Supervisores: Clara Sousa-Silva, Estelina Lora da Silva "
+                pt: "Eu trabalho em química computacional, explorando atmosferas planetárias e propriedades ópticas de compostos atmosféricos. Supervisores: Clara Sousa-Silva, Estelina Lora da Silva"
             }
         },
 
@@ -89,7 +93,8 @@ const researchers = {
             institution: "FCUP — Faculdade de Ciências da Universidade do Porto",
             masters: {
                 en: "University of Porto — Faculty of Sciences",
-                pt: "Universidade do Porto — Faculdade de Ciências"},
+                pt: "Universidade do Porto — Faculdade de Ciências"
+            },
             photo: "pics/people/ines-rolo.jpg",
             bio: {
                 en: "I am a PhD student in Porto, supervised by Dr. Margarida Cunha, Dr. Ângela Santos and Dr. Victoria Laura Antoci. Ciência ID: 0B18-AAAE-47AE",
@@ -97,15 +102,15 @@ const researchers = {
             }
         },
 
-
         {
             slug: "jen-peralta",
             name: "Jennifer P. Lucero",
             role: { en: "PhD Researcher", pt: "Investigador de Doutoramento" },
             institution: "Instituto de Astrofísica e Ciências do Espaço (IA)",
             masters: {
-                en: "Pontificia Universidad Catolica de Chile ",
-                pt: "Pontificia Universidad Catolica de Chile "},
+                en: "Pontificia Universidad Catolica de Chile",
+                pt: "Pontificia Universidad Catolica de Chile"
+            },
             photo: "pics/people/jenn.jpg",
             bio: {
                 en: "My research investigates how stellar activity impacts the characterization of exoplanet atmospheres, with a particular focus on high-resolution spectroscopic observations. For my research I use data from the Paranal Solar ESPRESSO Telescope (PoET). Supervisors: Dr. Nuno C. Santos, Dr. Olivier Demangeon",
@@ -117,13 +122,15 @@ const researchers = {
             slug: "Kahled-AlMoula",
             name: "Kahled Al Moula",
             role: { en: "Post-Doctoral Researcher", pt: "Investigador de Pós-Doutoramento" },
-            institution: " Instituto de Astrofísica e Ciências do Espaço (CAUP); Faculdade de Ciências da Universidade do Porto",
+            institution: "Instituto de Astrofísica e Ciências do Espaço (CAUP); Faculdade de Ciências da Universidade do Porto",
             masters: {
                 en: "Uppsala University",
-                pt: "Uppsala University"},
+                pt: "Uppsala University"
+            },
             phd: {
                 en: "University of Geneva",
-                pt: "University of Geneva"},
+                pt: "University of Geneva"
+            },
             photo: "pics/people/kahled_al_moula.jpeg",
             bio: {
                 en: "My work is focused on the characterization and mitigation of stellar activity in radial velocity time series to enable the mass measurement Earth-like planets. I primarily use observations from solar telescopes connected to high-resolution spectrograph to isolate the effects of solar-type variability.",
@@ -131,7 +138,23 @@ const researchers = {
             }
         },
 
-    ]},   // <-- FIX 1: closes the Portugal object and adds the missing comma
+        {
+            slug: "Telmo-Monteiro",
+            name: "Telmo Monteiro",
+            role: { en: "PhD Researcher", pt: "Investigador de Doutoramento" },
+            institution: "Instituto de Astrofísica e Ciências do Espaço (CAUP); Faculdade de Ciências da Universidade do Porto",
+            masters: {
+                en: "Faculdade de Ciências da Universidade do Porto (FCUP)",
+                pt: "Faculdade de Ciências da Universidade do Porto (FCUP)"
+            },
+            photo: "pics/people/telmo_monteiro.jpeg",
+            bio: {
+                en: "My interests are in exoplanets and stars, particularly in understanding the stellar challenges in the study of exoplanets. In my PhD, I seek to characterise stellar atmospheres with high-resolution spectroscopy using a method called “Doppler Shadow”, with the aim of consequently improving our understanding of the atmospheres of the exoplanets that orbit them. Supervisors: Eduardo Cristo; William Dethier; Nuno Santos; Contact: telmo.monteiro@astro.up.pt / https://telmonteiro.github.io / https://orcid.org/0000-0001-8991-4615",
+                pt: "Os meus interesses são em exoplanetas e estrelas, particularmente a compreensão dos desafios estelares no estudo de exoplanetas. No meu doutoramento, procuro caracterizar as atmosferas das estrelas com espetroscopia de alta resolução recorrendo a um método chamado 'Doppler Shadow', com vista a melhorar, por consequência, a nossa compreensão das atmosferas dos exoplanetas que as rodeiam. Supervisores: Eduardo Cristo; William Dethier; Nuno Santos; Contacto: telmo.monteiro@astro.up.pt / https://telmonteiro.github.io / https://orcid.org/0000-0001-8991-4615"
+            }
+        },
+
+    ]},
 
     "Sweden": { label: "Sweden", people: [
 
@@ -142,15 +165,16 @@ const researchers = {
             institution: "Stockholm University, Department of Astronomy",
             masters: {
                 en: "Lund University",
-                pt: "Universidade de Lund"},
+                pt: "Universidade de Lund"
+            },
             photo: "pics/people/ally_murphy.jpeg",
             bio: {
                 en: "The focus of my PhD is to research transiting long-period exoplanets using data from ESA’s CHEOPS space telescope. Transit observations enable precise measurements of planetary radii, which, when combined with existing mass measurements, allow us to determine planetary densities and constrain their internal compositions. These properties give us a better understanding of the formation and evolution of cooler planets on wider orbits. Supervisors: Alexis Brandeker; email - alexandra.murphy@astro.su.se",
                 pt: "O fócus do meu doutoramento é investigar exoplanetas de longo período de trânsito usando dados de telescópios espaciais da ESA, como o CHEOPS. Observações de trânsito permitem medições precisas dos raios planetários, que, quando combinadas com medições de massa existentes, nos permitem determinar densidades planetárias e restringir as suas composições internas. Estas propriedades dão-nos uma melhor compreensão da formação e evolução de planetas mais frios em órbitas mais largas. Supervisores: Alexis Brandeker; email - alexandra.murphy@astro.su.se"
             }
         },
-    ]},   // <-- FIX 2: closes the Sweden object and adds the missing comma
 
+    ]},
 
     //"Austria": { label: "Austria", people: [
     //    { slug: "joao-ferreira", name: "Dr. João Ferreira", role: "Head Researcher", institution: "University of Vienna — Department of Astrophysics", masters: "", photo: "", bio: "" },
@@ -164,8 +188,6 @@ const researchers = {
     "Chile": { label: "Chile", people: [] },
     "Netherlands": { label: "Netherlands", people: [] },
     "Italy": { label: "Italy", people: [] },
-    // FIX 3: removed the duplicate empty "Sweden" entry that was here.
-    // It would have overwritten the real Sweden entry above (Ally Murphy).
     "Australia": { label: "Australia", people: [] },
     "Japan": { label: "Japan", people: [] },
     // ADD MORE:
